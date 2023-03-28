@@ -79,6 +79,8 @@ java script | vou aprender também
 :--------- | :-------: | --------:
 oi         | tim       | vivo
 
+> AS TABELAS FICARAM TODAS TRAVADAS NO GIT CARAAA T_T 
+
 [Clique no link e seja travado]
 [Clique no link e seja travado]
 [Clique no link e seja travado]
