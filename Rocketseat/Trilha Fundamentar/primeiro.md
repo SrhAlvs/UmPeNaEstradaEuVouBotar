@@ -61,7 +61,7 @@ aqui eu finjo que sei php
 #### dá para fazer tabelaaa
 
 mês | aniversariantes 
-- | - 
+-|- 
 junho | Sarah e Predo veio
 julho | gay do Henrique
 
@@ -69,7 +69,7 @@ _eu posso deixar organizadinho no código também_
 [Clique no link e seja travado]
 
 linguagem   | sei ou não sei
------------ | --------------
+------------|---------------
 html        | já estudei, não sou nenhum mestre, mas sei
 php         | não sei em o que é
 c++         | sei, inclusive é maravilhoso
@@ -80,10 +80,12 @@ _também posso alinhar os textos_
 [Clique no link e seja travado]
 
 à esquerda | no centro | à direita
-:--------- | :-------: | --------:
+:----------|:---------:|---------:
 oi         | tim       | vivo
 
 > AS TABELAS FICARAM TODAS TRAVADAS NO GIT CARAAA T_T 
+
+> descobri que não pode dar espaço entre os -|- das tabelas :D
 
 [Clique no link e seja travado]
 [Clique no link e seja travado]
