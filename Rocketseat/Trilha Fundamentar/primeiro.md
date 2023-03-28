@@ -71,7 +71,7 @@ _eu posso deixar organizadinho no código também_
 linguagem   | sei ou não sei
 ------------|---------------
 html        | já estudei, não sou nenhum mestre, mas sei
-php         | não sei em o que é
+php         | não sei nem o que é
 c++         | sei, inclusive é maravilhoso
 python      | não sei, ainda
 java script | vou aprender também
