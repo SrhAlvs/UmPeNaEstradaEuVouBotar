@@ -64,8 +64,10 @@ mês | aniversariantes
 - | - 
 junho | Sarah e Predo veio
 julho | gay do Henrique
-*eu posso deizxar organizadinho no código também*
+
+_eu posso deixar organizadinho no código também_
 [Clique no link e seja travado]
+
 linguagem   | sei ou não sei
 ----------- | --------------
 html        | já estudei, não sou nenhum mestre, mas sei
@@ -73,8 +75,10 @@ php         | não sei em o que é
 c++         | sei, inclusive é maravilhoso
 python      | não sei, ainda
 java script | vou aprender também
-*também posso alinhar os textos*
+
+_também posso alinhar os textos_
 [Clique no link e seja travado]
+
 à esquerda | no centro | à direita
 :--------- | :-------: | --------:
 oi         | tim       | vivo
