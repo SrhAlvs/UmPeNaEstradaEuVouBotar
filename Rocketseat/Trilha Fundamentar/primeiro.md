@@ -33,13 +33,13 @@ se liga nisso aqui ![little dog](https://pipz.com/static/images/blog/eddie.png) 
 [Clique no link e seja travado]
 
 #### citação/comentário
-> oi oi oi oi oi oi oi oi oi oi oi oi
-> la la la la la la la la la la la la
-> good byes
+> oi oi oi oi
+> la la la la
+> good byes, no final vai estar tudo na mesma linha, 
 dá pra escrever sem o blockquote, mas é melhor colocar para sinalizar no código
 
 #### código no texto
-coisas interessantes escritas de modo surpreendente, quando do nada `código da linha` 
+coisas interessantes escritas de modo surpreendente, quando do nada `código na linha` 
 
 ```
 muitos códigos aqui, e todo um raciocínio de comandos, SÃO CRASES, E NÃO APÓSTROFOS
