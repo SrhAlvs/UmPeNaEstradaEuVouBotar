@@ -16,7 +16,9 @@ coisas afins
 1. lista enumerada :D
 
 **negrito** ou __negrito__
+
 *itálico* ou _itálico_
+
 coisas afins
 
 #### jeito do link bonito
@@ -42,7 +44,8 @@ dá pra escrever sem o blockquote, mas é melhor colocar para sinalizar no códi
 coisas interessantes escritas de modo surpreendente, quando do nada `código na linha` 
 
 ```
-muitos códigos aqui, e todo um raciocínio de comandos, SÃO CRASES, E NÃO APÓSTROFOS
+muitos códigos aqui, e todo um raciocínio de comandos
+SÃO CRASES, E NÃO APÓSTROFOS
 ```
 ~~~
 assim também dá
@@ -66,6 +69,7 @@ junho | Sarah e Predo veio
 julho | gay do Henrique
 
 _eu posso deixar organizadinho no código também_
+
 [Clique no link e seja travado]
 
 linguagem   | sei ou não sei
@@ -77,6 +81,7 @@ python      | não sei, ainda
 java script | vou aprender também
 
 _também posso alinhar os textos_
+
 [Clique no link e seja travado]
 
 à esquerda | no centro | à direita
@@ -88,7 +93,9 @@ oi         | tim       | vivo
 > descobri que não pode dar espaço entre os -|- das tabelas :D
 
 [Clique no link e seja travado]
+
 [Clique no link e seja travado]
+
 [Clique no link e seja travado]
 
 
