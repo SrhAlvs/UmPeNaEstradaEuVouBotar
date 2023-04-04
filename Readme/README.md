@@ -9,6 +9,7 @@
 <p> Made with great dedication by Sarah Alves ♡ </p>
 
 **- Contact me!**
+
 ![Gmail](.\gmail_lg.png) <a href="mailto:sssarahalves@gmail.com" title="E-mail">sssarahalves@gmail.com</a>
 
 ![LinkedIn](.\linkedin_lg.png) <a href="https://www.linkedin.com/in/sarah-alves-77b890257/" title="LinkedIn">Sarah Alves</a>
