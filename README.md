@@ -3,7 +3,8 @@
 <h1 align="center">Project of Back-End Developer Person</h1>
 
 ### Description
-<p> &nbsp; &nbsp; &nbsp; I plan to make this repository my "business card", so everything I learn and plan will be here! Thank you for your attention! Appreciate my work and give me stars ^-^ </p>
+<p> &nbsp; &nbsp; &nbsp; I plan to make this repository my "business card", so everything I learn and plan will be here! Thank you for your attention! 
+Appreciate my work and give me stars ^-^ </p>
  
 ### Author
 <p> &nbsp; &nbsp; &nbsp; Made with great dedication by Sarah Alves ♡ </p>
