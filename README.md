@@ -1,4 +1,4 @@
-![Banner](banner.jpg)
+![Banner](.\Readme\banner.jpg)
 
 <h1 align="center">Project of Back-End Developer Person</h1>
 
@@ -10,13 +10,13 @@
 
 **- Contact me!**
 
-![Gmail](.\gmail_lg.png) <a href="mailto:sssarahalves@gmail.com">sssarahalves@gmail.com</a>
+![Gmail](.\Readme\gmail_lg.png) <a href="mailto:sssarahalves@gmail.com">sssarahalves@gmail.com</a>
 
-![LinkedIn](.\linkedin_lg.png) <a href="https://www.linkedin.com/in/sarah-alves-77b890257/">Sarah Alves</a>
+![LinkedIn](.\Readme\linkedin_lg.png) <a href="https://www.linkedin.com/in/sarah-alves-77b890257/">Sarah Alves</a>
 
-![GitHub](.\github_lg.png) <a href="https://github.com/SrhAlvs">Srh Alvs</a>
+![GitHub](.\Readme\github_lg.png) <a href="https://github.com/SrhAlvs">Srh Alvs</a>
 
-![Instagram](.\instagram_lg.png) <a href="https://www.instagram.com/srh_asn/">@srh_asn</a>
+![Instagram](.\Readme\instagram_lg.png) <a href="https://www.instagram.com/srh_asn/">@srh_asn</a>
 
 #
 #
