@@ -10,8 +10,11 @@
 
 **- Contact me!**
 ![Gmail](.\gmail_lg.png) <a href="mailto:sssarahalves@gmail.com" title="E-mail">sssarahalves@gmail.com</a>
+
 ![LinkedIn](.\linkedin_lg.png) <a href="https://www.linkedin.com/in/sarah-alves-77b890257/" title="LinkedIn">Sarah Alves</a>
+
 ![GitHub](.\github_lg.png) <a href="https://github.com/SrhAlvs" title="GitHub">Srh Alvs</a>
+
 ![Instagram](.\instagram_lg.png) <a href="https://www.instagram.com/srh_asn/" title="Instagram">@srh_asn</a>
 
 #
