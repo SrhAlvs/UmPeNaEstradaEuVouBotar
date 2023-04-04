@@ -1,4 +1,4 @@
-![.](.\Readme\banner.jpg)
+![.](./Readme/banner.jpg)
 
 <h1 align="center">Project of Back-End Developer Person</h1>
 
@@ -10,13 +10,13 @@
 
 **- Contact me!**
 
-![.](.\Readme\logo_email.png) <a href="mailto:sssarahalves@gmail.com" title="E-mail">sssarahalves@gmail.com</a>
+![.](./Readme/logo_email.png) <a href="mailto:sssarahalves@gmail.com" title="E-mail">sssarahalves@gmail.com</a>
 
-![.](.\Readme\logo_linkedin.png) <a href="https://www.linkedin.com/in/sarah-alves-77b890257/" title="LinkedIn">Sarah Alves</a>
+![.](./Readme/logo_linkedin.png) <a href="https://www.linkedin.com/in/sarah-alves-77b890257/" title="LinkedIn">Sarah Alves</a>
 
-![.](.\Readme\logo_github.png) <a href="https://github.com/SrhAlvs" title="GitHub">Srh Alvs</a>
+![.](./Readme/logo_github.png) <a href="https://github.com/SrhAlvs" title="GitHub">Srh Alvs</a>
 
-![.](.\Readme\logo_instagram.png) <a href="https://www.instagram.com/srh_asn/" title="Instagram">@srh_asn</a>
+![.](./Readme/logo_instagram.png) <a href="https://www.instagram.com/srh_asn/" title="Instagram">@srh_asn</a>
 
 #
 #
