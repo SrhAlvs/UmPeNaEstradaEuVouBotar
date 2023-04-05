@@ -1,12 +1,74 @@
 # Trilha Fundamentar 
 ## HTML
+### Comandos
+* **`<h1>`Título`</h1>`** = vai de h1 até h6, dá para escrever títulos
+
+* **`<p>`Texto`</p>`** = para fazer parágrafo
+
+* **`<ol>`comandos li`</ol>`** = lista ordenada, com números, ex.:
+    1. alguma coisa
+
+* **`<ul>`comandos li`</ul>`** = lista não ordenada, com pontinhos, ex.:
+    * outra coisa
+
+* **`<li>`algo para listar`</li>`** = tem que estar dentro de `ol` ou `ul`, ele lista o que estiver dentro
+
+* **`<dl>`dt e dd`</dl>`** = lista de descrições 
+
+* **`<dt>`título`</dt>`** = título do que vai ser descrito
+
+* **`<dd>`descrição`</dd>`** = descrição do título
+
+* **`<!--`comentário`-->`** = os comentários não aparecem na página que está sendo desenvolvida, aparecem somente no código
+
+* **`<em>`palavra ou frase`</em>`** = itálico
+
+* **`<strong>`palavra ou frase`</strong>`** = negrito
+
+* **`<div>`alguma coisa aqui`</div>`** = serve para separar elementos em blocos
+
+* **`<span>`alguma coisa aqui`</span>`** = serve para separar elementos no código, mas aparece em linhas no site
+
+* **`<br>` ou `</br>`** = quebra de linha
+
+* **`lorem`** = texto aleatório
+
+* **`<code>`alguma coisa `</code>`** = código simples inline
+
+* **`<pre><code>`alguma coisa`</code></pre>`** = código mais coplexo, box form
+
+* **`<address>`contato`</address>`** = tipo, eu criei essa página, vou deixar meu nome e email aqui
+
+* **`<button></button>`** = cria um botão
+
+#### Links, imagens, citações e abreviações
+* **`<a href=”link”>`título do link em azul`</a>`** = link
+
+* **`<a href=”link” target=”_blank/_self”>`título do link em azul`</a>`** = link normal, só que se tiver o *target=”_blank”*, quando clicar no link ele abre uma nova guia e o *target=”_self”*, quando clicar ele abre o site na mesma guia, que é o padrão
+
+* **`<img src=”https://source.unsplash.com/random” alt="">`** = imagem aleatória 
+
+* **`<blockquote cite=”link”>`citação`</blockquote>`** = faz citação por aí
+
+* **`<cite>`citação`</cite>`** = faz citação por aí, também
+
+* **`<q>`citação`</q>`** = faz citação por aí, também
+
+* **`<abbr title=”significado de uma abreviação”>`abreviação`</abbr>`** = digita algo em “abreviação”, na parte do significado explica o que é, se deixar o mouse parado em cima dá para ver
+
+#### Elementos Vazios (não tem o fechamento </>)
+
+
+
+
+
 
 ## CSS
-
+ghjy
 ## Nem tudo são píxeis
-
+gjjy
 ## Uma caixa dentro da outra
-
+jgjg
 ## Agora sim, cores
 ### Cores
 #### Tipos
@@ -81,7 +143,7 @@
 ### Background
 Todo background já começa transparente.
 
-#### Anotações
+#### Valores
 * **`background-color`** = cor do fundo
     ```css
     header {
