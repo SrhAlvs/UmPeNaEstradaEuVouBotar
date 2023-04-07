@@ -1,4 +1,15 @@
 # Trilha Fundamentar 
+<ul>
+    <li><a href=”#html”>HTML</a></li>
+    <li><a href=”#html”>HTML</a></li>
+    <li><a href=”#html”>HTML</a></li>
+    <li><a href=”#html”>HTML</a></li>
+</ul>
+
+
+ 
+<div id=”html”> 
+
 ## HTML
 ### Comandos
 * **`<h1>`Título`</h1>`** = vai de h1 até h6, dá para escrever títulos
@@ -148,6 +159,8 @@
 * `<td></td>` = escreve na linha da tabela, em colunas separadas, para os dados
 
 * `<tfoot></tfoot>` = rodapé, usa `<tr> | <td>` também
+</div>
+
 
 ## CSS
 * CSS = Cascading Style Sheet (Folha de Estilo em Cascata)
@@ -369,13 +382,6 @@ Box Model = caixa retangular com propriedades 2D, cada elemento da pagina é con
 * Somente valores horizontais de `margin`, `padding` e `border` irão funcionar
 
 * Ex.: `<a>` `<strong>` `<span>` `<em>`
-
-
-
-
-
-
-
 
 ## Agora sim, cores
 ### Cores
