@@ -240,15 +240,142 @@ header: {
 Às vezes não importa a ordem debaixo, nem todas as propriedades aceitam o shorthand. 
 
 #### Funções
+valor(alguma_coisa) 
+```css
+/*Ex.:*/
+header {
+    color: rgb(225, 0, 100);
+    width: calc(100% - 10px);
+}
+```
+As funções (parênteses) recebem argumentos, não podem estar vazias. 
 
+#### Vendor Prefixes
+```css
+p {
+    -webkit-background-clip: text; /* Chrome, Safari, iOS e Android */
+    -moz-background-clip: text; /* Mozilla (Firefox) */
+    -ms-background-clip: text; /* Internet Explorer */
+    -o-background-clip: text; /* Opera */
+}
+```
+* Tem mais em: [Which Vendor Prefix?](https://ireade.github.io/which-vendor-prefix)
 
-
+* Dá para consultar quais comandos precisam de vendor prefix [Can I Use](https://caniuse.com/)
 
 ## Nem tudo são píxeis
-gjjy
+Se tiver `<color>` ou `<lenght>` são *values* ou *data types*. 
+
+### Tipos Numéricos
+* `<interger>` = número inteiro (positivos e negativos)
+
+* `<number>` = número decimal (inteiro com vírgula)
+
+* `<dimension>` = number com unidade, tipo 10.5px
+
+* `<percentage>` = fração de algum número, 50% de algo
+
+#### Unidades Comuns
+* `<length>` = valor de distância: px, em, vw, vh
+
+* `<angle>` = ângulo: deg, rad, turn
+
+* `<time>` = tempo: s, ms
+
+* `<resolution>` = resoluções para dispositivos: dpi
+
+* `<position>` = posições, conjunto de coordenadas 2D: top, right, bottom, left e center (não confundir com a propriedade)
+
+##### Valores Iguais
+* px = pixel = 1/96in
+
+* cm = centímetro = 96px/2,54
+
+* in = inches (polegadas) = 2,54cm = 96px
+
+##### Anotações
+* em = tamanho da font pai
+
+* rem = tamanho da font do elemento raiz (root/html)
+
+* vw = 1% da viewport width, parte branca da página (vertical)
+
+* vh = 1% da viewport height, parte branca da página (horizontal)
+
+#### Funções
+* rgb() = para cor
+
+* hsl() = para cor
+
+* url() = url
+
+* calc() = para operações, cálculos
 
 ## Uma caixa dentro da outra
-jgjg
+Box Model = caixa retangular com propriedades 2D, cada elemento da pagina é considerado uma caixa.
+
+* `width/height` = tamanho: largura/altura
+    * a largura ou a altura escolhidas vão afetar o content, mas não o padding
+
+* `content` = conteúdo
+
+* `border` = bordas (px, em)
+    * Ela é aplicada fora da caixa, e o tamanho de width e height ficam “intactos”, para aplicar o border dentro da caixa é `box-sizing: border-box`
+    
+    *   `border-top` `border-right` `border-bottom` `border-left`
+
+    * `<border-style>` `<border-color>`
+
+    * style: `solid` `dotted` `dashed` `double` `groove` `ridge` `inset` `outset`
+
+    * [Documentação MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/border)
+
+* `padding` = preenchimento interno (px, %, em)
+    * Ele altera o tamanho da caixa, margem dentro da caixa
+    
+    * `padding-top` `padding-right` `padding-bottom` `padding-left`
+
+    * `box-sizing: border-box` = para adicionar um padding sem alterar a width ou o height
+
+* `margin` = espaços fora da caixa (px, %, auto)
+    * `margin-top` `margin-right` `margin-bottom` `margin-left`
+    * `margin: auto` = tenta fazer um cálculo automático **nas laterais**
+
+    * **margin-collapsing** = Se a margin-bottom de uma caixa for um ºn x e o elemento abaixo dele tiver uma margin-top ºn y, elas se juntam e ao invés de ficar x+y, ele considera apenas o maior valor. Quando um elemento está um ao lado do outro isso não acontece, os valores são somados normalmente.
+
+* `outline` = (px, em)
+    * Não modifica o tamanho da caixa por não ser parte de Box Model, pode ser diferente de retangular, não permite ajustes individuais, muito usada pelo user agent para acessibilidade
+
+
+### Display Inline | Display Block
+* `display: block;` = transformar display inline em display block
+
+* `display: inline;` = tranformar  display block em em display inline
+
+#### `display block`
+* Ocupa toda a linha, colocando o próximo elemento abaixo desse
+
+* `width` e `height` são respeitados
+
+* `padding`, `margin` e `border` irão funcionar normalmente
+
+* Ex.: `<p>` `<div>` `<section>`, todos os headings `<h1>` `<h2>` `<h3>`...
+
+#### `display inline`
+* Elemento um ao lado do outro
+
+* `width` e `height` não funcionam
+
+* Somente valores horizontais de `margin`, `padding` e `border` irão funcionar
+
+* Ex.: `<a>` `<strong>` `<span>` `<em>`
+
+
+
+
+
+
+
 
 ## Agora sim, cores
 ### Cores
@@ -271,7 +398,7 @@ jgjg
 * **unset** = tipo, não vou definir cor para esse elemento
 
 * **currentcolor** = ele usa a cor que estiver no momento
-    * Ex.: o \<p\> fica com a cor azul, que é a cor da \<div\>, dá no mesmo se tirar o `currentcolor`
+    * Ex.: o `<p>` fica com a cor azul, que é a cor da `<div>`, dá no mesmo se tirar o `currentcolor`
     ```html
     <div>
         <h1>Título</h1>
