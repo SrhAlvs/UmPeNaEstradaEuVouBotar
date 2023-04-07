@@ -361,3 +361,14 @@ Todo background já começa transparente.
     * linear = degradê em linha reta
     * radial = degradê em círculo
     * se quiser colocar ele no shorthand é só colocar no começo e separar ele do próximo comando usando vírgula
+## Posso Ver e Ouvir o HTML
+### Vídeos
+* `<video src="`caminho ou url `"></video>` = para colocar um vídeo
+    * `controls` = colocado depois das aspas, faz aparecer os controles (play, pause, etc.)
+    * se o browser não suportar, coloca:
+    ```html
+    <video src="<!--caminho ou link-->" controls>
+        <p> Este browser não suporta vídeo, baixe-o aqui <a href="<!--caminho ou link-->"></a>
+        </p>
+    </video>
+    ```
