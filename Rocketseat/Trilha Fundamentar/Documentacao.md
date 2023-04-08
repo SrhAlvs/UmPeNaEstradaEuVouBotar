@@ -365,10 +365,119 @@ Todo background já começa transparente.
 ### Vídeos
 * `<video src="`caminho ou url `"></video>` = para colocar um vídeo
     * `controls` = colocado depois das aspas, faz aparecer os controles (play, pause, etc.)
-    * se o browser não suportar, coloca:
+#### Outras alternativas para adicionar vídeos
+* Caso 1, baixar o vídeo:
     ```html
     <video src="<!--caminho ou link-->" controls>
-        <p> Este browser não suporta vídeo, baixe-o aqui <a href="<!--caminho ou link-->"></a>
-        </p>
+        <p> Este browser não suporta vídeo, baixe-o aqui <a href="<!--caminho ou link-->"></a></p>
     </video>
     ```
+* Caso 2, 
+    ```html
+    <video controls>
+        <source src= "<!--caminho ou link-->" type="video/mp4">
+    </video>
+    ```
+    * O `type` vai descrever bem o que é de fato o vídeo.
+    * Pode ter mais de um `source`
+    * Pode consultar mais formatos na [Documentação MDN: media type and format guide: image, audio, and video content](https://developer.mozilla.org/en-US/docs/Web/Media/Formats)
+#### Comandos "extras"
+**Esses comando são adicionados depois de `controls`**
+* Altura e largura
+    ```html
+    <video controls
+        width="400"
+        height="300"
+    >
+        <source src= "<!--caminho ou link-->" type="video/mp4">
+    </video>
+    ```
+* `autoplay` = assim que fosse aberto, o vídeo já começaria automaticamente, sem precisar dar o play
+* `preload="`*algo*`"` = antes de dar o play o vídeo já começa a ser "baixado"
+    * `"auto"`= é feito o preload do vídeo todo
+    * `"metadata"` = vai carregar só o que for básico para o entendimento do conteúdo do vídeo
+    * `"none"` = não faz preload de nada antes de apertar o botão de play
+* `loop` = chega no final do vídeo e volta para o começo automaticamente
+* `muted` = o vídeo começa mutado (dá para ativar o áudio pelos controles)
+* `poster="`*caminho ou link*`"` = posso colocar uma imagem de fundo no vídeo, ela aparece antes de dar o play
+### Áudios 
+* `<audio src="`caminho ou url `"></audio>` = para colocar um áudio
+    * `controls` = colocado depois das aspas, faz aparecer os controles (play, pause, etc.)
+```html
+<audio controls>
+    <source src= "<!--caminho ou link-->" type="audio/mp3">
+</audio>
+```
+* O `type` vai descrever bem o que é de fato o áudio, o container dele (.mp3, .ogg, etc.).
+* Pode ter mais de um `source`, o mesmo áudio com mais conteiners. 
+* Pode consultar mais formatos na [Documentação MDN: media type and format guide: image, audio, and video content](https://developer.mozilla.org/en-US/docs/Web/Media/Formats)
+####  Comandos "extras"
+São os mesmos de vídeos. 
+O comando `poster`não existe, por motivos óbvios.
+Os comandos de `width` e `height` também não funcionam.
+### Iframe
+Dá para usar em áudios, vídeos, mapas, etc..
+[Documentação MDN, iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
+```html
+<iframe
+    width="0"
+    height="0"
+    src="<!--link do vídeo-->"
+    frameborder="<!--borda ao redor do vídeo, nº-->" 
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscren
+    title="título do vídeo">
+</iframe>
+```
+* `allow` = permitir algumas funções
+* `gyroscope` = se o usuário girar o dispositivo, o vídeo gira junto
+* `picture-in-picture` = aquele vídeo pequeno flutuante no canto da tela
+* `accelerometer` = função para alterar a velocidade do vídeo 
+### Imagens
+```html
+<img 
+    src="<!--caminho ou link-->" 
+    alt="título/descrição"
+    title="Descansa o mouse em cima e mostra um título"
+    width="0px"
+    height="0px"
+>
+```
+Imagem aleatória: https://source.unsplash.com/random
+Dependendo do tamanho escolhido para a imagem, ela pode ficar esticada, às vezes é melhor colocar só um valor (altura ou largura), assim o próprio browser já "completa" a propriedade e deixa a imagem certinha.
+* Link na imagem = se o usuário clicar na imagem ele vai ser direcionado para outro local
+```html
+<a href="<!--link-->">
+    <img 
+        src="<!--caminho ou link-->" 
+        alt="título/descrição"
+        title="Descansa o mouse em cima e mostra um título"
+        width="0px"
+        height="0px"
+    >
+</a>
+```
+#### Imagem inserida com CSS
+```html
+<p style="background-image: url(caminho ou link)">Alguma coisa</p>
+```
+Fica uma imagem atrás do texto.
+#### Títulos visíveis
+```html
+<a href="https://google.com">
+    <figure>
+        <img
+            src="link/caminho"
+            alt="Imagem"
+            title="Mouse descansa e aparece frase"
+        >
+        <figcaption>Frase relativa à imagem, não só uma frase qualquer depois de uma imagem.</figcaption>
+    </figure>
+</a>
+```
+Desse jeito, se o usuário clicar na imagem ou na frase do `figcaption` ele vai ser direcionado para o link. 
+#### SVG
+[Documentação MDN, svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element)
+* Imagem rasterizada = imagem composta por pixels, se der muito zoom dá para ver os píxeis. 
+* Imagem vetorizada = imagem composta por algorítmo, é a tal da `svg`, se der muito zoom a imagem não perde sua qualidade.
+* O Figma auxilia no processo de criar essas imagens vetorizadas.
