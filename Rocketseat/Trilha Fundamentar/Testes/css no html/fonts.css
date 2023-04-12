@@ -1,0 +1,14 @@
+p {
+    font-family: DejaVu Sans Mono, sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+    text-transform: none;
+    font-weight: normal;
+    font-style: oblique;
+    font-size: 18px;
+    font-variant: small-caps;
+    text-decoration: underline wavy #186053;  
+    text-align: justify; 
+    text-shadow: 7px 5px 3px darkcyan, 
+                 1px 9px 8px darkgreen;
+  }

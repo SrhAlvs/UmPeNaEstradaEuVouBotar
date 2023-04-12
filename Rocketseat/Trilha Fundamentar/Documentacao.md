@@ -481,3 +481,137 @@ Desse jeito, se o usuário clicar na imagem ou na frase do `figcaption` ele vai 
 * Imagem rasterizada = imagem composta por pixels, se der muito zoom dá para ver os píxeis. 
 * Imagem vetorizada = imagem composta por algorítmo, é a tal da `svg`, se der muito zoom a imagem não perde sua qualidade.
 * O Figma auxilia no processo de criar essas imagens vetorizadas.
+## Posicionando foguetes
+### Page Layout
+* `position` = para posicionar algo na tela
+    * `static` = padrão, um à baixo do outro
+    * `relative` = vai mover uma caixa sem alterar as outras
+        * `top` `right` `bottom` `left` = nºpx
+    * `absolute` = "junta tudo em uma camada", absoluto em relação à página, 0 é realmente 0
+    * `fixed` = fica fixo na página, não é movido pelo scroll
+    * `z-index` = altera a camada de uma caixa
+### Flexbox
+Permite posicionar os elementos dentro da caixa, horizontal e vertical separados.
+* `display:flex` = aplicado em div's e classes, "caixa pai"
+    * `flex-direction` = horizontal ou vertical -> row | column
+    * `justify-content` = alinhamento justificado
+        * `space-between` = justificado com um espço entre os elementos, com base no tamanho da janela
+        * `center` = alinha no centro da parte horizontal
+    * `align-items` = alinha
+        * `center` = alinha no centro da parte vertical
+### Grid
+Posiciona elementos dentro da caixa, posicionamento horizontal e vertical ao mesmo tempo.
+* `display:grid` = começo do grid
+* áreas do grid
+    ```css
+        body {
+            grid-template-areas:
+                "1 2" /*cada conjunto de aspas significa uma linha "de tabela"*/
+                "9 coisa" /*posso colocar o que eu quiser para identificar minhas colunas, nesse caso, todas as linhas tem duas colunas*/
+                "main header";
+            grid-template-rows: 60px 10px 1fr; /*primeira e segunda linhas com alturas fixas, terceira linha pegando uma fração da página (vai pegar o que sobrou, é flexível)*/
+            grid-template-columns: 20px 1fr; /*mesmo esquema, só que para as colunas*/
+        }
+        header {
+            grid-area: coisa; /*tudo o que eu colocar no header vai para o lugar "coisa"*/
+        }
+        ```
+Dá para usar o `flex` no grid, tipo, no header eu tenho duas div's, eu posso usar o `flex` para organizar essas div's.
+## App bonito, até nos textos
+### Basic font-proprties
+#### Font family
+* tipo de fonte de um elemento
+* lista de fontes e ordem de prioridade
+* inclui *fallback* font (caso algo não dê certo em um caminho, eu tenho eu meio de me virar, escape).
+```css
+p {
+    font-family: 
+    "Times New Roman", 
+    Times, /*fallback, se não achar "Times New Roman" procura por "Times"*/ 
+    serif; /*fallback também, caso não tenha as anteriores, procure uma fonte com serifa*/
+}
+```
+* `serif` = fonte com serifa
+* `sans-serif` = fonte sem serifa
+* `letter-spacing` = espaçamento entre caracteres, px | em
+* `word-spacing` = espaçamentos entre palavras, px | em
+* `line-height` = espaço entre linhas, com ou sem unidades de medida
+    * [Documentação MDN, line-height](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)
+* `text-transform` = fazer todas as letras ficarem de algum modo 
+    * `uppercase` = todas maiúsculas
+    * `lowercase` = todas minúsculas
+    * `capitalize` = as letras iniciais ficam maiúsculas
+    * `none` = sem nada
+    * [Documentação MDN, text-transform](https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)
+#### Font Weight
+Peso da fonte. 
+Documentação para consultar quais font-weight são possíveis de aplicar em uma font-family: [CSS Fonts Module](https://www.w3.org/TR/css-fonts-3/)
+* `bold` = fonte mais escura, tipo negrito
+* `bolder` = mais que *bold*
+* `light` = clarinho
+* `normal` = normal ;-;
+* `nº` = posso colocar um número para definir esse peso
+#### Font Style
+Estilo da fonte.
+* `italic` = *joga de ladinho*
+* `oblique` = parece o *joga de ladinho*
+* `normal` = normal ;-;
+#### Fonte Size
+Tamanho da fonte. 
+* px
+* em (parente)
+* rem (root element)
+#### Web Fonts
+* Fontes do sistema já estão instaladas na minha máquina, mas nem sempre estão na do usuário.
+* Fontes da web são fontes que se consegue usando a web
+[Fontes do Google](https://fonts.google.com/), dá para usar como link e como @import
+[Como usar font-face, CSS-TRICKS](https://css-tricks.com/snippets/css/using-font-face-in-css/)
+#### Atribuir mais estilo às fontes
+[Documentação MDN, font-variant](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant)
+* `font-variant: small-caps` = faz as letras minúsculas ficarem maiúsculas, mas ainda assim elas são menores que as maiúsculas
+* `normal` = normal ;-; 
+#### Text Decoration
+[Documentação MDN, text-decoration](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration)
+* `line` = adicionar linha no texto
+    * `underline` = sublinhado
+    * `overline` = linha acima, sublinhado no céu
+    * `line-through` = linha no meio, cortando as palavras
+* `style` = estilo da linha
+    * `wavy` = ondinhas
+    * `dotted` = pontos ....
+    * `double` = duas linhas
+    * `dashed` = traços ----
+    * `solid` = reta normal ;-;
+* `color` = cor da linha 
+    ```css
+    p {
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        text-decoration-color: #186053;
+    }
+    /*shorthand embaixo*/
+    p {
+    text-decoration: underline dotted #186053;  
+    }
+    ```
+* `text-align` = alinhamento do texto
+    * left | right | center | justify
+* `text-shadow` = sombras
+    * px px px color
+        * `offset-x` = posicionamento x
+        * `offset-y` = posicionamento y
+        * `blur-radius` = blur
+        * `color` = cor
+    ```css
+    p {
+        text-shadow: 7px 5px 3px darkcyan;
+    }
+    ```
+#### Shorthand
+```css
+p {
+    /*style | variant | weight | stretch | size/line-height | family*/
+    font: oblique small-caps light normal 12px/1.5 Times New Roman, Times, DejaVu Sans Mono, sans-serif;
+}
+```
+## Formulários de outro planeta
