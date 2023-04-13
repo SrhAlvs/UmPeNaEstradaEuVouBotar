@@ -615,3 +615,35 @@ p {
 }
 ```
 ## Formulários de outro planeta
+Formulários servem para receber dados do usuário, dados `input`, possibilitar a interação e o funcionamento de controles.
+### Anotações
+* `<form>`formulário`</form>` = para começar um formulário, container estilo *section* ou *footer*
+    * `<form action="">`formulário`</form>` = para onde os dados vão ser enviados, para a mesma página (fica vazio nas aspas), etc. *action e methode ficam um ao lado do outro*
+    * `<form methode="POST/GET">`formulário`</form>` = método de enviar os dados do action *action e methode ficam um ao lado do outro*
+        * GET = envia as coisas para o endereço do action do jeito get, tudo o que o usuário preenche aparece na url do site, **padrão**
+        * POST = envia os dados para o endereço do action, mas não é exibido na url do site
+    * **NÃO PODE TER UM FORM DENTRO DE OUTRO FORM**
+`<fieldset>`legend,input,...`</fieldset>` = agrupa os campos com o mesmo propósito
+    * `disabled` = desabilita todos os elementros dentro de um *fieldset*, logo, os dados não serão enviados
+    * `form` = é como se ligasse o *fieldset* com o formulário, tipo um id, assim o *fieldset* não precisa estar necessariamente dentro do formulário
+    * `name` = para definir o nome do grupo do *fieldset*, ele não aparece na tela
+    * `<legend>`Nome`</legend>` = **1º elemento do *fieldset***, tipo name só que esse aparece na página
+```html
+<!--fieldset dentro do form-->
+<form action="" methode="POST">
+    <fieldset>
+        <legend>Login</legend>
+        <label for="">E-mail</label>
+        <input type="text">
+    <fieldset>
+</form>
+<!--fieldset fora do form-->
+<form id="login" action="" methode="POST">
+    <button>Next</button> <!--só exemplo-->
+</form>
+<fieldset form="login">
+        <legend>Login</legend>
+        <label for="">E-mail</label>
+        <input type="text">
+<fieldset>
+```
