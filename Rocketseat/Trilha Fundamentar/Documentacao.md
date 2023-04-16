@@ -616,34 +616,228 @@ p {
 ```
 ## Formulários de outro planeta
 Formulários servem para receber dados do usuário, dados `input`, possibilitar a interação e o funcionamento de controles.
-### Anotações
+### Form
 * `<form>`formulário`</form>` = para começar um formulário, container estilo *section* ou *footer*
     * `<form action="">`formulário`</form>` = para onde os dados vão ser enviados, para a mesma página (fica vazio nas aspas), etc. *action e methode ficam um ao lado do outro*
     * `<form methode="POST/GET">`formulário`</form>` = método de enviar os dados do action *action e methode ficam um ao lado do outro*
         * GET = envia as coisas para o endereço do action do jeito get, tudo o que o usuário preenche aparece na url do site, **padrão**
         * POST = envia os dados para o endereço do action, mas não é exibido na url do site
     * **NÃO PODE TER UM FORM DENTRO DE OUTRO FORM**
-`<fieldset>`legend,input,...`</fieldset>` = agrupa os campos com o mesmo propósito
-    * `disabled` = desabilita todos os elementros dentro de um *fieldset*, logo, os dados não serão enviados
-    * `form` = é como se ligasse o *fieldset* com o formulário, tipo um id, assim o *fieldset* não precisa estar necessariamente dentro do formulário
-    * `name` = para definir o nome do grupo do *fieldset*, ele não aparece na tela
-    * `<legend>`Nome`</legend>` = **1º elemento do *fieldset***, tipo name só que esse aparece na página
-```html
-<!--fieldset dentro do form-->
-<form action="" methode="POST">
+    * `<fieldset>`legend,input,...`</fieldset>` = agrupa os campos com o mesmo propósito
+        * `disabled` = desabilita todos os elementros dentro de um *fieldset*, logo, os dados não serão enviados
+        * `form` = é como se ligasse o *fieldset* com o formulário, tipo um id, assim o *fieldset* não precisa estar necessariamente dentro do formulário
+        * `name` = para definir o nome do grupo do *fieldset*, ele não aparece na tela
+        * `<legend>`Nome`</legend>` = **1º elemento do *fieldset***, tipo name só que esse aparece na página
+    ```html
+    <!--fieldset dentro do form-->
+    <form action="" methode="POST">
+        <fieldset>
+            <legend>Login</legend>
+            <label for="">E-mail</label>
+            <input type="text">
+        <fieldset>
+    </form>
+    <!--fieldset fora do form-->
+    <form id="login" action="" methode="POST">
+        <button>Next</button> <!--só exemplo-->
+    </form>
+    <fieldset form="login">
+            <legend>Login</legend>
+            <label for="">E-mail</label>
+            <input type="text">
     <fieldset>
-        <legend>Login</legend>
-        <label for="">E-mail</label>
+    ```
+* `<label>`input, etc.`</label>` = associa e identifica uma ou mais tag's de entrada de dados, posso clicar no "título" ao invés de clicar na caixa para selecionar
+    ```html
+    <!--input dentro do label-->
+    <label>
+        Nome:
         <input type="text">
-    <fieldset>
-</form>
-<!--fieldset fora do form-->
-<form id="login" action="" methode="POST">
-    <button>Next</button> <!--só exemplo-->
-</form>
-<fieldset form="login">
-        <legend>Login</legend>
-        <label for="">E-mail</label>
-        <input type="text">
-<fieldset>
-```
+    </label>
+    <!--input fora do label-->
+    <label for="nome">Nome:</label>
+    <input id="nome" type="text">
+        <!--usando o id/for só funciona para button, input (not hidden), meter, output, progress, select, textarea-->
+    ```
+### Input
+* `<input type="">` = cria o campo para digitar os dados pedidos
+* `<input value="">` = o que estiver dentro do *value* fica "pré-escrito" na caixa do input, a pessoa pode alterar ou deixar como está
+* `<input autocomplete="">` = sugere automaticamente dados que o usuário normalmente usa, é muito complexo, logo, olhe a documentação
+    * "email" = sugere o email que a pessoa normalmente usa
+* `<input autofocus>` = ao abrir a página o cursor já é direcionado ao campo, automaticamente, é só um por página
+* `<input disable>` = diabilita o campo, se tiver um *value* ele não pode ser apagado
+* `<input readonly>` = parece o *disable* só muda o aspecto, no *disable* o *value* fica opaco, no *readonly* isso não acontece, **para quase todos**
+* `<input form="">` = faz um link com um *id*
+    * se o *id* estiver em um `<form>`, para enviar os dados do *input* para o *form* tem que colocar um *name*
+* `<input name="">` = manda os dados do input para um outro local
+* `<input required>` = faz com que determinado input tenha que ser preenchido obrigatoriamente, pode ter mais de um na página, **para quase todos**
+* `<input placeholder>` = frase para identificar o que colocar num determinado campo, **para quase todos**, `label` é melhor para a acessibilidade
+#### type=""
+* `"text"` = pode digitar texto na caixa
+* `"textarea"` = para escrever texto maior
+    * `id=""` = para fazer link com um *label* a partir do *for* por exemplo
+    * `name=""` = para receber o que estiver dentro como "mensagem=conteúdo", por exemplo
+    * `rows="nº"` = quantidade de linhas
+    * `cols="nº"` = quantidade de colunas
+    * `minlength="nº"` = define um mínimo de caracteres
+    * `maxlength="nº"` = define um máximo de caracteres
+    * `wrap=""` = tipo VS Code antes e depois de um Alt+Z
+        * `"on"` = quebra as linhas
+        * `"off"` = só quebra as linhas se usar Enter, se não tem que arrastar para o lado para poder visualizar o resto do texto
+        * `"soft"` = ?
+        * `"hard"` = ?
+    * `autocomplete=""` = sugere algum dado
+        * `"on"` = sugere algo
+        * `"off"` = não sugere nada
+    * `autofocus` = a página já foca nesse campo, depois de carregada, o usuário é direcionado a preencher ele automaticamente
+    * `placeholder=""` = frase dentro do campo, para identificar que o local é para digitar o texto
+    * `readonly` = desabilita o campo, mas não altera o aspecto do *placeholder*
+    * `disable` = desabilita o campo, deixa o *placeholder* opaco
+    * `required` = transforma o campo em obrigatório
+    * `form` = dá para fazer um link com um *label*
+* `"search"` = ?
+* `"url"` = para url, ele já verifica automaticamente se é uma url válida
+    * `placeholder=""` = frase dentro do campo, para identificar que o local é para digitar uma url
+    * `value=""` = o que estiver dentro fica "pré-escrito" na caixa, o usuário pode alterar ou deixar como está
+    * `readonly` = desabilita o campo, mas não altera o aspecto do *placeholder* ou do *value*
+    * `disable` = desabilita o campo, deixa o *placeholder* ou o *value* opaco
+    * `required` = transforma o campo em obrigatório
+    * `minlength="nº"` = define um mínimo de caracteres
+    * `maxlength="nº"` = define um máximo de caracteres
+    * `size="nº"` = tamanho do campo
+    * `pattern=".*\.com\.br\/.*"` = usa expressões regulares, recomendado para limitar os tipos de url e domínios aceitos
+        * **.** = aceita qualquer caractere
+        * **\*** = qualquer carectere múltiplas vezes
+        * **c** = seguido de um c, assim para o o, m
+        * **\\** = a \ é para aceitar o . e a / de modo literal, e não como um comando 
+    * `title="frase"` = se o modelo de url não tiver os requisitos pedidos, ele mostra a mensagem contida no *title*
+    * `list=""` = tem que ter link com uma *datalist*, e assim poder sugerir algumas url
+    * `spellcheck=""` = habilita uma verificaçao ortográfica 
+        * `"true"` = habilita
+        * `"false"` = não habilita
+* `"tel"` = ?
+* `"email"` = não envia se não for um email com abc@dominio.com
+    * `placeholder=""` = frase dentro do campo, para identificar que o local é para digitar o email
+    * `value=""` = o que estiver dentro fica "pré-escrito" na caixa, o usuário pode alterar ou deixar como está
+    * `readonly` = desabilita o campo, mas não altera o aspecto do *placeholder* ou do *value*
+    * `disable` = desabilita o campo, deixa o *placeholder* ou o *value* opaco
+    * `required` = transforma o campo em obrigatório
+    * `multiple` = permite o usuário colocar um ou mais emails, separados por vírgula
+    * `minlength="nº"` = define um mínimo de caracteres
+    * `maxlength="nº"` = define um máximo de caracteres
+    * `size="nº"` = tamanho do campo
+    * `pattern=".+@gmail\.com"` = usa expressões regulares, recomendado para limitar os tipos de emails e domínios aceitos
+        * **.** = aceita qualquer caractere
+        * **+** = qualquer carectere uma ou mais vezes
+        * **@** = seguido de um @
+        * **g** = seguido de um g, assim para o m, a, i, l
+        * **\\** = a \ é para aceitar o . de modo literal, e não como um comando 
+    * `title="frase"` = se o modelo de email não tiver os requisitos pedidos, ele mostra a mensagem contida no *title*, "somente emails @gmail.com serão aceitos"
+    * `list=""` = tem que ter link com uma *datalist*, e assim poder sugerir alguns emails
+* `"date"` = ?
+* `"month"` = ?
+* `"week"` = ?
+* `"time"` = para arquivos
+* `"datetime-local"` = ?
+* `"number"` = aceita somente números
+* `"range"` = ?
+* `"hidden"` = fica escondido do usuário, tipo para registrar a data que um formulário foi enviado
+    * `name=""` = tem que ter para possibilitar identificar ao quê aquele dado se refere
+    * `value=""` = o que estiver dentro fica "pré-escrito" na caixa, o usuário pode alterar ou deixar como está
+* `"color"` = dá para selecionar cores, **nem todos os navegadores suportam**
+    * `value=""` = vai deixar uma cor padrão caso o usuário coloque uma cor inválida
+    * `list=""` = tem que ter link com uma *datalist*, e assim poder sugerir algumas cores, **nem todos os navegadores suportam**
+* `"password"` = para senhas, ele esconde o que é digitado
+    * `minlength="nº"` = define um mínimo de caracteres
+    * `maxlength="nº"` = define um máximo de caracteres
+    * `size="nº"` = tamanho do campo
+    * `pattern="[0-9a-f]{4,8}"` = usa expressões regulares, recomendado para fazer padrões altos de senhas (aceita números de 0 à 9, letras de A à F, mínimo de 4 caracteres e máximo de 8 caracteres)
+    * `title="frase"` = se o modelo de senha não atigir os requisitos pedidos, ele mostra a mensagem contida no *title*
+    * `placeholder=""` = frase dentro do campo, para identificar que o local é para digitar a senha
+    * `readonly` = desabilita o campo, mas não altera o aspecto do *placeholder*
+    * `disable` = desabilita o campo, deixa o *placeholder* opaco
+    * `required` = transforma o campo em obrigatório
+    * `inputmode="numeric"` = abre somente o teclado numérico no smartphone
+    * `autocomplete=""` = sugere algum dado
+        * `"on"` = sugere uma nova senha ou uma senha que já foi usada na página em questão
+        * `"new-password"` = sugere uma nova senha, somente
+        * `"current-password"` = sugere somente uma senha que já foi usada anteriormente na página
+        * `"off"` = não sugere nada, às vezes o navegador já vem habilitado por padrão
+* `"file"` = aceita arquivos
+    * **para enviar os arquivos o formulário tem que ter o *method="post"* e o atributo *enctype="multipart/form-data"***
+    * `value=""` = vai mostrar o nome do arquivo a ser enviado, só funciona para apenas um arquivo
+    * `files=""` = lista do arquivo ou dos arquivos que vão ser enviados
+    * `accept=""` = descreve quais os tipos de arquivos são aceitos, tem que olhar a documentação para saber os bglhs expecíficos para alguns tipos
+    * `multiple` = permite o usuário um ou mais arquivos
+* `"checkbox"` = caixas que podem ser marcadas, selecionar os dados a serem enviados
+    * pode fazer link com *label*
+    * `value=""` = o que estiver dentro fica "pré-registrado", quando a caixa for marcada o navegador vai entender o dado com o valor do *value*
+    * `checked` = a caixa vem marcada de início
+    * dá para fazer uma lista com várias caixas usando o *fieldset*
+        ```html
+        <fieldset>
+            <legend>Choose your interests</legend>
+            <div>
+                <input 
+                type="checkbox" 
+                id="music" 
+                name="interests"
+                value="music">
+                <label for="music">Music</label>
+            </div>
+            <div>
+                <input 
+                type="checkbox" 
+                id="english" 
+                name="interests"
+                value="english">
+                <label for="english">English</label>
+            </div>
+            <div>
+                <input 
+                type="checkbox" 
+                id="pets" 
+                name="interests"
+                value="pets">
+                <label for="pets">Pets</label>
+            </div>
+        </fieldset>
+        ```
+* `"radio"` = tipo o *checkbox*, só que só pode selecionar uma opção de um grupo de opções
+    * **para fazer uma "lista de opções" tem que usar *label, for, id, name, value, etc.* tipo a do exemplo de cima**
+    * `checked` = a caixa vem marcada de início
+### Button
+* `<button>`algo que identifique o botão`</button>` = serve para enviar dados, etc. 
+    * `<button type="submit">` = envia os dados do formulário
+    * `<button type="button">` = também envia os dados do formulário, mas só alguns navegadores entendem isso 
+    * `<button type="reset">` = reseta/limpa o formulário, volta ao value de um input, etc. 
+    * `<button autofocus>` = ao entrar na página, esse elemento com o *autofocus* vai receber um foco à mais, se apertar enter o formulário é enviado, mesmo se estiver vazio
+    * `<button  disable>` = desbilita o botão
+    * `<button name="">` = ?
+    * `<button form="">` = faz o link entre *id* e *form*
+### Datalist
+* `<datalist id="">`lista de option`</datalist>` = lista de opções que o usuário pode escolher
+    * `<option>`algo`<option>` = para colocar as opções para o usuário selecionar
+    * `placeholder="algo"` = fica dentro do input, para dizer sobre o que é aquela lista de opções
+        * suporta `input` do tipo text, search, url, tel, email, date, month, week, time, datetime-local, number, range e color
+        * Para verificar a compatibilidade com o browser olhe a [Documentação](https://caniuse.com)
+        * se os valores contidos no `option` não forem compatíveis com os tipos de `input`, eles não vão ser apresentados
+    ```html
+    <input 
+        type="text" 
+        list="comida" 
+        placeholder="Escolha uma comida">
+    <datalist id="comida">
+        <option>Sushi</option>
+        <option>Massa</option>
+        <option>Pão de queijo</option>
+    </datalist>
+    ```
+### Select
+`<select>`option, etc.`</select>` = pode ter link com um *label*
+* `name=""` = para receber o que estiver dentro como "mensagem=conteúdo", por exemplo
+* `id=""` = para fazer link com *for* de um *label*, por exemplo
+* `multiple` = possibilita a seleção de múltiplas opções
+* `size="nº"` = número de elementros visíveis numa caixa se precisar usar o scrol
+    * `<option value="">`algo`<option>` = para colocar as opções para o usuário selecionar
+        * o que estiver no *value* é o registrado no back-end, o que fica entre os *value* é o apresentado para o usuário
