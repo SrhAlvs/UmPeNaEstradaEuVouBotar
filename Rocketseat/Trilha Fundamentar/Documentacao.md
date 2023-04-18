@@ -695,7 +695,21 @@ Formulários servem para receber dados do usuário, dados `input`, possibilitar 
     * `disable` = desabilita o campo, deixa o *placeholder* opaco
     * `required` = transforma o campo em obrigatório
     * `form` = dá para fazer um link com um *label*
-* `"search"` = ?
+* `"search"` = para campos de busca, parecido com o *text*
+    * `name=""` = para receber o que estiver dentro como "mensagem=conteúdo", por exemplo
+    * `list` = tem que ter link com uma *datalist* (id/list)
+    * `placeholder=""` = frase dentro do campo, para identificar que o local é para digitar o email
+    * `size="nº"` = tamanho do campo
+    * `label` = bom para a acessibilidade, porém em alguns casos fica contra-mão, a alternativa é usar o *aria-label*
+    * `aria-label=""` = ele não aparece para o usuário, mas caso ele esteja usando um leitor de tela ele vai ler o que estiver entre as aspas
+    * `pattern=""` = usa expressões regulares, recomendado para limitar os tipos de pesquisa aceitos, [0-9]{2} (aceita números de 0 à 9, e apenas 2 números)
+        * **.** = aceita qualquer caractere
+        * **+** = qualquer carectere uma ou mais vezes
+        * **\*** = qualquer caractere multiplas vezes
+        * **@** = seguido de um @
+        * **g** = seguido de um g, assim para o m, a, i, l
+        * **\\** = a \ é para aceitar o . de modo literal, e não como um comando 
+    * `title="`frase`"` = se o modelo de email não tiver os requisitos pedidos, ele mostra a mensagem contida no *title*, "somente emails @gmail.com serão aceitos"
 * `"url"` = para url, ele já verifica automaticamente se é uma url válida
     * `placeholder=""` = frase dentro do campo, para identificar que o local é para digitar uma url
     * `value=""` = o que estiver dentro fica "pré-escrito" na caixa, o usuário pode alterar ou deixar como está
@@ -732,15 +746,27 @@ Formulários servem para receber dados do usuário, dados `input`, possibilitar 
         * **@** = seguido de um @
         * **g** = seguido de um g, assim para o m, a, i, l
         * **\\** = a \ é para aceitar o . de modo literal, e não como um comando 
-    * `title="frase"` = se o modelo de email não tiver os requisitos pedidos, ele mostra a mensagem contida no *title*, "somente emails @gmail.com serão aceitos"
+    * `title="`frase`"` = se o modelo de email não tiver os requisitos pedidos, ele mostra a mensagem contida no *title*, "somente emails @gmail.com serão aceitos"
     * `list=""` = tem que ter link com uma *datalist*, e assim poder sugerir alguns emails
-* `"date"` = ?
-* `"month"` = ?
-* `"week"` = ?
-* `"time"` = para arquivos
-* `"datetime-local"` = ?
+* `"date"` = possibilita selecionar data -> dd/mm/yyyy (value="yyyy-mm-dd"), tem que olhar na [documetação](https://caniuse.com) para saber se dá para usar
+* `"month"` = possibilita selecionar um mês do ano em que está, tem que olhar na [documetação](https://caniuse.com) para saber se dá para usar
+* `"week"` = para semana, tem que olhar na [documetação](https://caniuse.com) para saber se dá para usar
+* `"time"` = para horário, tem que olhar na [documetação](https://caniuse.com) para saber se dá para usar
+* `"datetime-local"` = dd/mm/yyyy --:--, dia, mês, ano e horário; tem que olhar na [documetação](https://caniuse.com) para saber se dá para usar
 * `"number"` = aceita somente números
-* `"range"` = ?
+    * `min="nº"` = o nº entre aspas é o valor mínimo aceito
+    * `max="nº"` = o nº entre aspas é o valor máximo aceito
+    * `step="nº"` = se tivesse "2", ele pularia/mostraria os números de 2 em 2
+    * `placeholder=""` = frase dentro do campo, para identificar que o local é para digitar números
+    * `value=""` = o que estiver dentro fica "pré-escrito" na caixa, o usuário pode alterar ou deixar como está
+    * `readonly` = desabilita o campo, mas não altera o aspecto do *placeholder* ou do *value*
+    * `disable` = desabilita o campo, deixa o *placeholder* ou o *value* opaco
+    * `list` = tem que ter link com uma *datalist* (id/list) para sugerir algumas coisas
+* `"range"` = controle para selecionar um valor numérico, bolinha que desliza na reta
+    * `min="nº"` = o nº entre aspas é o valor mínimo aceito
+    * `max="nº"` = o nº entre aspas é o valor máximo aceito
+    * `value=""` = o que estiver dentro fica "pré-escrito" na caixa, o usuário pode alterar ou deixar como está
+    * `step="nº"` = se tivesse "2", ele pularia/mostraria os números de 2 em 2
 * `"hidden"` = fica escondido do usuário, tipo para registrar a data que um formulário foi enviado
     * `name=""` = tem que ter para possibilitar identificar ao quê aquele dado se refere
     * `value=""` = o que estiver dentro fica "pré-escrito" na caixa, o usuário pode alterar ou deixar como está
@@ -841,3 +867,4 @@ Formulários servem para receber dados do usuário, dados `input`, possibilitar 
 * `size="nº"` = número de elementros visíveis numa caixa se precisar usar o scrol
     * `<option value="">`algo`<option>` = para colocar as opções para o usuário selecionar
         * o que estiver no *value* é o registrado no back-end, o que fica entre os *value* é o apresentado para o usuário
+    * `<optgroup label="">`option, etc.`</optgroup>` = grupo de *option*, o nome do grupo fica no *label*, depois é só escrever os *option* com *value*, etc.
