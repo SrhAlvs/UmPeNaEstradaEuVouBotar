@@ -1,0 +1,122 @@
+h1 {
+    margin: 0%;
+    margin-bottom: -300px;
+    font-family: 'Merriweather Sans';
+    font-style: normal;
+    color: #837E9F;
+}
+p {
+    position: absolute;
+    margin: 0%;
+    font-family: 'Merriweather Sans';
+    font-style: normal;
+    font-size: 13px;
+    color: #837E9F;
+}
+/*perfil*/
+.perfil {
+    z-index: 1;
+}
+.perfil h1 {
+    position: absolute;
+    width: 196px;
+    height: 26px;
+    top: 230px;
+    left: 150px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 29px;
+}
+.perfil p {
+    width: 128px;
+    height: 17px;
+    top: 266px;
+    left: 150px;
+    font-weight: 300;
+    line-height: 16px;
+}
+.perfil-image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    top: 72px;
+    left: 150px;
+    background: url(image.png);
+    border: 2px solid #00FF00;
+    border-radius: 90px;
+}
+.perfil-box {
+    z-index: -1;
+    position: absolute;
+    width: 348px;
+    height: 292px;
+    top: 40px;
+    left: 40px;
+    background-color: #302F3D;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/*sobre*/
+.local {
+    /*no figma as configurações de cada p são diferentes, aí não sei se é assim que faz*/
+    width: 35px;
+    height: 16px;
+    top: 396px;
+    left: 124px;
+    font-weight: 400;
+    line-height: 16px;
+}
+.ifg {
+    width: 135px;
+    height: 15px;
+    top: 440px;
+    left: 124px;
+    font-weight: 400;
+    line-height: 15px;
+}
+.github {
+    width: 75px;
+    height: 16px;
+    top: 484px;
+    left: 124px;
+    font-weight: 400;
+    line-height: 16px;
+}
+.linkedin {
+    width: 108px;
+    height: 16px;
+    top: 528px;
+    left: 124px;
+    font-weight: 400;
+    line-height: 16px;
+}
+.instagram {
+    width: 74px;
+    height: 16px;
+    top: 572px;
+    left: 124px;
+    font-weight: 400;
+    line-height: 16px;
+}
+.email {
+    width: 137px;
+    height: 15px;
+    top: 617px;
+    left: 124px;
+    font-weight: 400;
+    line-height: 16px;
+}
+.sobre-box {
+    z-index: -1;
+    position: absolute;
+    width: 348px;
+    height: 348px;
+    top: 362px;
+    left: 40px;
+    background: #302F3D;
+    border-radius: 20px;
+}
+
+/**/
