@@ -1,5 +1,5 @@
 # Trilha Fundamentar 
-## HTML
+## Guia Estelar de HTML
 ### Comandos
 * **`<h1>`Título`</h1>`** = vai de h1 até h6, dá para escrever títulos
 * **`<p>`Texto`</p>`** = para fazer parágrafo
@@ -79,7 +79,7 @@
 * `<tbody></tbody>` = corpo
 * `<td></td>` = escreve na linha da tabela, em colunas separadas, para os dados
 * `<tfoot></tfoot>` = rodapé, usa `<tr> | <td>` também
-## CSS
+## Guia Estelar de CSS
 * CSS = Cascading Style Sheet (Folha de Estilo em Cascata)
 * “HTML é a estrutura e o CSS é a beleza”
 * Não é linguagem de programação, é uma linguagem style sheet.
@@ -158,7 +158,7 @@ p {
 ```
 * Tem mais em: [Which Vendor Prefix?](https://ireade.github.io/which-vendor-prefix)
 * Dá para consultar quais comandos precisam de vendor prefix [Can I Use](https://caniuse.com/)
-## Nem tudo são píxeis
+## Nem tudo são Pixels
 Se tiver `<color>` ou `<lenght>` são *values* ou *data types*. 
 ### Tipos Numéricos
 * `<interger>` = número inteiro (positivos e negativos)
@@ -361,7 +361,7 @@ Todo background já começa transparente.
     * linear = degradê em linha reta
     * radial = degradê em círculo
     * se quiser colocar ele no shorthand é só colocar no começo e separar ele do próximo comando usando vírgula
-## Posso Ver e Ouvir o HTML
+## Posso ver e ouvir o HTML
 ### Vídeos
 * `<video src="`caminho ou url `"></video>` = para colocar um vídeo
     * `controls` = colocado depois das aspas, faz aparecer os controles (play, pause, etc.)
