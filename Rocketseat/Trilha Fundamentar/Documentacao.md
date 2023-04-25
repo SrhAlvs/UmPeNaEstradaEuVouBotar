@@ -868,3 +868,60 @@ Formulários servem para receber dados do usuário, dados `input`, possibilitar 
     * `<option value="">`algo`<option>` = para colocar as opções para o usuário selecionar
         * o que estiver no *value* é o registrado no back-end, o que fica entre os *value* é o apresentado para o usuário
     * `<optgroup label="">`option, etc.`</optgroup>` = grupo de *option*, o nome do grupo fica no *label*, depois é só escrever os *option* com *value*, etc.
+## Guia Estelar JavaScript
+---> arquivo.js
+- ECMAScript: órgão que padroniza o JavaScript
+Linguagem de programação que roda no navegador do usuário (front-end), mas roda também no computador (back-end).
+* Sintaxe: a maneira correta de escrever uma certa linguagem. 
+    ```js
+    console.log("Aparentemente é mostrar na tela") //certo
+    consolelog("Aparentemente é mostrar na tela") //errado
+    coso.lelog("Aparentemente é mostrar na tela") //errado
+    console.log("
+    Aparentemente é mostrar na tela") //errado
+    ```
+* JS no HTML
+    ```html
+    <script>
+        console.log('Aparentemente é mostrar na tela')
+    </script>
+    /*OU*/
+    <script src="caminho_de_arquivo.js"></script>
+    ```
+* **comentários** = anotações feitas no código, mas que o usuário não pode ver
+    * `// algo` = comentário em linha, igual c++
+    * `/* algo 2.0*/` = comentário em bloco
+### Tipos de dados
+#### Primitive/Primitive value
+* String = cadeia de caracteres, para escrever textos em JS
+    * `"texto"` = aspas duplas, se no texto tiver aspas simples usa elas para não dar problema
+    * `'texto'` = aspas simples, se no texto tiver aspas duplas usa elas para não dar problema
+    * ``` `texto` ``` = template literals ou template strings, pode usar aspas simples e duplas, permite multilinhas e a inserção de valores e expressões
+* Number = números
+    * `666` = inteiro, positivos e negativos
+    * `6.66` = reais (float no inglês), positivos e negativos
+    * `NoN` = Not a Number
+    * `Infinity` = infinito, tem que ser com o I maiúsculo
+* Boolean = V ou F
+    * `true` = verdadeiro
+    * `false` = falso
+* `undefined` = indefinido
+* Symbol = ?
+* BigInt = ?
+#### Structural
+##### Object
+Objeto, dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos. 
+-> `{propriedade: "valor"}` = pode colocar mais de um dentros das {}, é só separar por vírgula
+[Documentação MDN: Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
+* Array = vetores, uma lista, agrupamento de dados
+    * `["coisa", "treco", 18]` = entre [], separa por vírgulas
+* Map = ?
+* Set = ?
+* Date = ?
+##### Function = ?
+#### Structural Primitive
+* `null` = nulo
+### Variáveis
+### Funções
+### Condicionais
+### Estruturas de repetição
