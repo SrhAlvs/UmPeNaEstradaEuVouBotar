@@ -893,21 +893,21 @@ Linguagem de programação que roda no navegador do usuário (front-end), mas ro
     * `/* algo 2.0*/` = comentário em bloco
 ### Tipos de dados
 #### Primitive/Primitive value
-* String = cadeia de caracteres, para escrever textos em JS
+* `String` = cadeia de caracteres, para escrever textos em JS
     * `"texto"` = aspas duplas, se no texto tiver aspas simples usa elas para não dar problema
     * `'texto'` = aspas simples, se no texto tiver aspas duplas usa elas para não dar problema
     * ``` `texto` ``` = template literals ou template strings, pode usar aspas simples e duplas, permite multilinhas e a inserção de valores e expressões
-* Number = números
+* `Number` = números
     * `666` = inteiro, positivos e negativos
     * `6.66` = reais (float no inglês), positivos e negativos
     * `NoN` = Not a Number
     * `Infinity` = infinito, tem que ser com o I maiúsculo
-* Boolean = V ou F
+* `Boolean` = V ou F
     * `true` = verdadeiro
     * `false` = falso
 * `undefined` = indefinido
-* Symbol = ?
-* BigInt = ?
+* `Symbol` = ?
+* `BigInt` = ?
 #### Structural
 ##### Object
 Objeto, dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos. 
@@ -922,6 +922,43 @@ Objeto, dado estrutural, todos têm propriedades/atributos e funcionalidades/mé
 #### Structural Primitive
 * `null` = nulo
 ### Variáveis
+Tem 3 formas de criar uma variável: `var`, `let` e `const`
+#### `var`
+Pode variar/mudar seu valor.
+* Declarar variável
+    ```js
+    var coisa = algo //"coisa" recebe "algo"
+    ```
+#### `let`
+Pode variar/mudar seu valor.
+* Declarar variável
+    ```js
+    let coisa = algo
+    ```
+#### `const`
+Não pode variar, mesmo que seja colocado um novo valor para ela mais para frente, o `const` sempre vai pegar o primeiro valor atribuído à ele
+* Declarar variável
+    ```js
+    const coisa = algo
+    ```
+#### Tipos Dinâmicos
+* Linguagem fortemente tipada: precisa colocar o tipo dela para que seja criada e é estática, se ela é desse tipo ela não muda lá na frente
+    ```js
+    let coisa: String //aí só recebe esses tipos de dados
+    ```
+* Linguagem fracamente tipada: o tipo de variável é definido de acordo com o valor atribuído à ele, ele é dinâmico, dá para alterar o valor mais tarde
+    ```js
+    let coisa =  //se receber número é Number, se receber latra é String e assim por diante
+    console.log(typeof coisa) //mostra na tela qual o tipo da variável
+    ```
+    * `const` é para sempre um tipo
+#### Scope
+Determina a visibilidade de alguma variável. 
+
+
+
+
+
 ### Funções
 ### Condicionais
 ### Estruturas de repetição
