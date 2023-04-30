@@ -909,12 +909,40 @@ Linguagem de programação que roda no navegador do usuário (front-end), mas ro
 * `Symbol` = ?
 * `BigInt` = ?
 #### Structural
-##### Object
-Objeto, dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos. 
--> `{propriedade: "valor"}` = pode colocar mais de um dentros das {}, é só separar por vírgula
+##### Object, Array, ...
 [Documentação MDN: Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
+* Object = dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos.
+    * `{propriedade: "valor"}` = pode colocar mais de um dentros das {}, é só separar por vírgula
+    * Acessar valores dentro de um Object: 
+    ```js
+    const person = {
+        name = 'Rodrigo',
+        age = 25,
+        pet = 'cats',
+        quantity = 4
+        //tem que ter as vírgulas depois
+    }
+    console.log(`${person.name} have ${person.age} years old and have cute ${person.pet}.`)
+        //Rodrigo have 25 years old and have cute cats.
+    ```
 * Array = vetores, uma lista, agrupamento de dados
     * `["coisa", "treco", 18]` = entre [], separa por vírgulas
+    * Acessar valores dentro de um Array:
+        ```js
+        const backpackThings = [
+            'clothes', //0
+            'shoes', //1
+            'sunscreen' //2
+            { //3
+                toDry = 'towel',
+                toHair = 'hair cream'
+            }
+        ]
+        console.log(backpackThings[0]) 
+            //clothes
+        console.log(backpackThings[3].toDry) 
+            //towel
+        ```
 * Map = ?
 * Set = ?
 * Date = ?
@@ -923,6 +951,36 @@ Objeto, dado estrutural, todos têm propriedades/atributos e funcionalidades/mé
 * `null` = nulo
 ### Variáveis
 Tem 3 formas de criar uma variável: `var`, `let` e `const`
+* `console.log(typeof `nomeVariável`)` = mostra na tela qual o tipo da variável
+* `let coisa, treco, algo` = agrumpamento de declarações, declara várias variáveis ao mesmo tempo
+* múltiplos argumentos na função = colocar várias variáveis em um comando só
+    ```js
+    let name, pet, quantity
+        name = Rodrigo
+        pet = gatos
+        quantity = 4
+    console.log(name, pet, quantity)
+        //'Rodrigo' 'gatos' '4'
+    ```
+* texto + variáveis = concatenar valores
+    ```js
+    let name, pet, quantity
+        name = Rodrigo
+        pet = gatos
+        quantity = 4
+    console.log( name + " tem " + quantity, pet ".")
+        //'Rodrigo' tem '4' 'gatos'.
+    ```
+* texto + variáveis = interpolação valores
+    ```js
+    let name, pet, quantity
+        name = Rodrigo
+        pet = gatos
+        quantity = 4
+    console.log( `${name} tem ${quantity} ${pet}.`) 
+        //'Rodrigo' tem '4' 'gatos'.
+        //template literals/strings (crase) e não aspas simples
+    ```
 #### `var`
 Pode variar/mudar seu valor.
 * Declarar variável
@@ -941,19 +999,82 @@ Não pode variar, mesmo que seja colocado um novo valor para ela mais para frent
     ```js
     const coisa = algo
     ```
-#### Tipos Dinâmicos
-* Linguagem fortemente tipada: precisa colocar o tipo dela para que seja criada e é estática, se ela é desse tipo ela não muda lá na frente
+#### Dynamic types
+* **Linguagem fortemente tipada**: precisa colocar o tipo dela para que seja criada e é estática, se ela é desse tipo ela não muda lá na frente
     ```js
     let coisa: String //aí só recebe esses tipos de dados
     ```
-* Linguagem fracamente tipada: o tipo de variável é definido de acordo com o valor atribuído à ele, ele é dinâmico, dá para alterar o valor mais tarde
+* **Linguagem fracamente tipada**: o tipo de variável é definido de acordo com o valor atribuído à ele, ele é dinâmico, dá para alterar o valor mais tarde
     ```js
-    let coisa =  //se receber número é Number, se receber latra é String e assim por diante
+    let coisa =  //se receber número é Number, se receber letra é String e assim por diante
     console.log(typeof coisa) //mostra na tela qual o tipo da variável
     ```
-    * `const` é para sempre um tipo
+    * `const` é o mesmo tipo para sempre
 #### Scope
 Determina a visibilidade de alguma variável. 
+* `var` = global (em todo o código) e local (somente dentro do scopo onde está)
+    ```js
+    console.log("Existe algo antes do bloco?", algo) //existe, mas com valor `undefined`
+        //em tese, "algo" não existe ainda, mas o js "pega" essa var e joga para cima, deixando somente o se valor onde está, isso se chama "hoisting"
+    {
+        var algo = 6
+    }
+    console.log("Existe algo depois do bloco?", algo)
+        //agora sim ele recebe o valor para a var "já existente"
+    ```
+* `let` e `const` = local (somente dentro do scopo onde está)
+    ```js
+        console.log("Existe teco antes do bloco?", treco) //não existe
+        {
+            console.log("Existe treco?", treco) //existe, mas dá erro, não é possível acessar o valor
+            let treco = 6
+            console.log("Existe treco?", treco) //existe
+        }
+        console.log("Existe treco depois do bloco?", treco) //não existe
+    ```
+    * **curiosidade**
+        ```js
+        let coisa = 6
+        console.log("Qual o valor de 'coisa'?", coisa) //o valor é 6
+        {
+            coisa = 3
+            console.log("Qual o valor de 'coisa'?", coisa) //o valor é 3, pois está dentro do scopo
+        }
+        console.log("Qual o valor de 'coisa'?", coisa) //o valor é 3, o js procura o valor de baixo para cima, até mesmo dentros dos scopos e mostra o primeiro que achar
+        ```
+        ```js
+        const coisa = 6
+        console.log("Qual o valor de 'coisa'?", coisa) //o valor é 6
+        {
+            coisa = 3
+            console.log("Qual o valor de 'coisa'?", coisa) //erro, const não muda o valor
+            const coisa = 3
+            console.log("Qual o valor de 'coisa'?", coisa) //o valor é 3, já que uma nova const foi criada
+        }
+        console.log("Qual o valor de 'coisa'?", coisa) //o valor é 6, se estou fora do scopo, só uso o que estiver fora do scopo
+        ```
+##### Block Statement
+Declaração de bloco. O bloco também cria um scopo novo, `block-scoped`
+```js
+{ //abre bloco
+    //dentro do bloco, pode colocar qualquer código
+} //fecha o bloco
+```
+#### Nomeação de variáveis
+* Pode: 
+    * Iniciar com caracteres especiais: $ _
+    * Iniciar com letras
+        * Maiúsculas e minúsculas fazem diferença
+    * Colocar acentos
+* Não pode:
+    * Iniciar com números
+    * Colocar espaços vazios
+* Ideal:
+    * Colocar nomes que fazem sentido
+        * Que explique qual a função da variável
+    * Escrever em ingles
+    *camelCase = onde seria espaço coloca maiúculo, OiTudoBemComVocê
+    *snake_case = onde seria espaço coloca underline, oi_tudo_bem_com_você
 
 
 
