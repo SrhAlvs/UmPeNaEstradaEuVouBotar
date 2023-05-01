@@ -916,10 +916,10 @@ Linguagem de programação que roda no navegador do usuário (front-end), mas ro
     * Acessar valores dentro de um Object: 
     ```js
     const person = {
-        name = 'Rodrigo',
-        age = 25,
-        pet = 'cats',
-        quantity = 4
+        name: 'Rodrigo',
+        age: 25,
+        pet: 'cats',
+        quantity: 4
         //tem que ter as vírgulas depois
     }
     console.log(`${person.name} have ${person.age} years old and have cute ${person.pet}.`)
@@ -934,8 +934,8 @@ Linguagem de programação que roda no navegador do usuário (front-end), mas ro
             'shoes', //1
             'sunscreen' //2
             { //3
-                toDry = 'towel',
-                toHair = 'hair cream'
+                toDry: 'towel',
+                toHair: 'hair cream'
             }
         ]
         console.log(backpackThings[0]) 
