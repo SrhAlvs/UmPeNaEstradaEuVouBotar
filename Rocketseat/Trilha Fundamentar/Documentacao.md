@@ -1075,11 +1075,56 @@ Declaração de bloco. O bloco também cria um scopo novo, `block-scoped`
     * Escrever em ingles
     *camelCase = onde seria espaço coloca maiúculo, OiTudoBemComVocê
     *snake_case = onde seria espaço coloca underline, oi_tudo_bem_com_você
-
-
-
-
-
 ### Funções
+* `function` *name*`() {}` = function statement, declaração da função, essa parte vai ficar guardada na memória
+    * `{aqui}` = conjunto de comandos que a função precisa guardar em memória
+    * *name*`()` = assim para executar a função que estava guardada em memória
+    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
+    ```js
+    function meLembre() {
+        console.log("- organizar o quarto;")
+        console.log("- limpar o banheiro;")
+        console.log("- estudar para a prova;")
+        console.log("- fazer as atividades;")
+        console.log("- etc.")
+    } //guardando na memória para mostrar mais tarde
+    //resto do código bla bla bla
+    meLembre() //aqui estou "chamando" a minha função, só assim para que ela seja exibida
+    ```
+#### Function expression/anonymous
+* `const sum = function(){}` = mesmo que `function`, mas desse modo ela é declarada em formato de variável
+    * pode usar qualquer variável: `var | let | const`
+    * *sum* é somar
+    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
+    ```js
+    const sum = function(num1, num2){
+        console.log(num1 + num2)
+    }
+    sum(18, 9) 
+        //18 fica na posição de 'num1'
+        //9 fica na posição de 'num2'
+    ```
+#### Return
+* `return` = comando utilizado para retornar o que vier a seguir
+* ao colocar uma função dentro de um `console.log`, ela é executada normalmente, porém seu valor fica como `undefined`
+    * caso tenha um `console.log` dentro da função em questão, o `console.log` da função é executado antes do `console.log` do código
+* para mostrar o resultado de uma função o `return` é adicionado ao final da função e ao chamar a função no código, o que estiver depois do `return` que vai ser retornado
+* para retornar o resultado sem precisar chamar a função inteira no `console.log`, é só executar/chamar a função antes de pedir o valor à ser retornado
+    * mas isso não é muito bom, já que pode atribuir um valor à alguma variável já existentente antes da função, logo, chame a função inteira
+```js
+const randomName = function(num1, num2){
+    total = num1 + num2
+    return total
+}
+randomName(451, 215)
+console.log(total)
+// não é bom fazer assim
+const randomName = function(num1, num2){
+    return num1 + num2
+}
+const total = randomName(451, 215)
+console.log(total)
+//assim é melhor
+```
 ### Condicionais
 ### Estruturas de repetição
