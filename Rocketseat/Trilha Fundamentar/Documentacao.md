@@ -515,7 +515,7 @@ Posiciona elementos dentro da caixa, posicionamento horizontal e vertical ao mes
         header {
             grid-area: coisa; /*tudo o que eu colocar no header vai para o lugar "coisa"*/
         }
-        ```
+    ```
 Dá para usar o `flex` no grid, tipo, no header eu tenho duas div's, eu posso usar o `flex` para organizar essas div's.
 ## App bonito, até nos textos
 ### Basic font-proprties
@@ -1170,7 +1170,6 @@ Uma *function* que passa *parameter* para outra *function*.
 function aColor(color) {
     color()
 }
-
 aColor(
     () => {
         console.log('lightblue')
