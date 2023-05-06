@@ -874,23 +874,23 @@ Formulários servem para receber dados do usuário, dados `input`, possibilitar 
 Linguagem de programação que roda no navegador do usuário (front-end), mas roda também no computador (back-end).
 * Sintaxe: a maneira correta de escrever uma certa linguagem. 
     ```js
-    console.log("Aparentemente é mostrar na tela") //certo
-    consolelog("Aparentemente é mostrar na tela") //errado
-    coso.lelog("Aparentemente é mostrar na tela") //errado
+    console.log("mostrar na tela") //certo
+    consolelog("mostrar na tela") //errado
+    coso.lelog("mostrar na tela") //errado
     console.log("
-    Aparentemente é mostrar na tela") //errado
+    mostrar na tela") //errado
     ```
 * JS no HTML
     ```html
     <script>
-        console.log('Aparentemente é mostrar na tela')
+        console.log('mostrar na tela')
     </script>
     /*OU*/
     <script src="caminho_de_arquivo.js"></script>
     ```
 * **comentários** = anotações feitas no código, mas que o usuário não pode ver
     * `// algo` = comentário em linha, igual c++
-    * `/* algo 2.0*/` = comentário em bloco
+    * `/* algo 2.0*/` = comentário em bloco, igual no CSS
 ### Tipos de dados
 #### Primitive/Primitive value
 * `String` = cadeia de caracteres, para escrever textos em JS
@@ -946,7 +946,6 @@ Linguagem de programação que roda no navegador do usuário (front-end), mas ro
 * Map = ?
 * Set = ?
 * Date = ?
-##### Function = ?
 #### Structural Primitive
 * `null` = nulo
 ### Variáveis
@@ -1091,19 +1090,6 @@ Declaração de bloco. O bloco também cria um scopo novo, `block-scoped`
     //resto do código bla bla bla
     meLembre() //aqui estou "chamando" a minha função, só assim para que ela seja exibida
     ```
-#### Function expression/anonymous
-* `const sum = function(){}` = mesmo que `function`, mas desse modo ela é declarada em formato de variável
-    * pode usar qualquer variável: `var | let | const`
-    * *sum* é somar
-    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
-    ```js
-    const sum = function(num1, num2){
-        console.log(num1 + num2)
-    }
-    sum(18, 9) 
-        //18 fica na posição de 'num1'
-        //9 fica na posição de 'num2'
-    ```
 #### Return
 * `return` = comando utilizado para retornar o que vier a seguir
 * ao colocar uma função dentro de um `console.log`, ela é executada normalmente, porém seu valor fica como `undefined`
@@ -1126,5 +1112,85 @@ const total = randomName(451, 215)
 console.log(total)
 //assim é melhor
 ```
+#### Function expression/anonymous
+* `const sum = function(){}` = mesmo que `function`, mas desse modo ela é declarada em formato de variável
+    * pode usar qualquer variável: `var | let | const`
+    * *sum* é somar
+    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
+    ```js
+    const sum = function(num1, num2){
+        console.log(num1 + num2)
+    }
+    sum(18, 9) 
+        //18 fica na posição de 'num1'
+        //9 fica na posição de 'num2'
+    ```
+#### Function scope
+--- bug --- 
+--- tem arquivo de teste sobre ---
+#### Function hoisting
+```js
+aColor()
+function aColor() {
+    console.log('lightblue')
+}
+```
+* Não existe ainda, mas o js "pega" essa var e joga para cima, acontece o 'hoisting'
+* Se for um 'function anonymous' usando `const | var | let` dá erro
+    * `const | let` = não consegue acessar o valor da função antes dela ter sido chamada/rodada
+    * `var` = registra como 'undefined', dá erro já que não entende como função e depois dá erro de novo, resumindo: erro, erro e mais erro
+        ```js
+        aColor()
+        var aColor = function() {
+            console.log('lightblue')
+        }
+        //o que acontece é:
+        var aColor //undefined
+        aColor() //chega aqui e entende que "aColor não é uma função, é undefined"
+        aColor = function() { //aí dá erro aqui, tipo, não era undefinned??
+            console.log('lightblue')
+        }
+        ```
+#### Arrow function
+Function anonymous compact. Usa essa seta: => (arrow); entre os () e os {}
+```js
+//no compact
+const aColor = function() {
+    console.log('lightblue')
+}
+//compact
+const aColor = () => {
+    console.log('lightblue')
+}
+```
+#### Callback function
+Callback = chamar de volta.
+Uma *function* que passa *parameter* para outra *function*.
+```js
+function aColor(color) {
+    color()
+}
+
+aColor(
+    () => {
+        console.log('lightblue')
+    }
+)
+```
+#### Function constructor
+--- não entendi muito bem ---
+Cria objetos dentro de uma função
+```js
+function ManyPeople(name) {
+    this.name = name
+}
+const jay = new ManyPeople('Jay')
+console.log(jay)
+const zane = new ManyPeople('Zane')
+console.log(zane)
+```
+### Prototype
+--- não entendi muito bem ---
+Se colocar '.\_\_proto\_\_' antes de alguma coisa (String, Number, Boolean, etc.) o próprio .js mostra o protótipo, propriedades do valor escrito, mostra cor da fonte e vários etc.
 ### Condicionais
 ### Estruturas de repetição
