@@ -909,11 +909,11 @@ Linguagem de programação que roda no navegador do usuário (front-end), mas ro
 * `Symbol` = ?
 * `BigInt` = ?
 #### Structural
-##### Object, Array, ...
+##### Object
 [Documentação MDN: Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
-* Object = dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos.
-    * `{propriedade: "valor"}` = pode colocar mais de um dentros das {}, é só separar por vírgula
-    * Acessar valores dentro de um Object: 
+Dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos.
+* `{propriedade: "valor"}` = pode colocar mais de um dentros das {}, é só separar por vírgula
+* Acessar valores dentro de um Object: 
     ```js
     const person = {
         name: 'Rodrigo',
@@ -925,27 +925,43 @@ Linguagem de programação que roda no navegador do usuário (front-end), mas ro
     console.log(`${person.name} have ${person.age} years old and have cute ${person.pet}.`)
         //Rodrigo have 25 years old and have cute cats.
     ```
-* Array = vetores, uma lista, agrupamento de dados
-    * `["coisa", "treco", 18]` = entre [], separa por vírgulas
-    * Acessar valores dentro de um Array:
-        ```js
-        const backpackThings = [
-            'clothes', //0
-            'shoes', //1
-            'sunscreen' //2
-            { //3
-                toDry: 'towel',
+##### Array
+Vetores, uma lista, agrupamento de dados
+* `["coisa", "treco", 18]` = entre [], separa por vírgulas
+* Acessar valores dentro de um Array:
+    ```js
+    const backpackThings = [
+        'clothes', //0
+        'shoes', //1
+        'sunscreen' //2
+        { //3
+            toDry: 'towel',
                 toHair: 'hair cream'
-            }
-        ]
-        console.log(backpackThings[0]) 
-            //clothes
-        console.log(backpackThings[3].toDry) 
-            //towel
-        ```
-* Map = ?
-* Set = ?
-* Date = ?
+        }
+    ]
+    console.log(backpackThings[0]) 
+        //clothes
+    console.log(backpackThings[3].toDry) 
+        //towel
+    ```
+###### Arrays with Strings
+* `.split("")` = js separa em elementos de Array de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
+* `.join("")` = js "emenda/junta/liga" os elementos de um Array usando o que estiver dentro das aspas 
+```js
+let text = "I am hungry o_o"
+let array = text.split(" ")
+    //(4) ["I", "am", "hungry", "o_o"]
+let arrayTogether = array.join("~")
+    //I~am~hungry~o_o
+```
+###### Array with Constructors
+```js
+let myArray = new Array('a', 'b', 'c')
+    //(3) ["a", "b", "c"]
+let emptyArray = new Array(6)
+    //(6) [empty * 6]
+    //tenho 6 posições vazias
+```
 #### Structural Primitive
 * `null` = nulo
 ### Variáveis
@@ -1191,5 +1207,67 @@ console.log(zane)
 ### Prototype
 --- não entendi muito bem ---
 Se colocar '.\_\_proto\_\_' antes de alguma coisa (String, Number, Boolean, etc.) o próprio .js mostra o protótipo, propriedades do valor escrito, mostra cor da fonte e vários etc.
+### Type conversion/typecasting | Type coersion
+Alteram um tipo de dado para outro dado. 
+* Type coersion 
+    ```js
+    console.log('9' + 5) //95
+        //sem a gente ver, js vai pegar o 5, tranformar em String e concatenar os dois
+    console.log('9' + '5') //é o mesmo que isso aqui
+    ```
+* Type conversion/typecasting = quando a gente faz a alteração de um dado para outro de modo explícito, às vezes o js usa ele implicitamente
+    ```js
+    console.log(Number('9') + 5) //14
+        //forço o js a tranformar a String em Number
+    console.log(9 + 5) //é o mesmo que isso aqui
+    ```
+### Manipulações
+#### Number <=> String
+De ***Number*** para ***String***:
+*   ```js
+    let treco = "666" //string
+    Number(treco) //agora 666 é Number
+    ```
+De ***String*** para ***Number***:
+*   ```js
+    let coiso = 666 //string
+    Number(coiso) //agora 666 é String
+    ```
+#### Contar caracteres e dígitos
+*Number* não recebe `length`, tem que transformar em *String*
+```js   
+let word = "Sushi"
+console.log(word.length) //5
+```
+#### De . para , | Quantidade de casas decimais
+* `.toFixed(0)` = número com apenas algumas casas decimais (entre parênteses é o número de casas que eu quero)
+* `replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
+```js
+let number = 854.8456129846594
+console.log(number.toFixed(4).replace(".", ",")) //854,8456
+    //vai aparecer no formato de String, se transformar em Number dá erro por causa da vírgula
+```
+#### Maiúsculas <=> minúsculas
+* `.toUpperCase` = tuda maiúsculo
+    ```js
+    let phrase = "Frase aleatória com sentido pik4"
+    console.log(phrase.toUpperCase()) //FRASE ALEATÓRIA COM SENTIDO PIK4
+    ```
+* `.toLowerCase` = tudo minúsculo
+    ```js
+    let phrase = "Frase Aleatória Com Sentido Pik4"
+    console.log(phrase.toLowerCase()) //frase aleatória com sentido pik4
+    ```
+#### Procurar palavra no texto
+* `.includes()` = o que estiver entre parênteses ele vai procurar no texto
+```js
+let text = "I am hungry o_o"
+console.log(text.includes("very"))
+    //false
+console.log(text.includes("Hungry"))
+    //false
+console.log(text.includes("hungry"))
+    //true
+```
 ### Condicionais
 ### Estruturas de repetição
