@@ -944,6 +944,18 @@ Vetores, uma lista, agrupamento de dados
     console.log(backpackThings[3].toDry) 
         //towel
     ```
+* Posso colocar `function` dentro de um `Array` e ainda posso rodar ela
+    ```js
+    const iDontKnow = [
+        'gray', //0
+        'pants', //1
+        function() {return "e aí? tudo blz?"} //3
+    ]
+    console.log(iDontKnow[3])
+        //vai dizer que é uma função: f () {return "e aí? tudo blz?"} 
+    console.log(iDontKnow[3]())
+        //vai rodar a função: e aí? tudo blz?
+    ```
 ###### Arrays with Strings
 * `.split("")` = js separa em elementos de Array de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
 * `.join("")` = js "emenda/junta/liga" os elementos de um Array usando o que estiver dentro das aspas 
@@ -962,6 +974,46 @@ let emptyArray = new Array(6)
     //(6) [empty * 6]
     //tenho 6 posições vazias
 ```
+###### Array elements quantity
+```js
+console.log(["a", "b", "c"].length) //2
+```
+###### Cadeia de caracteres => Array
+```js
+let word = 'chuva'
+console.log(Array.from(word))
+    //(5) ["c", "h", "u", "v", "a"]
+```
+###### Manipulções
+* `.push()` = adiciona um item no **final** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
+* `.unshift()` = adiciona um item no **começo** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
+* `.pop()` = remove o **último** item do Array, se colocar mais de um ele vai removendo sempre o último
+* `.shift()` = remove o **primeiro** item do Array, se colocar mais de um ele vai removendo sempre o primeiro
+* `.slice()` = seleciona alguns elementos do Array, nos parênteses coloca-se dois números:
+    * **1º número** = começando do zero, eu coloco a posição do primeiro elemento que eu quero
+    * **2º número** = começando do um, eu coloco a posição do último elemento que eu quero, aí ele monta uma "lista" dos elementos
+* `.splice()` = remove algum elemento do Array, nos parênteses coloca-se dois números:
+    * **1º número** = começando do zero, eu coloco a posição do primeiro elemento que eu quero retirar
+    * **2º número** = començando do um e contando a partir do primeiro elemento selecionado, eu escolho a quantidade de elementos que eu quero retirar
+* `.indexOf()` = para encontrar a posição de um elemento, entre parênteses coloca o elemento
+    ```js
+    let car = ['banco', 'volante', 'rádio']
+        //(3) ['banco', 'volante', 'rádio']
+    car.push('porta-luvas')
+        //(4) ['banco', 'volante', 'rádio', 'porta-luvas']
+    car.unshift('porta-malas')
+        //(5) ['porta-malas', 'banco', 'volante', 'rádio', 'porta-luvas']
+    car.pop()
+        //(4) ['porta-malas', 'banco', 'volante', 'rádio']
+    car.shift()
+        //(3) ['banco', 'volante', 'rádio']
+    console.log(car.slice(1, 3))
+        //(2) ['volante', 'rádio']
+    car.splice(2, 1)
+        //(2) ['banco', 'volante']
+    console.log(`A posição do volante é: ${car.indexOf('volante')}`)
+        //A posição do volante é: 1
+    ```
 #### Structural Primitive
 * `null` = nulo
 ### Variáveis
@@ -1223,15 +1275,15 @@ Alteram um tipo de dado para outro dado.
     ```
 ### Manipulações
 #### Number <=> String
-De ***Number*** para ***String***:
+De ***String*** para ***Number***:
 *   ```js
     let treco = "666" //string
     Number(treco) //agora 666 é Number
     ```
-De ***String*** para ***Number***:
+De ***Number*** para ***String***:
 *   ```js
     let coiso = 666 //string
-    Number(coiso) //agora 666 é String
+    String(coiso) //agora 666 é String
     ```
 #### Contar caracteres e dígitos
 *Number* não recebe `length`, tem que transformar em *String*
@@ -1241,7 +1293,7 @@ console.log(word.length) //5
 ```
 #### De . para , | Quantidade de casas decimais
 * `.toFixed(0)` = número com apenas algumas casas decimais (entre parênteses é o número de casas que eu quero)
-* `replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
+* `.replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
 ```js
 let number = 854.8456129846594
 console.log(number.toFixed(4).replace(".", ",")) //854,8456
