@@ -1158,6 +1158,12 @@ Declaração de bloco. O bloco também cria um scopo novo, `block-scoped`
     //resto do código bla bla bla
     meLembre() //aqui estou "chamando" a minha função, só assim para que ela seja exibida
     ```
+* **função autoexecutável**
+    ```js
+    (function() {
+        console.log('I love sushi')
+    })()
+    ```
 #### Return
 * `return` = comando utilizado para retornar o que vier a seguir
 * ao colocar uma função dentro de um `console.log`, ela é executada normalmente, porém seu valor fica como `undefined`
@@ -1320,6 +1326,93 @@ console.log(text.includes("Hungry"))
     //false
 console.log(text.includes("hungry"))
     //true
+```
+### Expressões e Operadores
+Qualquer linha de código que resolve algo
+#### Expressões
+Pode colocar ';' (ponto e vírgula) depois de qualquer expressão, afinal não muda nada.
+* único caso que é obrigatório: quando tem uma função auto-executável depois da expressão
+* Algumas expressões: `let | new`
+    * `new` = cria um novo objeto de uma função
+#### Operadores
+* **Binary** 
+    ```js
+    let number = 6
+    console.log(number + 12)
+        //18
+    ```
+    * preciso de dois valores para o operador ficar entre eles
+* **Unary**
+    ```js
+    let number = 6
+    console.log(++number)
+        //12
+    ```
+    ```js
+    let number = 6
+    console.log(typeof number)
+        //number
+    ```
+    * preciso de somente um valor e uso o operador para "incrementar/decrementar" o valor
+    * `typeof | delete | ...`
+* **Ternary**
+    ```js
+    console.log(true ? 'alo' : 'nada')
+        //alo
+    console.log(false ? 'alo' : 'nada')
+        //nada
+    ```
+    * recebe três expressões, esse exemplo é o único Ternary
+##### Operadores Aritméticos
+* `nº * nº` = multiplicação
+* `nº / nº` = divisão
+* `nº + nº` = soma
+* `nº - nº` = subtração
+* `nº % nº` = resto da divisão
+* `nº++` = incremento, o número soma +1
+    ```js
+    let thing = 6
+    console.log(thing++) //6, ele só vai somar depois dessa linha
+    console.log(thing) //7
+        //ou
+    console.log(++thing) //7
+    ```
+* `nº--` = decremento, o número subtrai -1
+    ```js
+    let thing = 6
+    console.log(thing--) //6, ele só vai subtrair depois dessa linha
+    console.log(thing) //5
+        //ou
+    console.log(--thing) //5
+    ```
+* `nº ** nº` = exponencial, isso elevado a isso
+##### Grouping operator ( )
+Operador que agrupa expressões, parêntes. Pode ser usado em String.
+Uso os parênteses para indicar qual operação eu quero que faça primeiro:
+```js
+//normal
+let calc = 3 + 3 * 6
+console.log(calc) 
+    //3 + 18
+    //21
+//usando grouping operator
+calc = (3 + 3) * 6
+console.log(calc)
+    //6 * 6
+    //36
+```
+##### Operadores de Comparação 
+Vai comparar valores e retornar a resposta como Boolean.
+* `nº == nº` = isso é igual a isso?
+* `nº != nº` = isso é diferente disso?
+```js
+let six = 6
+let twelve = 12
+console.log(twelve == 6)    //false
+console.log(six == "6")     //true
+console.log(six != twelve)  //true
+console.log(six != 6)       //false
+console.log(twelve != "12") //false
 ```
 ### Condicionais
 ### Estruturas de repetição
