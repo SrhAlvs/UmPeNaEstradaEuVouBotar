@@ -1336,13 +1336,15 @@ Pode colocar ';' (ponto e vírgula) depois de qualquer expressão, afinal não m
     * `new` = cria um novo objeto de uma função
 #### Operadores
 * **Binary** 
+    Preciso de dois valores para o operador ficar entre eles
     ```js
     let number = 6
     console.log(number + 12)
         //18
     ```
-    * preciso de dois valores para o operador ficar entre eles
 * **Unary**
+    Preciso de somente um valor e uso o operador para "incrementar/decrementar" o valor
+    * `typeof | delete | ...`
     ```js
     let number = 6
     console.log(++number)
@@ -1353,39 +1355,14 @@ Pode colocar ';' (ponto e vírgula) depois de qualquer expressão, afinal não m
     console.log(typeof number)
         //number
     ```
-    * preciso de somente um valor e uso o operador para "incrementar/decrementar" o valor
-    * `typeof | delete | ...`
 * **Ternary**
+    Recebe três expressões, esse exemplo é o único Ternary
     ```js
     console.log(true ? 'alo' : 'nada')
         //alo
     console.log(false ? 'alo' : 'nada')
         //nada
-    ```
-    * recebe três expressões, esse exemplo é o único Ternary
-##### Operadores Aritméticos
-* `nº * nº` = multiplicação
-* `nº / nº` = divisão
-* `nº + nº` = soma
-* `nº - nº` = subtração
-* `nº % nº` = resto da divisão
-* `nº++` = incremento, o número soma +1
-    ```js
-    let thing = 6
-    console.log(thing++) //6, ele só vai somar depois dessa linha
-    console.log(thing) //7
-        //ou
-    console.log(++thing) //7
-    ```
-* `nº--` = decremento, o número subtrai -1
-    ```js
-    let thing = 6
-    console.log(thing--) //6, ele só vai subtrair depois dessa linha
-    console.log(thing) //5
-        //ou
-    console.log(--thing) //5
-    ```
-* `nº ** nº` = exponencial, isso elevado a isso
+    ```    
 ##### Grouping operator ( )
 Operador que agrupa expressões, parêntes. Pode ser usado em String.
 Uso os parênteses para indicar qual operação eu quero que faça primeiro:
@@ -1401,18 +1378,133 @@ console.log(calc)
     //6 * 6
     //36
 ```
-##### Operadores de Comparação 
+##### Operadores Aritméticos (binary)
+* `nº * nº` = multiplicação
+* `nº / nº` = divisão
+* `nº + nº` = soma
+* `nº - nº` = subtração
+* `nº % nº` = resto da divisão
+* `nº ** nº` = exponencial, isso elevado a isso
+* `nº++` = incremento, o número soma +1 **(unary)**
+* `nº--` = decremento, o número subtrai -1 **(unary)**
+```js
+let thing = 6
+console.log(thing++) //6, ele só vai somar depois dessa linha
+console.log(thing)   //7
+    //ou
+console.log(++thing) //7
+console.log(thing--) //7, ele só vai subtrair depois dessa linha
+console.log(thing)   //6
+    //ou
+console.log(--thing) //6
+```
+##### Operadores de Comparação (binary)
 Vai comparar valores e retornar a resposta como Boolean.
-* `nº == nº` = isso é igual a isso?
-* `nº != nº` = isso é diferente disso?
+* `__ == __` = \___ é igual a \___?
+* `__ != __` = \___ é diferente de \___?
+* `__ === __` = \___ é estritamente igual a \___?, compara os valores e o **tipo** do elemento
+* `__ !== __` = \___ é estritamente diferente de \___?, compara os valores e o **tipo** do elemento
+* `nº > nº` = \___ é maior que \___?
+* `nº < nº` = \___ é menor que \___?
+* `nº >= nº` = \___ é maior ou igual a \___?
+* `nº <= nº` = \___ é menor ou igual a \___?
 ```js
 let six = 6
 let twelve = 12
-console.log(twelve == 6)    //false
-console.log(six == "6")     //true
-console.log(six != twelve)  //true
-console.log(six != 6)       //false
-console.log(twelve != "12") //false
+console.log(twelve == 6)      //false
+console.log(six == "6")       //true
+console.log(six != twelve)    //true
+console.log(six != 6)         //false
+console.log(twelve != "12")   //false
+console.log(six === "6")      //false; valor igual, mas tipo diferente (six = variável que recebe Number | "6" = String)
+console.log(six === 6)        //true; valor igual, a variável recebe Number, então é igual
+console.log(twelve !== "12")  //true
+console.log(twelve !== "12")  //false
+console.log(six < twelve)     //true
+console.log(six > twelve)     //false
+console.log(six >= 6)         //true
+console.log(twelve <= 6)      //false
+console.log(six <= twelve)    //true
+```
+##### Operadores de atribuição (binary)
+* `__ = __` = \___ recebe \___
+* `__ += __` = \___ soma  \___, vai pegar o valor antigo e somar com o novo
+* `__ -= __` = \___ subtrai \___, vai pegar o valor antigo e subtrair o novo
+* `__ *= __` = \___ multiplica \___, vai pegar o valor antigo e multiplicar com o novo
+* `__ /= __` = \___ divide \___, vai pegar o valor antigo e dividir pelo novo
+* `__ %= __` = \___ resto da divisão \___, vai pegar o valor antigo, divide pelo novo e mostrar o resto da divisão
+```js
+let x    //x é undefined
+x = 6    //x recebe 6
+x += 6   //x + 6 = 12
+x -= 6   //x - 6 = 6
+x *= 6   //x * 6 = 36
+x /= 6   //x / 6 = 6
+x %= 4   //x % 4 = 2
+x **= 6  //x ** 6 = 64
+```
+##### Operadores lógicos (binary)
+Dois valores do tipo Boolean que quando verificados vão dar uma resposta de tipo Boolean também
+* `__ && __` = AND, tenho \___ e \___?
+* `__ || __` = OR, tenho \___ ou \___?
+* `__ ! __` = NOT, \___ is *true*? now is *false* | \___ is *false*? now is *true*
+```js
+//AND
+let cheese = true             //tenho queijo
+let coffee = true             //tenho café
+console.log(cheese && coffee) //true
+```
+```js
+//AND
+let cheese = false            //não tenho queijo
+let coffee = true             //tenho café
+console.log(cheese && coffee) //false
+```
+```js
+//OR
+let cheese = false            //não tenho queijo
+let coffee = true             //tenho café
+console.log(cheese || coffee) //true
+```
+```js
+//OR
+let cheese = true             //tenho queijo
+let coffee = true             //tenho café
+console.log(cheese || coffee) //true
+```
+```js
+//OR
+let cheese = false            //não tenho queijo
+let coffee = false            //não tenho café
+console.log(cheese || coffee) //false
+```
+```js
+//NOT
+let cheese = true             //tenho queijo
+let coffee = false            //não tenho café
+console.log(!coffee)          //true
+console.log(!cheese)          //false
+```
+##### Operadores condicionais (ternary)
+Dependendo da condição, mostra 1 valor de 2 possíveis. 
+* `condition ? value1 : value2` = se \___ acontecer = *value1*, se não = *value2*
+```js
+let cheese = true
+let coffee = true
+const niceBreakfast = cheese && coffee ? 'café da manhã pik4' : 'café da manhã brox4'
+console.log(niceBreakfast) //café da manhã pik4
+```
+```js
+let cheese = true
+let coffee = false
+const niceBreakfast = cheese && coffee ? 'café da manhã pik4' : 'café da manhã brox4'
+console.log(niceBreakfast) //café da manhã brox4
+```
+```js
+let cheese = false
+let coffee = true
+const niceBreakfast = cheese || coffee ? 'café da manhã pik4' : 'café da manhã brox4'
+console.log(niceBreakfast) //café da manhã pik4
 ```
 ### Condicionais
 ### Estruturas de repetição
