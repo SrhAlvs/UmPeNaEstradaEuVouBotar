@@ -1506,5 +1506,194 @@ let coffee = true
 const niceBreakfast = cheese || coffee ? 'café da manhã pik4' : 'café da manhã brox4'
 console.log(niceBreakfast) //café da manhã pik4
 ```
-### Condicionais
+##### Operadores para String (binary)
+Concatenação. 
+```js
+let sun = 'Sun'
+sun + '.SA'
+console.log(sun + 666) //transforma os Number em String e junta tudo
+    //Sun.SA666
+```
+##### Falsy and Truthy
+`false = 0`
+`true = 1`
+* FALSY = quando um valor é considerado ***false***em contextos onde o *Boolean* é obrigatório (consdicionais e loops)
+    ```js
+    console.log(true ? 'verdadeiro' : 'falso')  //verdadeiro
+    console.log(false ? 'verdadeiro' : 'falso') //falso
+        //EM TODOS OS EXEMPLOS ABAIXO O .js PRECISA DE ALGUMA COMPARÇÃO, TIPO:
+        //console.log(0 == false ? 'verdadeiro' : 'falso')
+        //MAS O VALOR BOOLEANO QUE É "OBRIGATÓRIO" NÃO EXISTE
+        //ENTÃO TUDO SE TORNA FALSY
+    console.log(0 ? 'verdadeiro' : 'falso')             //falso
+    console.log(-0 ? 'verdadeiro' : 'falso')            //falso
+    console.log("" ? 'verdadeiro' : 'falso')            //falso
+    console.log(null ? 'verdadeiro' : 'falso')          //falso
+    console.log(undefined ? 'verdadeiro' : 'falso')     //falso
+    console.log(NaN ? 'verdadeiro' : 'falso')           //falso
+    ```
+* TRUTHY = quando um valor é considerado ***true*** em contextos onde *Boolean* é obrigatório (condicionais e loops)
+    ```js
+    console.log(true ? 'verdadeiro' : 'falso')  //verdadeiro
+    console.log(false ? 'verdadeiro' : 'falso') //falso
+        //EM TODOS OS EXEMPLOS ABAIXO O .js PRECISA DE ALGUMA COMPARÇÃO, TIPO:
+        //console.log({} == true ? 'verdadeiro' : 'falso')
+        //MAS O VALOR BOOLEANO QUE É "OBRIGATÓRIO" NÃO EXISTE
+        //ENTÃO TUDO SE TORNA TRUTHY
+    console.log({} ? 'verdadeiro' : 'falso')            //verdadeiro
+    console.log([] ? 'verdadeiro' : 'falso')            //verdadeiro
+    console.log(1 ? 'verdadeiro' : 'falso')             //verdadeiro
+    console.log(3.23 ? 'verdadeiro' : 'falso')          //verdadeiro
+    console.log("0" ? 'verdadeiro' : 'falso')           //verdadeiro
+    console.log("false" ? 'verdadeiro' : 'falso')       //verdadeiro
+    console.log(-1 ? 'verdadeiro' : 'falso')            //verdadeiro
+    console.log(Infinity ? 'verdadeiro' : 'falso')      //verdadeiro
+    console.log(-Infinity ? 'verdadeiro' : 'falso')     //verdadeiro
+    ```
+##### Precedência de operadores
+De cima para baixo, do mais importante ao menos importante.
+* `( )` grouping
+* `! ++ --` negação e incremento
+* `* /` multiplicação e divisão
+* `+ -` adição e subtração
+* `< <= > >=` relacional
+* `== != === !==` igualdade
+* `&&` AND 
+* `||` OR
+* `?:` condicional
+* `= += -= *= %=` assignment (atribuição) 
+### Condicionais e controle de fluxo
+#### If and Else
+Se isso acontecer faz isso, se não, faz aquilo.
+```js
+let temperature = 37.2
+    if(temperature >= 37.5) {
+        console.log('febre alta')
+    } else if(temperature < 37.5 && temperature >= 37) {
+        console.log('febre moderada')
+    } else {
+        console.log('saudável')
+    }
+//febre moderada
+```
+```js
+//OUTRO JEITO DE FAZER 
+let temperature = 37.2
+let highTemperature = temperature >= 37.5
+let mediumTemperature = temperature < 37.5 && temperature >= 37
+    if(highTemperature) {
+        console.log('febre alta')
+    } else if(mediumTemperature) {
+        console.log('febre moderada')
+    } else {
+        console.log('saudável')
+    }
+//febre moderada
+```
+#### Switch
+Lista de vários casos, como se fossem vários `if` e `else`.
+* `case '___'` = são os casos, coloco os códigos para executar caso minha expressão cumpra sua "condição", posso por o que eu quiser entre as aspas
+* `break` = delimita o `case`, se não tiver o *break* no final de um *case* ele segue para executar o próximo *case*
+* `default` = se a expressão não satisfazer nenhum dos casos, o *default* faz a função do *else*
+```js
+switch() {
+    case 'a':
+        //código
+        break
+    case 'b':
+        //código
+        break
+    default:
+        //código
+        break
+}
+```
+#### Throw and Try/Catch
+Vai tentar executar um bloco de código, se der algum erro ele vai ser disparado e o erro vai ser capturado.
+* Throw = lançar, disparar
+* Try = tentar
+* Catch = capturar, pegar
+```js
+function iDontKnow(idk = '') {
+    if (idk === '') {
+        throw new Error("a variável está vazia.")
+    }
+}
+try {
+    iDontKnow()
+} catch(e) {
+    console.log(e)
+}
+```
+Não entendi muito bem, mas é tipo, deu o erro, mas a minha aplicação continua rodando, o erro não afeta no funcionamento do código.
 ### Estruturas de repetição
+#### For
+* For = para, em inglês
+* `for(let a=6; a < 12; a++)` = estrutura de repetição
+    * `let a=6` = cria uma variável, **a** foi só um nome aleatório, essa variável tem que ter algum valor, escolhi o 6
+    * `a < 12` = a variável é menor que 12, então o código vai rodar até ele ser maior que 12
+    * `a++` = isso vai ficar somando mais 1 na variável, e é assim que em algum momento ela vai ficar com um valor maior que 12
+    * `break` = caso tenha um *if* dentro do *for*, ele vai parar a execução do loop
+    * `continue` = caso tenha um *if* dentro do *for*, ele vai pular a execução do momento e passar para a próxima
+```js
+for(let a=6; a < 12; a++) {     //vai mostrar de 6 à 12
+    console.log(a)
+}
+for(let b=60; b > 0; b--) {     //vai mostrar de 60 à 0
+    console.log(b)
+}
+for(let c=30; c > 0; c--) {     //iria mostrar de 30 à 0, mas quando 
+    if(c === 15) {              //chegar no 15 ele vai parar de executar
+        break;
+    }
+    console.log(c)
+}
+for(let d=0; d < 10; d++) {    //vai mostrar de 0 à 10, mas vai ignorar o número 7 
+    if(d === 7) {
+        continue;
+    }
+    console.log(d)
+}
+```
+#### While
+* While = enquanto, em inglês
+Faz mais sentido usar o *while* ao invés do *for* quando a gente não sabe a hora de parar.
+```js
+let a = 0
+while(a < 6) {              //vai mostrar de 0 à 6
+    console.log(a)
+    a++;
+}
+let b = 56261648485691661   //não tem como eu saber quando que 
+while(a > 6) {              //iso vai parar, por isso uso 'while'
+    console.log(a)
+    b /= 66;
+}
+```
+#### For...of
+Vai mostrando parte por parte de uma coisa toda. Tipo as letras de uma palavra, ou os elementos de um *Array*
+```js
+let name = 'Steven'
+let names = ['Ametist', 'Garnet', 'Pearl', 'Connie']
+for(let oneLetter of name) {        //vai mostrar uma letra de cada vez
+    console.log(oneLetter)          //S, t, e, v, e, n (um em cada linha)
+}
+for(let characters of names) {      //vai mostrar um nome do Array de cada vez
+    console.log(characters)         //Ametist, Garnet, Pearl, Connie (um em cada linha)
+}
+```
+#### For...in
+Cria um loop em cima de um objeto, pegando as propriedades deste objeto. 
+```js
+let character = {
+    name: 'Rainbow Dash',
+    power: 'Agilidade',
+    type: 'Pony',
+}
+for(let property in character) {       //vai mostrar as propriedades do objeto
+    console.log(property)              //name, power, type (um em cada linha)
+    console.log(person[property])      //essa parte de baixo mostra os 
+                                       //valores das propriedades
+    //no final fica: name, Rainbow Dash, power, Agilidade, type, Pony (um em cada linha)
+}
+```
