@@ -25,13 +25,13 @@ if(grade >= 90 && grade <= 100) {
 function getYourGrade(grade) {
     if(grade >= 90 && grade <= 100) {
         return 'Nota de tipo A.'
-    } else if(grade >= 80 && grade <= 89) {
+    } else if(grade >= 80) {
         return 'Nota de tipo B.'
-    } else if(grade >= 70 && grade <= 79) {
+    } else if(grade >= 70) {
         return 'Nota de tipo C.'
-    } else if(grade >= 60 && grade <= 69) {
+    } else if(grade >= 60) {
         return 'Nota de tipo D.'
-    } else if(grade < 60 && grade >= 0) {
+    } else if(grade >= 0) {
         return 'Nota de tipo E.'
     } else {
         return 'Erro. Tente novamente.'
