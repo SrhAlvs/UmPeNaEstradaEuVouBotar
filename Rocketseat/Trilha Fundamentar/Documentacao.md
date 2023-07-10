@@ -1281,17 +1281,32 @@ Alteram um tipo de dado para outro dado.
     ```
 ### Manipulações
 #### Aleatórios
-* `.reverse()` = vai pegar o valor (tipo valores de array/função) e inverter a ordem
+* `.reverse()` = vai pegar o valor (tipo valores de *Array*/função) e inverter a ordem
 * `.replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
     * `.replace(/[]/g, "")` = dentro dos colchetes pode colocar vários caracteres e o **g** é de *global* (tipo remover tal coisa de uma frase **completa**)
 * `.slice()` = vai fatiar algo, uma palavra por exemplo (só depois do *slice* que dá para usar o *reverse*)
-* `.split("")` = js separa em elementos de Array de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
-* `.join("")` = js "emenda/junta/liga" os elementos de um Array usando o que estiver dentro das aspas 
-* `.push()` = adiciona um item no **final** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
-* `.unshift()` = adiciona um item no **começo** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
-* `.pop()` = remove o **último** item do Array, se colocar mais de um ele vai removendo sempre o último
-* `.shift()` = remove o **primeiro** item do Array, se colocar mais de um ele vai removendo sempre o primeiro
-* `.reduce()` = maior valor e menor valor de um array (eu acho)
+* `.split("")` = js separa em elementos de *Array* de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
+* `.join("")` = js "emenda/junta/liga" os elementos de um *Array* usando o que estiver dentro das aspas 
+* `.push()` = adiciona um item no **final** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
+* `.unshift()` = adiciona um item no **começo** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
+* `.pop()` = remove o **último** item do *Array*, se colocar mais de um ele vai removendo sempre o último
+* `.shift()` = remove o **primeiro** item do *Array*, se colocar mais de um ele vai removendo sempre o primeiro
+* `Math.max()` = detro dos parênteses vão um conjunto de números que vão ser comparados e o maior número entre eles que vai ser retornado
+* `.sort()` = vai ordenar elementos de um *Array* de acordo com a verificação de código Unicode, exemplo da [Documentação MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/sort):
+    ```js
+    var fruit = ['cherries', 'apples', 'bananas'];
+    fruit.sort(); 
+        // ['apples', 'bananas', 'cherries']
+    var scores = [1, 10, 2, 21];
+    scores.sort(); // [1, 10, 2, 21]
+        // 10 vem antes do 2 porque o 1 vem antes do 2
+        // porque '10' vem antes de '2' em ponto de código Unicode.
+    var things = ['word', 'Word', '1 Word', '2 Words'];
+    things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
+        // em Unicode, números vêem antes de letras maiúsculas,
+        // as quais vêem antes das minúsculas.
+    ```
+* `.reduce()` = maior valor e menor valor de um *Array* (eu acho)
     ```js
     //maior valor
     const maxValue = values.reduce(function(prev, current) { 
