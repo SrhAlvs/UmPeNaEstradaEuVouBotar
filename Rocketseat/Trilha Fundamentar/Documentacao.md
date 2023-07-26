@@ -1740,3 +1740,75 @@ for(let property in character) {       //vai mostrar as propriedades do objeto
     //no final fica: name, Rainbow Dash, power, Agilidade, type, Pony (um em cada linha)
 }
 ```
+## HTML que faz sentido, para todos
+* Web Semântica = é adicionar significado à uma linguagem (para dar significado ao conteúdo, no caso do HTML), ela controla a organização e a apresentação do conteúdo. É extremamente importante para a acessibilidade.
+* User Agent = browser, navegador, etc..
+### Tags
+Algumas tags são específicas para algumas coisas e têm orientações sobre onde devem ficar na página. Ex.:
+```html
+<p>
+    Nós (programadores), somos pagos para resolver problemas, não para memorizar soluções.
+                        - Mayk Brito
+</p>
+```
+Agora um exemplo com uma semêntica melhor:
+```html
+<blockquote> <!--bloco "feito" para citações-->
+    Nós (programadores), somos pagos para resolver problemas, não para memorizar soluções.
+                        <cite>- Mayk Brito</cite>
+</blockquote>
+```
+#### Elementos comuns em documentos HTML
+Dentro do elemento `<body></body>`
+* `<header></header>` = cabeçalho
+    * pode ser utilizado dentro de outros elemetos, como `<article>` e `<section>`
+    * não pode ter um `<header>` dentro de outro `<header>` ou dentro de um `<footer>`
+    * não tem elementos específicos para ele, são utilizados elementos globais mesmo
+* `<nav></nav>` = navegação
+    * pode estar em diversos locais na página, não precisa estar necessariamente no `<header>`, é muito bom para otimizar a acessibilidade
+* `<main></main>` = conteúdo principal
+    * só tem um `<main>` e ele deve estar diretamente no `<body>`
+    * não deve conter um menu ou anúncios nele, e sim o conteúdo principal da página
+    * não tem elementos específicos para ele, são utilizados elementos globais mesmo
+* `<aside></aside>` = barra lateral, onde ficam anúncios, sobre o autor, assuntos relacionados, etc..
+    * ajuda a descrever coisas do conteúdo principal resumidamente, ou então a falar sobre o autor do site, traz o significado de alguma palavra utilizada no `<main>`, etc..
+    * não tem elementos específicos para ele, são utilizados elementos globais mesmo
+* `<footer></footer>` = rodapé
+    * pode estar no `<article>`
+    * não tem elementos específicos para ele, são utilizados elementos globais mesmo
+```html
+<body>
+    <header>
+        logomarca
+        <nav>
+            <ul>
+                <li>item</li>
+            </ul>    
+        </nav>
+    </header>
+    <main>
+        conteúdo principal
+        <article>
+            <h3>informações adicionais</h3>
+            <p>la la la pipoca, não quero saber de fofoca</p>
+        </article>
+    </main>
+    <aside>
+        parte lateral
+    </aside>
+    <footer>rodapé</footer>
+</body>
+```
+#### Elementos adicionais em documentos HTML
+* `<article></article>` = ele faz blocos de conteúdo que são relacionados entre si, porém são independentes
+    * podem ter vários `<article>` em uma página
+    * Ex.: em um livro de receitas, cada receita estaria em um `<article>` diferente
+    * não tem elementos específicos para ele, são utilizados elementos globais mesmo
+* `<section></section>` = antigmanete eram usadas as `<div>`, mas o `<section>` veio para "organizar" mais
+    * se for para ter vários, como no exemplo do livro de receitas, é melhor usar o `<article>`, o `<section>` poderia ser utilizado para descrever o "modo de preparo" dentro do `<article>`
+    * não tem elementos específicos para ele, são utilizados elementos globais mesmo
+#### Elementos não semânticos, para uso genérico
+* `<div></div>` = usado quando não for possível fazer a utilização de outro elemento de bloco semântico
+* `<span></span>` = para dar destaque à alguma parte de um texto, quando não quiser usar o `<strong>`
+* `<id></id>` = para classificar elementos
+* `<class></class>` = para classificar elementos
