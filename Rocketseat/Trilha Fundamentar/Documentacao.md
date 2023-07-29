@@ -1,4 +1,9 @@
 # Trilha Fundamentar 
+## Comentários
+* C++ = `//comentário em linha | /*comentário em bloco*/`
+* HTML = `<!--comentário-->`
+* CSS = `/*comentário*/`
+* JavaScript = `//comentário em linha | /*comentário em bloco*/`
 ## Guia Estelar de HTML
 ### Comandos
 * **`<h1>`Título`</h1>`** = vai de h1 até h6, dá para escrever títulos
@@ -1761,7 +1766,7 @@ Agora um exemplo com uma semêntica melhor:
 #### Elementos comuns em documentos HTML
 Dentro do elemento `<body></body>`
 * `<header></header>` = cabeçalho
-    * pode ser utilizado dentro de outros elemetos, como `<article>` e `<section>`
+    * pode ser utilizado dentro de outros elemetos, como `<article> | <section>`
     * não pode ter um `<header>` dentro de outro `<header>` ou dentro de um `<footer>`
     * não tem elementos específicos para ele, são utilizados elementos globais mesmo
 * `<nav></nav>` = navegação
@@ -1812,3 +1817,130 @@ Dentro do elemento `<body></body>`
 * `<span></span>` = para dar destaque à alguma parte de um texto, quando não quiser usar o `<strong>`
 * `<id></id>` = para classificar elementos
 * `<class></class>` = para classificar elementos
+## Nem só de classes ou IDs
+### Selectors
+Conectam um elemento HTML com o CSS a fim de estilizar/alterar o elemento. Os tipos de seletores são:
+* Element selector = todos os elementos HTML `h1 | p | div`
+    ```css
+    p {
+        color: lightgreen;
+    }
+    ```
+* ID selector = faz referência a um elemento que tenha um atributo `id`, cada ID deve ser único
+    ```css
+    #layout {
+        position: absolute;
+        z-index: -1;
+    }
+    ```
+* Class selector = faz referência a um elemento que tenha um atributo `class`, pode ter uma ou mais classes e elas podem repetir
+    ```css
+    .box {
+        height: 208px;
+        width: 208px;
+    }
+    ```
+    * dá para colocar mais de uma classe em um elemento HTML, é só dar backspace: `class="class1 class2"`
+* Attribute selector = faz referência a um elemento que tenha um atributo específico
+    ```html
+    <h1 title="page title">Random Title</h1>
+    <p title="page content">Random text.</p>
+    ```
+    ```css
+    [title] {
+        color: lightblue;
+    }
+    /*vai mudar o elemento que tem `title` e não o `title` da coisa*/
+    /*"Random Title" vai ficar azul claro, não o "page title"*/
+    ```
+* Pseudo-class selector = faz referência a um elemento em um estado específico
+    ```css
+    p:hover {
+        color: gray;
+    }
+    /*quando passar o cursor em cima do parágrafo a cor dele irá mudar para cinza*/
+    ```
+* Multiple selector = dá para fazer referência a vários elementos juntos
+    ```css
+    h1, [title], .box {
+        color: green;
+    }
+    ```
+### Combinators
+Trabalham para buscar e combinar seletores a fim de aplicar uma estilização.
+* Descendant combinator = identificado por um espaço entre os seletores, ele busca um elemento dentro de outro
+    ```css
+    body article h2 {
+        color: purple;
+    }
+    /*vai no `body`, dentro dele você vai no `article` e aí você procura o `h2` e muda a cor dele para roxo*/
+    /*se o `article` estivesse dentro de uma `div` e sei lá o que, ia mudar do mesmo jeito, pois ele continua sendo um `h2` dentro de um `article` que está dentro de um `body`*/
+    ```
+* Child combinator = identificado pelo seinal ">" entre dois seletores, seleciona apenas o elemento que é "filho direto do pai" e os elementos depois do "filho direto" são desconsiderados
+    ```html
+    <body>
+        <ul>
+            <li>Item 1</li>
+            <ul>
+                <li>Item 1</li>
+            </ul>
+        </ul>
+    </body>
+    ```
+    ```css
+    body > ul > li {
+        color: darkgreen;
+    }
+    /*será aplicado somente ao "Item 1", pois o "Item 2" seria `body > ul > ul > li`
+    ```
+* Adjacent sibling combinator = identificado pelo sinal "+" entre dois seletores, seleciona somente o elemento do **lado direito** que é irmão direto na hierarquia
+    ```html
+    <h1>Título</h1>
+    <p>Parágrafo 1.</p>
+    <p>Parágrafo 2.</p>
+    <button>Não sei</button>
+    <button>I don't know</button> 
+    <!--na página, os botões vão ficar um ao lado do outro-->
+    ```
+    ```css
+    h1 + p {
+        color: yellow;
+    }
+    button + button {
+        margin-left: 27px;
+    }
+    /*vai aplicar a cor amarela ao `p`, pois ele está do lado direito e somente ao "Parágrafo 1.", pois ele é o irmão DIRETO*/
+    ```
+* General sibling combinator = identificado pelo sinal "~" entre dois seletores, seleciona todos os elementos irmãos
+    ```html
+    <h1>Título</h1>
+    <p>Parágrafo 1.</p>
+    <p>Parágrafo 2.</p>
+    <button>idk</button>
+    <p>Parágrafo 3.</p>
+    ```
+    ```css
+    h1 ~ p {
+        color: brown;
+    }
+    /*vai aplicar a cor marrom para os 3 parágrafos*/
+    ```
+#### Exemplo de utilização de combinators
+* Seletores muito específicos tendem a causar dificuldades no reuso das regras de estilização
+* Muitas vezes, um simples uso de classes, torna o trabalho mais eficiente
+```html
+<ul>
+  <li>Item 1</li>
+  <li class="idk">Item 2</li>
+</ul>
+```
+```css
+ul > li[class="idk"] {
+    color: red;
+}
+/*porém é mais fácil assim:*/
+.idk {
+    color: red;
+}
+```
+* supondo que tivesse um `<p class="idk">` após o `</ul>`, a cor vermelha também afetaria ele, caso fosse utilizado a segunda forma, por isso a primeira forma seria mais eficiente, caso não quisesse que o parágrafo seguinte fosse afetado.
