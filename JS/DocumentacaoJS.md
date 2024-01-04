@@ -3,7 +3,7 @@
 * Linguagem de programação que roda no navegador do usuário (front-end), mas roda também no computador (back-end).
 * ECMAScript: órgão que padroniza o JavaScript
 * **`//comentário em linha | /*comentário em bloco*/`** = comentários não afetam o código
-## Anotações
+## Anatomia JS
 * Sintaxe: a maneira correta de escrever uma certa linguagem. 
     ```js
     console.log("mostrar na tela") //certo
@@ -21,9 +21,9 @@
     <script src="caminho_de_arquivo.js"></script>
     ```
 * **comentários** = anotações feitas no código, mas que o usuário não pode ver
-    * `// algo` = comentário em linha, igual c++
+    * `// algo` = comentário em linha, igual C++
     * `/* algo 2.0*/` = comentário em bloco, igual no CSS
-## Data | Tipos de dados
+## Tipos de dados
 ### Primitive/Primitive value
 * `String` = cadeia de caracteres, para escrever textos em JS
     * `"texto"` = aspas duplas, se no texto tiver aspas simples usa elas para não dar problema
@@ -37,13 +37,15 @@
 * `Boolean` = V ou F
     * `true` = verdadeiro
     * `false` = falso
-* `undefined` = indefinido
-* `Symbol` = ?
-* `BigInt` = ?
-## Object
+* `undefined` = indefinido (não existe)
+* `Symbol` = leia a [Documentação MDN: Symbol](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+* `BigInt` = armazena números inteiros com uma ótima precisão, mais informações na [Documentação MDN: Estrutura de dados do JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Data_structures#symbol_type)
+### Structural Root Primitive
+* `null` = nulo (existe, mas é "vazio")
+### Object
 [Documentação MDN: Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects)
 Dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos.
-* `{propriedade: "valor"}` = pode colocar mais de um dentros das {}, é só separar por vírgula
+* `{propriedade: "valor"}` = pode colocar mais de um valor dentro das {}, é só separar por vírgula
 * Acessar valores dentro de um Object: 
     ```js
     const person = {
@@ -53,11 +55,11 @@ Dado estrutural, todos têm propriedades/atributos e funcionalidades/métodos.
         quantity: 4
         //tem que ter as vírgulas depois
     }
-    console.log(`${person.name} have ${person.age} years old and have cute ${person.pet}.`)
-        //Rodrigo have 25 years old and have cute cats.
+    console.log(`${person.name} have ${person.age} years old and have ${person.quantity} cute ${person.pet}.`)
+        //Rodrigo have 25 years old and have 4 cute cats.
     ```
-## Array
-Vetores, uma lista, agrupamento de dados
+### Array
+Vetores, uma lista, agrupamento de dados.
 * `["coisa", "treco", 18]` = entre [], separa por vírgulas
 * Acessar valores dentro de um Array:
     ```js
@@ -87,7 +89,7 @@ Vetores, uma lista, agrupamento de dados
     console.log(iDontKnow[3]())
         //vai rodar a função: e aí? tudo blz?
     ```
-### Arrays with Strings
+#### Arrays with Strings
 * `.split("")` = js separa em elementos de Array de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
 * `.join("")` = js "emenda/junta/liga" os elementos de um Array usando o que estiver dentro das aspas 
 ```js
@@ -97,7 +99,7 @@ let array = text.split(" ")
 let arrayTogether = array.join("~")
     //I~am~hungry~o_o
 ```
-### Array with Constructors
+#### Array with Constructors
 ```js
 let myArray = new Array('a', 'b', 'c')
     //(3) ["a", "b", "c"]
@@ -105,17 +107,17 @@ let emptyArray = new Array(6)
     //(6) [empty * 6]
     //tenho 6 posições vazias
 ```
-### Array elements quantity
+#### Array elements quantity
 ```js
 console.log(["a", "b", "c"].length) //2
 ```
-### Cadeia de caracteres => Array
+#### Cadeia de caracteres => Array
 ```js
-let word = 'chuva'
+let word = 'rain'
 console.log(Array.from(word))
-    //(5) ["c", "h", "u", "v", "a"]
+    //(4) ["r", "a", "i", "n"]
 ```
-### Manipulções de Array
+#### Manipulções de Array
 * `.push()` = adiciona um item no **final** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
 * `.unshift()` = adiciona um item no **começo** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
 * `.pop()` = remove o **último** item do Array, se colocar mais de um ele vai removendo sempre o último
@@ -145,8 +147,6 @@ console.log(Array.from(word))
     console.log(`A posição do volante é: ${car.indexOf('volante')}`)
         //A posição do volante é: 1
     ```
-## Structural Primitive
-* `null` = nulo
 ## Variáveis
 Tem 3 formas de criar uma variável: `var`, `let` e `const`
 * `console.log(typeof `nomeVariável`)` = mostra na tela qual o tipo da variável
@@ -213,7 +213,7 @@ Determina a visibilidade de alguma variável.
 * `var` = global (em todo o código) e local (somente dentro do scopo onde está)
     ```js
     console.log("Existe algo antes do bloco?", algo) //existe, mas com valor `undefined`
-        //em tese, "algo" não existe ainda, mas o js "pega" essa var e joga para cima, deixando somente o se valor onde está, isso se chama "hoisting"
+        //em tese, "algo" não existe ainda, mas o js "pega" essa var e joga para cima, deixando somente o seu valor onde está, isso se chama "hoisting"
     {
         var algo = 6
     }
@@ -222,7 +222,7 @@ Determina a visibilidade de alguma variável.
     ```
 * `let` e `const` = local (somente dentro do scopo onde está)
     ```js
-        console.log("Existe teco antes do bloco?", treco) //não existe
+        console.log("Existe treco antes do bloco?", treco) //não existe
         {
             console.log("Existe treco?", treco) //existe, mas dá erro, não é possível acessar o valor
             let treco = 6
@@ -270,7 +270,7 @@ Declaração de bloco. O bloco também cria um scopo novo, `block-scoped`
 * Ideal:
     * Colocar nomes que fazem sentido
         * Que explique qual a função da variável
-    * Escrever em ingles
+    * Escrever em inglês
     *camelCase = onde seria espaço coloca maiúculo, OiTudoBemComVocê
     *snake_case = onde seria espaço coloca underline, oi_tudo_bem_com_você
 ## Funções
@@ -310,10 +310,10 @@ const randomName = function(num1, num2){
 randomName(451, 215)
 console.log(total)
 // não é bom fazer assim
-const randomName = function(num1, num2){
+const RandomName = function(num1, num2){
     return num1 + num2
 }
-const total = randomName(451, 215)
+const total = RandomName(451, 215)
 console.log(total)
 //assim é melhor
 ```
@@ -412,12 +412,18 @@ Alteram um tipo de dado para outro dado.
     ```
 ## Manipulações
 ### Aleatórios
-* `.reverse()` = vai pegar o valor (tipo valores de *Array*/função) e inverter a ordem
+* `.reverse()` = vai pegar o valor (tipo valores de *Array*/função) e inverter a ordem, precisa usar o `.slice()` antes
 * `.replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
     * `.replace(/[]/g, "")` = dentro dos colchetes pode colocar vários caracteres e o **g** é de *global* (tipo remover tal coisa de uma frase **completa**)
 * `.slice()` = vai fatiar algo, uma palavra por exemplo (só depois do *slice* que dá para usar o *reverse*)
 * `.split("")` = js separa em elementos de *Array* de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
 * `.join("")` = js "emenda/junta/liga" os elementos de um *Array* usando o que estiver dentro das aspas 
+    ```js
+    let text = "The house is cute"
+    console.log(text.split(" ")) //["The", "house", "is", "cute"]
+    let textArray = ["The", "house", "is", "cute"]
+    console.log(textArray.join(" ")) //The house is cute
+    ```
 * `.push()` = adiciona um item no **final** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
 * `.unshift()` = adiciona um item no **começo** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
 * `.pop()` = remove o **último** item do *Array*, se colocar mais de um ele vai removendo sempre o último
@@ -437,7 +443,7 @@ Alteram um tipo de dado para outro dado.
         // em Unicode, números vêem antes de letras maiúsculas,
         // as quais vêem antes das minúsculas.
     ```
-* `.reduce()` = maior valor e menor valor de um *Array* (eu acho)
+* `.reduce()` = maior valor e menor valor de um *Array* (eu acho, não entendi muito bem)
     ```js
     //maior valor
     const maxValue = values.reduce(function(prev, current) { 
@@ -448,12 +454,6 @@ Alteram um tipo de dado para outro dado.
 	    return prev < current ? prev : current; 
         });
     ```
-```js
-let text = "The house is cute"
-console.log(text.split(" ")) //["The", "house", "is", "cute"]
-let textArray = ["The", "house", "is", "cute"]
-console.log(textArray.join(" ")) //The house is cute
-```
 ### Number <=> String
 De ***String*** para ***Number***:
 *   ```js
@@ -480,7 +480,7 @@ console.log(number.toFixed(4).replace(".", ",")) //854,8456
     //vai aparecer no formato de String, se transformar em Number dá erro por causa da vírgula
 ```
 ### Maiúsculas <=> minúsculas
-* `.toUpperCase` = tuda maiúsculo
+* `.toUpperCase` = tudo maiúsculo
     ```js
     let phrase = "Frase aleatória com sentido pik4"
     console.log(phrase.toUpperCase()) //FRASE ALEATÓRIA COM SENTIDO PIK4
@@ -532,7 +532,7 @@ console.log(text.includes("hungry"))
         //A posição do volante é: 1
     ```
 ## Expressões e Operadores
-Qualquer linha de código que resolve algo
+Qualquer linha de código que resolve algo.
 ### Expressões
 Pode colocar ';' (ponto e vírgula) depois de qualquer expressão, afinal não muda nada.
 * único caso que é obrigatório: quando tem uma função auto-executável depois da expressão
@@ -568,7 +568,7 @@ Pode colocar ';' (ponto e vírgula) depois de qualquer expressão, afinal não m
         //nada
     ```    
 #### Grouping operator ( )
-Operador que agrupa expressões, parêntes. Pode ser usado em String.
+Operador que agrupa expressões, parênteses. Pode ser usado em String.
 Uso os parênteses para indicar qual operação eu quero que faça primeiro:
 ```js
 //normal
@@ -589,19 +589,38 @@ console.log(calc)
 * `nº - nº` = subtração
 * `nº % nº` = resto da divisão
 * `nº ** nº` = exponencial, isso elevado a isso
-* `nº++` = incremento, o número soma +1 **(unary)**
-* `nº--` = decremento, o número subtrai -1 **(unary)**
-```js
-let thing = 6
-console.log(thing++) //6, ele só vai somar depois dessa linha
-console.log(thing)   //7
-    //ou
-console.log(++thing) //7
-console.log(thing--) //7, ele só vai subtrair depois dessa linha
-console.log(thing)   //6
-    //ou
-console.log(--thing) //6
-```
+* `nº++` ou `++nº` = incremento, o número soma +1 **(unary)**
+* `nº--` ou `--nº` = decremento, o número subtrai -1 **(unary)**
+    * Postfix increment:
+    ```js
+    let x = 3;
+    const y = x++;
+    // x is 4; y is 3
+    let x2 = 3n;
+    const y2 = x2++;
+    // x2 is 4n; y2 is 3n
+    ```
+    * Prefix increment:
+    ```js
+    let x = 3;
+    const y = ++x;
+    // x is 4; y is 4
+    let x2 = 3n;
+    const y2 = ++x2;
+    // x2 is 4n; y2 is 4n
+    ```
+    * Diferença entre o *postfix* e o *prefix* increment:
+    ```js
+    let thing = 6
+    console.log(thing++) //6, ele só vai somar depois dessa linha
+    console.log(thing)   //7
+        //ou
+    console.log(++thing) //7, já soma nessa linha
+    console.log(thing--) //7, ele só vai subtrair depois dessa linha
+    console.log(thing)   //6
+        //ou
+    console.log(--thing) //6, já subtrai nessa linha
+    ```
 #### Operadores de Comparação (binary)
 Vai comparar valores e retornar a resposta como Boolean.
 * `__ == __` = \___ é igual a \___?
@@ -623,7 +642,7 @@ console.log(twelve != "12")   //false
 console.log(six === "6")      //false; valor igual, mas tipo diferente (six = variável que recebe Number | "6" = String)
 console.log(six === 6)        //true; valor igual, a variável recebe Number, então é igual
 console.log(twelve !== "12")  //true
-console.log(twelve !== "12")  //false
+console.log(twelve !== 12)    //false
 console.log(six < twelve)     //true
 console.log(six > twelve)     //false
 console.log(six >= 6)         //true
@@ -721,7 +740,7 @@ console.log(sun + 666) //transforma os Number em String e junta tudo
 #### Falsy and Truthy
 `false = 0`
 `true = 1`
-* FALSY = quando um valor é considerado ***false***em contextos onde o *Boolean* é obrigatório (consdicionais e loops)
+* FALSY = quando um valor é considerado ***false***em contextos onde o *Boolean* é obrigatório (condicionais e loops)
     ```js
     console.log(true ? 'verdadeiro' : 'falso')  //verdadeiro
     console.log(false ? 'verdadeiro' : 'falso') //falso
@@ -869,7 +888,7 @@ while(a < 6) {              //vai mostrar de 0 à 6
     a++;
 }
 let b = 56261648485691661   //não tem como eu saber quando que 
-while(a > 6) {              //iso vai parar, por isso uso 'while'
+while(a > 6) {              //isso vai parar, por isso uso 'while'
     console.log(a)
     b /= 66;
 }
