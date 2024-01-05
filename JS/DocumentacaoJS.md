@@ -920,3 +920,108 @@ for(let property in character) {       //vai mostrar as propriedades do objeto
     //no final fica: name, Rainbow Dash, power, Agilidade, type, Pony (um em cada linha)
 }
 ```
+## DOM = Document Object Model
+* HTML conevertido para um Objeto JavaScript, 
+* API que representa e interage com o HTML
+    * API seria tipo, tocar uma campainha ao chegar na casa de alguém, é a campainha que avisa ao morador que a visita chegou, o API é esse obejeto (campainha) que está entre o "sistema de interação" morador-visita
+* Estrutura de dados do tipo árvore, criada pelo browser (cada seta é chamada de nó, de onde saem as ramificações, ou filhos)
+    * Exemplo:
+    * árvore
+    ```
+                    title
+                        ^
+    document > html > head > meta
+                v       v
+            body    meta
+                v          
+            title    
+                
+    ```
+    ```html
+    <!DOCTYPE html>
+    <html lang="pt-br">                       <!--parte em html-->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1 class="first" id="lalalapipoca">Title</h1>
+        <p class="first" id="pipocalalala">Coisas escritas ;-;</p>
+        <input type="text">
+    </body>
+    </html>
+    <script>                                 //parte em JavaScript 1
+        document.body
+    </script>
+    <script src="caminhoDoDocEmJS"></script> <!--parte em JavaScript 2-->
+    ```
+* O JavaScript usa o DOM justamente para se conectar e poder interagir com o HTML
+    * Tornando possível a manipulação do HTML por meio do JavaScript
+* Só é possível programar para a Web porque existe o DOM
+* DOM também tem suas prórias propriedades e métodos 
+### Selecionar elementos
+* `document.getElementById('nomeDaId')` = serve para selecionar um elemento do HTML e manipular ele em um documento JS, pode colocar ele em uma `const` para não precisar colocar tudo o tempo todo
+    * Retorna o próprio **element**
+* `document.getElementByClassName('nomeDaClass')` = mesma coisa do `id`, só que a `class` pega mais elementos e o `id` só um
+    * Retorna em formato de **HTMLCollection**
+* `document.getElementByTagName('nomeDaTag')` = mesma coisa do `id`, só que a `tag` os elementos pelo comando
+    * Retorna em formato de **HTMLCollection**
+* `document.querySelector('nomeSelector')` = pega pelo Selector, igual CSS (com # e .), mas só vai pegar o primeiro que ele achar
+    * Retorna o próprio **element**, dizem que este tem um MINÚSCULO atraso em relação ao `.getElementById`, é bom pensar nisso quando for fazer um programa
+* `document.querySelectorAll('nomeSelector')` = pega pelo Selector, igual CSS (com # e .), esse pega todos os trecos 
+    * Dá para usar o `.forEach()` só nesse, porque só ele retorna em formato de **Nodelist**
+```js
+const elementA = document.getElementById('lalalapipoca')
+const elementB = document.getElementByClassName('first')
+const elementC = document.getElementByTagName('meta')
+const elementD = document.querySelector('.first')
+const elementE = document.querySelector('meta')
+const elementF = document.querySelector('[src]')
+const elementG = document.querySelectorAll('script')
+console.log(elementA) //vai mostrar só o 'h1'
+console.log(elementB) //vai mostrar o 'h1' e o 'p', parecendo um 'Array', mas é um 'HTMLCollection'
+console.log(elementC) //vai mostrar os 2 'meta' que existem no 'head'
+console.log(elementD) //vai mostrar o mesmo do 'ElementB'
+console.log(elementE) //vai mostrar só um 'meta', porque o 'querySelector' pega o primeiro que ele achar
+console.log(elementF) //vai mostrar negócio da linha 956 (parte em JavaScript 2)
+console.log(elementG) //vai mostrar os 2 'script' que tem
+```
+### Manipulações
+* `.textContent = "algo"` = possibilita alterar o que esteja escrito em algum local
+```js
+//elementA = h1 -> Title
+elementA.textContent = "I'm not a title"
+console.log(elementA.textContent) //I'm not a title
+```
+* `.textContent += "algo"` = possibilita adicionar algo em algum lugar
+```js
+const elementH = document.getElementById('pipocalalala') //p, Coisas escritas ;-;
+elementH.textContent = "... ou não O_O"
+console.log(elementH.textContent) //Coisas escritas ;-;... ou não O_O
+```
+* `.innerText = "algo"` = vai trocar o texto interno de algo (não sei a diferença dele para o `.textContent = "algo"`)
+* `.innerHTML = "algo"` = vai trocar o texto interno e o HTML interno
+```js
+//elementH = p -> Coisas escritas ;-;
+elementH.innerHTML = "... será? <small>heheheheh</small>" 
+console.log(elementH.innerHTML) // o que está entre o '<small>' vai ter a fonte menor
+```
+* `.value = "algo"` = altera o valor de algum `input`
+    * Caso o `input`, além do `type`, tenha um `value="algo"`, o `.value` vai mostrar o que tem
+    * Se quiser alterar o `value` precisa colocar o `= "algo"`
+* `.setAttribute('algo')` = usado para adicionar atributos a algo
+```js
+const header = document.querySelector('header')
+header.setAttribute('id', 'coiso') //colocando o 'id' com o nome de "coiso" no 'header'
+const headerID = document.querySelector('#coiso') //criando 'const' para poder verificar se o 'id' foi adicionado
+console.log(headerID) 
+    //<header id="coiso">_</header> ('id' adicionado com sucesso)
+    //ou seja, o 'header', originalmente, não tinha 'id', porém agora ele tem
+```
+* `.getAttribute('algo')` = usado para selecionar os atributos de algo
+```js
+//elementH = p -> Coisas escritas ;-;
+console.log(elementH.getAttribute('class')) //first
+```
+* `.removeAttribute('algo')` = usado para remover os atributos de algo
