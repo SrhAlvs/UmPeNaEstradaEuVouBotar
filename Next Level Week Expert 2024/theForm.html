@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel=”stylesheet” href="theForm.css">
+    <script src="theForm.js"></script>
 </head>
 <body>
-
-    <h1>Teste seus conhecimentos!</h1>
-    <h2>Será que você sabe tanto quanto você pensa?</h2>
-    <div id="quiz"></div>
-    <template>
-        <div>
-            <h3>Question 01</h3>
-            <dl>
-                <dt>
-                    <input value="0" type="radio" name="item">
-                    <span>Alternativa A</span>
-                </dt>
-            </dl>
+    <main>
+        <h1>Teste seus conhecimentos!</h1>
+        <h2>Será que você sabe tanto quanto você pensa?</h2>
+        <div id="quiz"></div>
+        <template>
+            <div>
+                <h3>Question 01</h3>
+                <dl>
+                    <dt>
+                        <input value="0" type="radio" name="item">
+                        <span>Alternativa A</span>
+                    </dt>
+                </dl>
+            </div>
+        </template>
+        <div id="hits">
+            <strong>Total de Acertos</strong>
+            <span>0 de 10</span>
         </div>
-    </template>
-    <script src="./theForm.js"></script>
+    </main>
 </body>
 </html>

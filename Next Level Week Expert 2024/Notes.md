@@ -4,7 +4,8 @@
 **Lógica de programação** é a maneira de pensar.
 **Sintaxe** é a maneira correta de escrever.
 ## Plataforms and Tools
-* **DevTools** - F12
+* **DevTools** - F12 
+    * Ao clicar em **Elements** e depois no canto superior esquerdo, numa seta com quadrado, dá para ver a configuração de cada elemento e qual a linha de código responsável pela configuração do elemento.
 * [FrontEditor](fronteditor.dev) - plataforma para escrever MD, HTML, CSS e JS.
 * [CODE Pen](codepen.io)
 ## Meanings
@@ -37,6 +38,7 @@
 <a href="link" target="_blank">palavrinha em azul</a>
 ```
 # CSS
+Cascading Style Sheet = Folha de estilo em cascata
 ## Some Codes
 ## Tests
 # JS
