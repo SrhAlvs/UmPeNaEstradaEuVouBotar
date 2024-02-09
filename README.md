@@ -18,9 +18,3 @@ Appreciate my work and give me stars ^-^ </p>
 ![.](./Readme/logo_github.png) <a href="https://github.com/SrhAlvs" title="GitHub">Srh Alvs</a>
 
 ![.](./Readme/logo_instagram.png) <a href="https://www.instagram.com/srh_asn/" title="Instagram">@srh_asn</a>
-
-#
-#
-#
-#
-<a href="https://www.flaticon.com/br/" title="Icons">--- icons by Freepik - Flaticon ---</a>
