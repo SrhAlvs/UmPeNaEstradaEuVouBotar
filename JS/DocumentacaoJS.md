@@ -921,7 +921,7 @@ for(let property in character) {       //vai mostrar as propriedades do objeto
 }
 ```
 ## DOM = Document Object Model
-* HTML conevertido para um Objeto JavaScript, 
+* HTML convertido para um Objeto JavaScript, 
 * API que representa e interage com o HTML
     * API seria tipo, tocar uma campainha ao chegar na casa de alguém, é a campainha que avisa ao morador que a visita chegou, o API é esse obejeto (campainha) que está entre o "sistema de interação" morador-visita
 * Estrutura de dados do tipo árvore, criada pelo browser (cada seta é chamada de nó, de onde saem as ramificações, ou filhos)
@@ -940,25 +940,25 @@ for(let property in character) {       //vai mostrar as propriedades do objeto
     ```html
     <!DOCTYPE html>
     <html lang="pt-br">                       <!--parte em html-->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Title</title>
-    </head>
-    <body>
-        <h1 class="first" id="lalalapipoca">Title</h1>
-        <p class="first" id="pipocalalala">Coisas escritas ;-;</p>
-        <input type="text">
-    </body>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Title</title>
+        </head>
+        <body>
+            <h1 class="first" id="lalalapipoca">Title</h1>
+            <p class="first" id="pipocalalala">Coisas escritas ;-;</p>
+            <input type="text">
+            <script>                                 //parte em JavaScript 1
+                document.body
+            </script>
+            <script src="caminhoDoDocEmJS"></script> <!--parte em JavaScript 2 (tem que estar no final do documento, antes de fechar o body-->
+        </body>
     </html>
-    <script>                                 //parte em JavaScript 1
-        document.body
-    </script>
-    <script src="caminhoDoDocEmJS"></script> <!--parte em JavaScript 2-->
     ```
-* O JavaScript usa o DOM justamente para se conectar e poder interagir com o HTML
+* O JavaScript usa a DOM justamente para se conectar e poder interagir com o HTML
     * Tornando possível a manipulação do HTML por meio do JavaScript
-* Só é possível programar para a Web porque existe o DOM
+* Só é possível programar para a Web porque existe a DOM
 * DOM também tem suas prórias propriedades e métodos 
 ### Selecionar elementos
 * `document.getElementById('nomeDaId')` = serve para selecionar um elemento do HTML e manipular ele em um documento JS, pode colocar ele em uma `const` para não precisar colocar tudo o tempo todo
@@ -997,7 +997,7 @@ console.log(elementA.textContent) //I'm not a title
 * `.textContent += "algo"` = possibilita adicionar algo em algum lugar
 ```js
 const elementH = document.getElementById('pipocalalala') //p, Coisas escritas ;-;
-elementH.textContent = "... ou não O_O"
+elementH.textContent += "... ou não O_O"
 console.log(elementH.textContent) //Coisas escritas ;-;... ou não O_O
 ```
 * `.innerText = "algo"` = vai trocar o texto interno de algo (não sei a diferença dele para o `.textContent = "algo"`)
@@ -1025,3 +1025,19 @@ console.log(headerID)
 console.log(elementH.getAttribute('class')) //first
 ```
 * `.removeAttribute('algo')` = usado para remover os atributos de algo
+### Change styles
+* `.style` = permite adicionar CSS no elemento selecionado
+```html
+<body style="background-color: gray"> <!--assim no HTML-->
+    <h1>Something</h1>
+</body>
+```
+```css
+body {
+    background-color: gray; /*assim no CSS*/
+}
+```
+```js
+const elementI = document.querySelector('body')
+element.style.backgroundColor = "gray"
+```
