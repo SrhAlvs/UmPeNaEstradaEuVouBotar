@@ -1028,8 +1028,19 @@ console.log(elementH.getAttribute('class')) //first
 ### Change styles
 * `.style` = permite adicionar CSS no elemento selecionado
 ```html
+<head>
+    <style>
+        body {
+            background-color: gray; /*assim para CSS no HTML*/
+        }
+        .blue {
+            background-color: darkblue;
+        }
+    </style>
+</head>
 <body style="background-color: gray"> <!--assim no HTML-->
     <h1>Something</h1>
+    <p>Idk</p>
 </body>
 ```
 ```css
@@ -1039,5 +1050,70 @@ body {
 ```
 ```js
 const elementI = document.querySelector('body')
-element.style.backgroundColor = "gray"
+elementI.style.backgroundColor = "gray" //assim no JS
+```
+* `.classList` = mostra todas as `class` que determinado elemento possui (retorna em formato de **DONTokenList**)
+    * `add('nomeClass')` = adiciona uma `class` ao elemento, para adicionar mais de uma classe é só separar entre vígulas
+    * `remove('nomeClass')` = remove a `class` selecionada do elemento
+    * `.toggle('nomeClass')` = se existir uma `class` com esse nome, ele tira, se não existir, ele adiciona
+    ```js
+    elementI.classList.add('blue') //vai adicionar a 'class' no 'body'
+    elementI.classList.remove('blue') //vai remover a 'class' do 'body'
+    elementI.classList.toggle('blue') //como a última coisa que fez foi remover, agora ele vai adicionar
+    ```
+### Browse by Parents
+* `.parentNode` = vai mostrar o **nó pai** do elemento
+* `.parentElement` = vai mosrtrar o **elemento pai** do elemento
+```js
+console.log(elementI.parentNode) //<html lang="en">
+console.log(elementI.parentElement) //<html lang="en">
+```
+### Browse by Childs
+* `.childNodes` = vai mostrar todos os **nós filhos** do elemento, formato de **NodeList**
+* `.children` = vai mostrar todos os **nós filhos** do elemento, formato de **HTMLCollection**
+* `.firstChild` = vai mostrar o primeiro **nó filho** inteiro do elemento
+* `.firstElementChild` = vai mostrar o primeiro **elemento filho** inteiro do elemento
+* `.lastChild` = vai mostrar o último **nó filho** inteiro do elemento
+* `.lastElementChild` = vai mostrar o último **elemento filho** inteiro do elemento
+```js
+console.log(elementI.childNodes) 
+    //NodeList(4) [text, h1, text, p]
+    //esse 'text' é o Enter que tem do 'body' para o 'h1'
+console.log(elementI.children)
+    //HTMLCollection(2) [h1, p]
+    //dessa forma os 'text' (que aparecem por causa do Enter, espaços vazios) são ignorados
+console.log(elementI.firstChild)
+    //#text
+    //por conta do Enter, vai mostrar 'text', se não tivesse o Enter ia mostrar:
+    //<h1>Something</h1>
+console.log(elementI.firstElementChild)
+    //<h1>Something</h1>
+    //dessa forma os 'text' (que aparecem por causa do Enter, espaços vazios) são ignorados
+console.log(elementI.lastChild)
+    //<p>Idk</p>
+    // ignora os 'text'
+console.log(elementI.lastElementChild)
+    //<p>Idk</p>
+    // ignora os 'text'
+```
+### Browse by Brothers
+* `.nextSibling` = vai mostrar o próximo **nó irmão** do elemento
+* `.nextElementSibling` = vai mostrar o próximo **elemento irmão** inteiro do elemento
+* `.previousSibling` = vai mostrar o **nó irmão** anterior do elemento
+* `.previousElementSibling` = vai mostrar o **elemento irmão** anterior do elemento
+```js
+const elementJ = document.querySelector('h1')
+console.log(elementJ.nextSibling)
+    //#text
+    //por conta do Enter, vai mostrar 'text'
+console.log(elementJ.nextElementSibling)
+    //<p>Idk</p>
+    // ignora os 'text'
+const elementK = document.querySelector('p')
+console.log(elementK.previousSibling)
+    //#text
+    //por conta do Enter, vai mostrar 'text'
+console.log(elementK.previousElementSibling)
+    //<h1>Something</h1>>
+    // ignora os 'text'
 ```
