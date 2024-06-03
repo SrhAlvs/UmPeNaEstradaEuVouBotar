@@ -12,9 +12,23 @@
     * `git push origin main` = informa qual a branch que deve ser enviada
     * `git push -u origin <nome_branch>` = para criar a branch no repositório remoto, onde vão ser mandados os commits
 ## Start A New Repository
-* `git ` = 
-* `git ` = 
-* `git ` = 
+### Step 1
+* Crie uma pasta e abra com o Git Bash
+* `git init` = começa tudo, "que haja luz"
+* `git config` = configura o repositório, nada obrigatório, mas é bom fazer
+    * `git config --global --add safe.directory caminho_da_pasta` = adicionará a pasta em questão como um diretório seguro no seu arquivo de configuração global do Git, permitindo que você continue a usar esse repositório sem problemas de propriedade
+    * `git config --global user.email "youremail@example.com"` = configura o email do Git, recomendado que seja o mesmo do GitHub
+    * `git config --global user.name "Your Name"` = configura o nome do Git, recomendado que seja o mesmo do GitHub
+### Step 2
+* Abra o Github já logado na sua conta e clique em "Create a New Repository"
+* Escolha um nome para o repositório, de preferência o mesmo nome da pasta
+    * Marcar a opção de criar um arquivo README não é obrigatório
+* Selecione o botão para confirmar a criação
+### Step 3
+No terminal:
+* `git remote add origin git@github.com:endereco_do_repositorio` = vai "linkar" o repositório local com o remoto
+* Continue seguindo os outros passos (comandos) dados pelo próprio Github (configurar a parte de pull)
+### The End
 * `git ` = 
 ## More Commands
 * `gedit | nano` = cria ou edita um arquivo
@@ -29,3 +43,4 @@
     * `git branch -d <nome_branch>` = exclui uma branch
 * `git blame` = mostra as alterações feitas em um arquivo, por linha, mostrando o autor, a data e o código do commit
 * `gitignore` = arquivos que o GH vai ignorar e eles não vão para o repositòrio remoto
+* `git log` = mostra os últimos commits no repositório
