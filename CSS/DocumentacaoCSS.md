@@ -4,6 +4,21 @@
 * Não é linguagem de programação, é uma linguagem style sheet.
 * Para olhar o CSS por trás de um site bonito: F12 aí vai em “Styles”.
 * **`/*comentário*/`** = comentários não afetam o código
+* Quando tem 2 ou mais declarações para um mesmo "objeto", a última que vai ser mais relevante:
+    ```css
+    body {
+        background: red;
+    }
+    body {
+        background: orange;
+    }
+    /* Ou */
+    body {
+        background: red;
+        background: orange;
+    }
+    /* Nos dois exemplos, o `background` vai ficar laranja, não vermelho. */
+    ```
 ## Anatomia CSS
 **Lembrete:** `<div id= “random_name” class=”random_name_2”>`comandos aqui`</div>`
 * `selector { property: value; }` = no selector coloca algum comando do HTML, aí o que colocar em property e value vai mudar em todos os comandos do HTML, declaration é tudo que está entre {}
@@ -106,6 +121,7 @@ Se tiver `<color>` ou `<lenght>` são *values* ou *data types*.
 * calc() = para operações, cálculos
 ## Box Condensed | Uma caixa dentro da outra
 Box Model = caixa retangular com propriedades 2D, cada elemento da pagina é considerado uma caixa.
+Ordem: margin > border > padding > element content
 * `width/height` = tamanho: largura/altura
     * a largura ou a altura escolhidas vão afetar o content, mas não o padding
 * `content` = conteúdo

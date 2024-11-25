@@ -37,11 +37,11 @@
 * **`<input type=`text`>`** = *não sei*
 ### Atributos Globais Mais Utilizados
 * [Documentação MDN, atributos globais](https://developer.mozilla.org/pt-BR/)
-* **`class`nome-classe** = cria uma classe, para criar estilo css, ou para acessar no js
+* **`class`nome-classe** = grupo, cria uma classe, para criar estilo css, ou para acessar no js. Não pode começar com números ou caracteres especiais (só _)
+* **`id`** = individual, tipo subtópicos do class, se colocar `<li><a href=”#`__`”>`Título`</a></li>` no começo e depois um título com `<h1 id=”`___`”>`Título`</h1>` e nos __ colocar a mesma “etiqueta”, ele vira um “sumário interativo”
 * **`contenteditable`** = *não sei*
 * **`data-`qualquer-nome-aqui** = *não sei*
 * **`hidden`** = esconde uma tag
-* **`id`** = tipo subtópicos do class, se colocar `<li><a href=”#`__`”>`Título`</a></li>` no começo e depois um título com `<h1 id=”`___`”>Título</h1>` e nos __ colocar a mesma “etiqueta”, ele vira um “sumário interativo”
 * **`style`** = dá para estilizar o texto
 * **`tabindex=`número** = se apertar tab, ele segue na ordem dita pelo código
 * **`title=`alguma coisa** = textinho que aparece quando deixa o cursor do mouse parado em cima de algo
