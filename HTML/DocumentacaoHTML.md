@@ -54,10 +54,10 @@
 * `&apos;` = coloca ‘ no texto, se colocar o caractere direto pode bugar o código
 ### Anatomia de um HTML
 * **`<!DOCTYPE html>`** = é necessário para que um navegador entenda que você está trabalhando com HTML
-* **`<html`lang=”en”`>`head e body`</html>`** = o lang=”en” configura a linguagem para inglês, pt para português
+* **`<html`lang="en"`>`head e body`</html>`** = o lang="en" configura a linguagem para inglês, "pt" para português
 * **`<head>`___`</head>`** = *cabeça*, contém configurações importantes para o site, mas que o usuário não vê 
-    * **`<meta `charset=”utf-8”`>`** = comando que vai possibilitar que o site receba vários tipos de caracteres especiais, podem ter outros charset's
-    * **`<meta name=”viewport” content=”width=device-width,initial-scale=1.0”>`** = possibilita que o site seja visto tanto em celulares, quanto em computadores, etc.
+    * **`<meta `charset="UTF-8"`>`** = comando que vai possibilitar que o site receba vários tipos de caracteres especiais, podem ter outros charset's
+    * **`<meta name=”viewport” content=”width=device-width, initial-scale=1.0”>`** = possibilita que o site seja visto tanto em celulares, quanto em computadores, etc.
     * **`<meta name=”author” content=”`nome`”>`** = colocar o author da página no código
     * **`<title>`Título`</title>`** = comando que dá o nome para a guia do Chrome, por exemplo
     * **`<link rel=”icon” href=”`link ou caminho da imagem`”/>`** = comando que possibilita colocar um favicon básico, aquela imagem pequena na guia do Chrome junto com o título
