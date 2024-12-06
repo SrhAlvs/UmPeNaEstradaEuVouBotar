@@ -1,4 +1,6 @@
 programa {
+ //Portugol Studio
+ //Portugol Webstudio: https://portugol.dev/
   funcao inicio() {
     logico r1 = verdadeiro
     logico r2 = verdadeiro
