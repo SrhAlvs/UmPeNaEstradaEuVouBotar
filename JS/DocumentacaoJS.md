@@ -1,8 +1,76 @@
 # Trilha Fundamentar | Guia Estelar de JavaScript
 * Linguagem de programação que adiciona interatividade à um site.
 * Linguagem de programação que roda no navegador do usuário (front-end), mas roda também no computador (back-end).
-* ECMAScript: órgão que padroniza o JavaScript
+* ECMAScript: órgão que padroniza o JavaScript.
 * **`//comentário em linha | /*comentário em bloco*/`** = comentários não afetam o código
+## Anotações
+* JS é uma **linguagem interpretada**, ou seja, o código é executado sequencialmente, de cima para baixo. E os resultados da execução são imediatamente produzidos.
+    *  Isso elimina a necessidade de converter o código em uma forma diferente antes que o navegador o execute.  Por outro lado, as **linguagens compiladas** passam por um processo de transformação (compilação) em uma forma diferente antes de serem executadas pelo computador. Por exemplo, linguagens como C/C++ são compiladas em linguagem Assembly e, em seguida, executadas pelo computador.
+* **JIT (Compilação Just-In-Time):** técnica que compila o código-fonte JavaScript em um formato binário mais rápido enquanto o script está em uso, o que permite uma execução mais rápida. 
+    * Em vez de interpretar o código fonte linha por linha a cada vez que é executado, o JIT compila partes do código em tempo de execução em código de máquina nativo, que é executado diretamente pelo processador.
+    * A ideia por trás da **compilação JIT** é identificar trechos de código que são executados com frequência (conhecidos como **hot spots**) e compilá-los em código de máquina otimizado para a arquitetura do processador. 
+    * Isso melhora significativamente o desempenho, pois o código compilado pode ser executado mais rapidamente do que o código interpretado. Cabe ressaltar que, no entanto, o JavaScript ainda é considerado uma linguagem interpretada, pois *a compilação é realizada em tempo de execução, e não antes*.
+* **Linguagem de tipagem dinâmica:** significa que as variáveis não precisam ter um tipo definido previamente; o tipo pode mudar dinamicamente conforme o valor que é atribuído a elas. Possibilita maior flexibilidade.
+* **Funções são consideradas objetos de primeira classe:** significa que elas podem ser tratadas da mesma forma que outros tipos de dados, como números e strings. 
+    * Essa característica permite que as funções sejam passadas como argumentos para outras funções, retornadas por outras funções e até mesmo atribuídas a variáveis. 
+    * Essa flexibilidade facilita a implementação de padrões de projeto como **callbacks**. Em JavaScript, callback é uma função que é passada como argumento para outra função e é executada após a conclusão de uma determinada operação ou evento assíncrono. Essencialmente, um callback é uma forma de "chamar de volta" uma função após a conclusão de uma tarefa específica.
+### Integração do JavaScript com o HTML
+#### Usando atributos de eventos de elementos HTML
+Mais conhecido por **JavaScript Inline**, é quando o código JS é adicionado diretamente aos atributos de elementos HTML.
+**OBS.:** Esta não é a prática recomendada para scripts mais extensos ou para uma melhor manutenção do código, mas é útil para pequenas interações.
+```html
+<button onclick="alert('Bem-vindo ao nosso site!');">Clique aqui</button>
+<!--quando o usuário clicar no botão, vai aparecer essa mensagem-->
+```
+#### Incorporando o JS diretamente no HTML
+Também chamado de **JavaScript Interno**, é quando o código JS é escrito diretamente dentro de um documento HTML usnado a tag `<script>`. Útil para testes rápidos.
+Normalmente, os blocos de script são colocados na seção <head> ou antes do fechamento da tag <body> do documento (para garantir que eles não afetem o carregamento da página).
+```html
+<head>
+</head>
+<body>
+    <button onclick="saudacao();">Clique Aqui</button>
+    <script>
+        function saudacao() {
+            alert("Bem-vindo ao nosso site!");
+        }
+    </script>
+</body>
+```
+#### Usando um arquivo JavaScript externo
+O modo mais fácil de fazer manutenção e reutilização, quando o código JavaScript fica em um arquivo .js separado do arquivo HTML. Para referenciar o arquivo .js é só colocar a tag `script` com o caminho do arquivo.
+**OBS.:** Recomenda-se usar o JavaScript externo para projetos maiores devido à organização e reutilização do código, além de evitar misturar muito código de script diretamente com o HTML.
+```html
+<script src="arquivo.js"></script>
+```
+### Estratégias para carregamento eficiente de códigos JavaScript
+Para não correr o risco de um arquivo .js que manipula o DOM ser carregado e executado antes dos elementos HTML estejam disponíveis no próprio DOM e ocasionar em erros.
+* `defer` = o navegador irá continuar a processar o HTML, carregando o script em paralelo, mas só o executará após todo o documento ter sido carregado.
+    * Solução eficaz para scripts que não dependem de outros scripts e que necessitam acessar o DOM.
+    ```html
+    <script src="arquivo.js" defer></script>
+    ```
+* `async` = parecido com o `defer`, mas ele será executado assim que estiver disponível, o que pode ser antes ou depois que o HTML estiver completamente carregado.
+    * Ideal para scripts que não interagem com o DOM ou que não dependem da ordem completa de carregamento da página.
+    ```html
+    <script src="arquivo.js" async></script>
+    ```
+* Carregar o script no fim do corpo do documento HTML
+    ```html
+    <body>
+        <!-- Conteúdo da página -->
+        <script src="arquivo.js"></script>
+    </body>
+    ```
+* **OBS.:** Quando você usa scripts externos, pode usar os atributos async ou defer para controlar como e quando o JavaScript é carregado, melhorando ainda mais o desempenho da página.
+* Event listener para DOMContentLoaded
+"Uma técnica avançada envolve adicionar um ouvinte de evento (`event listener`) no JavaScript para detectar quando o DOM está totalmente carregado, o que é útil para scripts internos. Um `event listener` é usado para monitorar eventos específicos no navegador. Neste caso, o evento em questão é o `DOMContentLoaded`, que é disparado pelo navegador assim que o conteúdo do DOM (Document Object Model) está completamente carregado, indicando que todos os elementos do HTML estão prontos para serem manipulados."
+"O JavaScript contido dentro do bloco de código associado a este ouvinte de eventos não será executado até que o evento `DOMContentLoaded` seja efetivamente disparado. Isso assegura que qualquer manipulação do DOM realizada pelo JavaScript só ocorra quando for seguro fazê-lo, evitando erros de tentativas de acesso a elementos que ainda não foram completamente carregados na página."
+```js
+document.addEventListener('DOMContentLoaded', function () {
+    //código que manipula o DOM aqui
+});
+```
 ## Anatomia JS
 * Sintaxe: a maneira correta de escrever uma certa linguagem. 
     ```js
