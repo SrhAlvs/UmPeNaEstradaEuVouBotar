@@ -1,4 +1,5 @@
-# Trilha Fundamentar | Guia Estelar de JavaScript
+# RocketSeat | Trilha Fundamentar | Guia Estelar de JavaScript
+# IFRS | JavaScript: Fundamentos para Desenvolvimento Web Interativo
 * Linguagem de programação que adiciona interatividade à um site.
 * Linguagem de programação que roda no navegador do usuário (front-end), mas roda também no computador (back-end).
 * ECMAScript: órgão que padroniza o JavaScript.
