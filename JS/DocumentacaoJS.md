@@ -102,13 +102,54 @@ Para não correr o risco de um arquivo .js que manipula o DOM ser carregado e ex
     * `// algo` = comentário em linha, igual C++
     * `/* algo 2.0*/` = comentário em bloco, igual no CSS
 
+### Hoisting
+O **hoisting** (elevação) é uma característica do JavaScript que possibilita usar as variáveis antes de serem declaradas, isso sem causar erros. O que acontece é que quando o script é carregado, o JS "move" as declarações de variável para o topo do escopo. Porém ele eleva somente as declarações, e as inicializações (valor inicial) permanecem no mesmo lugar. Por isso que antes quando uma variável é usada antes da sua inicializações ela recebe o valor `undefined`.
+```js
+console.log(x); //undefined
+var x = 10;
+console.log(x); //10
+```
+
+### Concatenação
+No JavaScript é possível "juntar" tipos diferentes de dados em uma única expressão, como strings, números e até objetos. Quando você concatena tipos diferentes, o JavaScript automaticamente converte esses valores para um tipo comum, a fim de realizar a operação de concatenação. Algumas formas de concatenar valores são:
+* **Operador `+` (soma):** amplamente utilizado para concatenar strings
+```js
+let saudacao = "Olá";
+let nome = "Maria";
+let mensagem = saudacao + ", " + nome + "!";
+console.log(mensagem); // Saída: "Olá, Maria!"
+```
+* **Template literals:** oferecem uma sintaxe mais legível e poderosa para concatenar strings, permitindo interpolação de variáveis e expressões dentro de strings
+```js
+let saudacao = "Olá";
+let nome = "Maria";
+let mensagem = `${saudacao}, ${nome}!`;
+console.log(mensagem); // Saída: "Olá, Maria!"
+```
+* **Método `concat()`:** usado para unir dois ou mais arrays, criando um novo array contendo os elementos dos arrays originais
+```js
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+let array3 = array1.concat(array2);
+console.log(array3); // Saída: [1, 2, 3, 4, 5, 6]
+console.log(array1); // Saída: [1, 2, 3] (array original não foi modificado)
+console.log(array2); // Saída: [4, 5, 6] (array original não foi modificado)
+```
+* **Spread Operator `...`:** permite expandir iteráveis, como arrays, em lugares onde múltiplos argumentos ou elementos são esperados. No contexto de concatenação, o Spread Operator pode ser utilizado para combinar facilmente os elementos de múltiplos arrays em um novo array. A sintaxe do Spread Operator é simples: basta usar o operador `...` seguido do nome do array que você deseja expandir
+```js
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+let newArray = [...array1, ...array2];
+console.log(newArray); // Saída: [1, 2, 3, 4, 5, 6]
+```
+
 ## Tipos de dados
 
 ### Primitive/Primitive value
 * `String` = cadeia de caracteres, para escrever textos em JS
-    * `"texto"` = aspas duplas, se no texto tiver aspas simples usa elas para não dar problema
-    * `'texto'` = aspas simples, se no texto tiver aspas duplas usa elas para não dar problema
-    * ``` `texto` ``` = template literals ou template strings, pode usar aspas simples e duplas, permite multilinhas e a inserção de valores e expressões
+    * `"texto"` = aspas duplas, se no texto tiver aspas simples usa elas para não dar problema, para cadeia de caracteres
+    * `'texto'` = aspas simples, se no texto tiver aspas duplas usa elas para não dar problema, para cadeia de caracteres
+    * ``` `texto` ``` = template literals ou template strings, pode usar aspas simples e duplas, permite multilinhas e a inserção de valores, caracteres especiais e expressões
 * `Number` = números
     * `666` = inteiro, positivos e negativos
     * `6.66` = reais (float no inglês), positivos e negativos
@@ -149,7 +190,7 @@ Vetores, uma lista, agrupamento de dados.
     const backpackThings = [
         'clothes', //0
         'shoes', //1
-        'sunscreen' //2
+        'sunscreen', //2
         { //3
             toDry: 'towel',
                 toHair: 'hair cream'
@@ -237,7 +278,8 @@ console.log(Array.from(word))
     ```
 
 ## Variáveis
-Tem 3 formas de criar uma variável: `var`, `let` e `const`
+Tem 3 formas de criar uma variável: `var`, `let` e `const`.
+* **OBS**: Uma variável declarada usando a declaração `var` ou `let` sem especificar o valor inicial tem o valor `undefined`. Já uma tentativa de acessar uma variável não declarada resultará no lançamento de uma exceção *ReferenceError*.
 * `console.log(typeof `nomeVariável`)` = mostra na tela qual o tipo da variável
 * `let coisa, treco, algo` = agrumpamento de declarações, declara várias variáveis ao mesmo tempo
 * múltiplos argumentos na função = colocar várias variáveis em um comando só
@@ -269,22 +311,46 @@ Tem 3 formas de criar uma variável: `var`, `let` e `const`
         //template literals/strings (crase) e não aspas simples
     ```
 
+### Nomeação de variáveis
+* Pode: 
+    * Iniciar com caracteres especiais: `$`, `_`
+    * Iniciar com letras
+        * Maiúsculas e minúsculas fazem diferença
+    * Colocar acentos
+* Não pode:
+    * Iniciar com números
+    * Colocar espaços vazios 
+    * Usar palavras-chave reservadas (if, function, etc.)
+* Ideal:
+    * Colocar nomes que fazem sentido, para facilitar a compreensão do código
+        * Que explique qual a função da variável
+    * Escrever em inglês
+    * Seguir um estilo de nomeação
+* Estilos de nomeação:
+    * **Camel case:** a variável começa com a primeira letra minúscula e a primeira letra de cada nova palavra maiúscula. Ex.: `numeroDePessoas`, `corDeFundo`, etc.
+    * **Pascal case:** parecido com o *camel case*, mas aqui, todas as palavras começam com letras maiúsculas. Ex.: `EstiloDeNomeacao`, `VariavelAleatoria`, etc.
+    * **Snake case:** também conhecido como **undescore case**, é um estilo que separa cada palavra com undelines. Ex.: `valor_final`, `last_name`, etc.
+        * **Screaming snake case:** é quando o *snake case* está em caixa alta. Ex.: `NOME_DO_USUARIO`, `NUMERO_CANDIDATO`, etc.
+    * **Kebab case:** parecido com o *snake case*, porém é utilizado o hìfen ao invés do underline. Ex.: `valor-inicial`, `things-to-do`, etc.
+        * **Screaming kebab case:** assim como no *screaming snake case*, é quando tudo está em caixa alta. Ex.: `FAMILY-MEMBERS`, `COR-DA-ROUPA`, etc.
+
 ### `var`
-Pode variar/mudar seu valor.
+Pode variar/mudar seu valor. Global e local.
 * Declarar variável
     ```js
     var coisa = algo //"coisa" recebe "algo"
     ```
 
 ### `let`
-Pode variar/mudar seu valor.
+Pode variar/mudar seu valor. Local, apenas.
 * Declarar variável
     ```js
     let coisa = algo
     ```
 
 ### `const`
-Não pode variar, mesmo que seja colocado um novo valor para ela mais para frente, o `const` sempre vai pegar o primeiro valor atribuído à ele
+Não pode variar, mesmo que seja colocado um novo valor para ela mais para frente, o `const` sempre vai pegar o primeiro valor atribuído à ele. Local, apenas.
+Se o const se refere a um objeto ou array, os valores internos podem ser alterados, desde que a referência ao objeto ou array permaneça a mesma.
 * Declarar variável
     ```js
     const coisa = algo
@@ -354,297 +420,6 @@ Declaração de bloco. O bloco também cria um scopo novo, `block-scoped`
 } //fecha o bloco
 ```
 
-### Nomeação de variáveis
-* Pode: 
-    * Iniciar com caracteres especiais: $ _
-    * Iniciar com letras
-        * Maiúsculas e minúsculas fazem diferença
-    * Colocar acentos
-* Não pode:
-    * Iniciar com números
-    * Colocar espaços vazios
-* Ideal:
-    * Colocar nomes que fazem sentido
-        * Que explique qual a função da variável
-    * Escrever em inglês
-    *camelCase = onde seria espaço coloca maiúculo, OiTudoBemComVocê
-    *snake_case = onde seria espaço coloca underline, oi_tudo_bem_com_você
-
-## Funções
-* `function` *name*`() {}` = function statement, declaração da função, essa parte vai ficar guardada na memória
-    * `{aqui}` = conjunto de comandos que a função precisa guardar em memória
-    * *name*`()` = assim para executar a função que estava guardada em memória
-    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
-    ```js
-    function meLembre() {
-        console.log("- organizar o quarto;")
-        console.log("- limpar o banheiro;")
-        console.log("- estudar para a prova;")
-        console.log("- fazer as atividades;")
-        console.log("- etc.")
-    } //guardando na memória para mostrar mais tarde
-    //resto do código bla bla bla
-    meLembre() //aqui estou "chamando" a minha função, só assim para que ela seja exibida
-    ```
-* **função autoexecutável**
-    ```js
-    (function() {
-        console.log('I love sushi')
-    })()
-    ```
-
-### Return
-* `return` = comando utilizado para retornar o que vier a seguir
-* ao colocar uma função dentro de um `console.log`, ela é executada normalmente, porém seu valor fica como `undefined`
-    * caso tenha um `console.log` dentro da função em questão, o `console.log` da função é executado antes do `console.log` do código
-* para mostrar o resultado de uma função o `return` é adicionado ao final da função e ao chamar a função no código, o que estiver depois do `return` que vai ser retornado
-* para retornar o resultado sem precisar chamar a função inteira no `console.log`, é só executar/chamar a função antes de pedir o valor à ser retornado
-    * mas isso não é muito bom, já que pode atribuir um valor à alguma variável já existentente antes da função, logo, chame a função inteira
-```js
-const randomName = function(num1, num2){
-    total = num1 + num2
-    return total
-}
-randomName(451, 215)
-console.log(total)
-// não é bom fazer assim
-const RandomName = function(num1, num2){
-    return num1 + num2
-}
-const total = RandomName(451, 215)
-console.log(total)
-//assim é melhor
-```
-
-### Function expression/anonymous
-* `const sum = function(){}` = mesmo que `function`, mas desse modo ela é declarada em formato de variável
-    * pode usar qualquer variável: `var | let | const`
-    * *sum* é somar
-    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
-    ```js
-    const sum = function(num1, num2){
-        console.log(num1 + num2)
-    }
-    sum(18, 9) 
-        //18 fica na posição de 'num1'
-        //9 fica na posição de 'num2'
-    ```
-
-### Function scope
---- bug --- 
---- tem arquivo de teste sobre ---
-
-### Function hoisting
-```js
-aColor()
-function aColor() {
-    console.log('lightblue')
-}
-```
-* Não existe ainda, mas o js "pega" essa var e joga para cima, acontece o 'hoisting'
-* Se for um 'function anonymous' usando `const | var | let` dá erro
-    * `const | let` = não consegue acessar o valor da função antes dela ter sido chamada/rodada
-    * `var` = registra como 'undefined', dá erro já que não entende como função e depois dá erro de novo, resumindo: erro, erro e mais erro
-        ```js
-        aColor()
-        var aColor = function() {
-            console.log('lightblue')
-        }
-        //o que acontece é:
-        var aColor //undefined
-        aColor() //chega aqui e entende que "aColor não é uma função, é undefined"
-        aColor = function() { //aí dá erro aqui, tipo, não era undefinned??
-            console.log('lightblue')
-        }
-        ```
-
-### Arrow function
-Function anonymous compact. Usa essa seta: => (arrow); entre os () e os {}
-```js
-//no compact
-const aColor = function() {
-    console.log('lightblue')
-}
-//compact
-const aColor = () => {
-    console.log('lightblue')
-}
-```
-### Callback function
-Callback = chamar de volta.
-Uma *function* que passa *parameter* para outra *function*.
-```js
-function aColor(color) {
-    color()
-}
-aColor(
-    () => {
-        console.log('lightblue')
-    }
-)
-```
-
-### Function constructor
---- não entendi muito bem ---
-Cria objetos dentro de uma função
-```js
-function ManyPeople(name) {
-    this.name = name
-}
-const jay = new ManyPeople('Jay')
-console.log(jay)
-const zane = new ManyPeople('Zane')
-console.log(zane)
-```
-
-## Prototype
---- não entendi muito bem ---
-Se colocar '.\_\_proto\_\_' antes de alguma coisa (String, Number, Boolean, etc.) o próprio .js mostra o protótipo, propriedades do valor escrito, mostra cor da fonte e vários etc.
-
-## Type conversion/typecasting | Type coersion
-Alteram um tipo de dado para outro dado. 
-* Type coersion 
-    ```js
-    console.log('9' + 5) //95
-        //sem a gente ver, js vai pegar o 5, tranformar em String e concatenar os dois
-    console.log('9' + '5') //é o mesmo que isso aqui
-    ```
-* Type conversion/typecasting = quando a gente faz a alteração de um dado para outro de modo explícito, às vezes o js usa ele implicitamente
-    ```js
-    console.log(Number('9') + 5) //14
-        //forço o js a tranformar a String em Number
-    console.log(9 + 5) //é o mesmo que isso aqui
-    ```
-
-## Manipulações
-
-### Aleatórios
-* `.reverse()` = vai pegar o valor (tipo valores de *Array*/função) e inverter a ordem, precisa usar o `.slice()` antes
-* `.replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
-    * `.replace(/[]/g, "")` = dentro dos colchetes pode colocar vários caracteres e o **g** é de *global* (tipo remover tal coisa de uma frase **completa**)
-* `.slice()` = vai fatiar algo, uma palavra por exemplo (só depois do *slice* que dá para usar o *reverse*)
-* `.split("")` = js separa em elementos de *Array* de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
-* `.join("")` = js "emenda/junta/liga" os elementos de um *Array* usando o que estiver dentro das aspas 
-    ```js
-    let text = "The house is cute"
-    console.log(text.split(" ")) //["The", "house", "is", "cute"]
-    let textArray = ["The", "house", "is", "cute"]
-    console.log(textArray.join(" ")) //The house is cute
-    ```
-* `.push()` = adiciona um item no **final** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
-* `.unshift()` = adiciona um item no **começo** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
-* `.pop()` = remove o **último** item do *Array*, se colocar mais de um ele vai removendo sempre o último
-* `.shift()` = remove o **primeiro** item do *Array*, se colocar mais de um ele vai removendo sempre o primeiro
-* `Math.max()` = detro dos parênteses vão um conjunto de números que vão ser comparados e o maior número entre eles que vai ser retornado
-* `.sort()` = vai ordenar elementos de um *Array* de acordo com a verificação de código Unicode, exemplo da [Documentação MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/sort):
-    ```js
-    var fruit = ['cherries', 'apples', 'bananas'];
-    fruit.sort(); 
-        // ['apples', 'bananas', 'cherries']
-    var scores = [1, 10, 2, 21];
-    scores.sort(); // [1, 10, 2, 21]
-        // 10 vem antes do 2 porque o 1 vem antes do 2
-        // porque '10' vem antes de '2' em ponto de código Unicode.
-    var things = ['word', 'Word', '1 Word', '2 Words'];
-    things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
-        // em Unicode, números vêem antes de letras maiúsculas,
-        // as quais vêem antes das minúsculas.
-    ```
-* `.reduce()` = maior valor e menor valor de um *Array* (eu acho, não entendi muito bem)
-    ```js
-    //maior valor
-    const maxValue = values.reduce(function(prev, current) { 
-	    return prev > current ? prev : current; 
-        });
-    //menor valor
-    const minValue = values.reduce(function(prev, current) { 
-	    return prev < current ? prev : current; 
-        });
-    ```
-
-### Number <=> String
-De ***String*** para ***Number***:
-*   ```js
-    let treco = "666" //string
-    Number(treco) //agora 666 é Number
-    ```
-De ***Number*** para ***String***:
-*   ```js
-    let coiso = 666 //string
-    String(coiso) //agora 666 é String
-    ```
-
-### Contar caracteres e dígitos
-*Number* não recebe `length`, tem que transformar em *String*
-```js   
-let word = "Sushi"
-console.log(word.length) //5
-```
-
-### De . para , | Quantidade de casas decimais
-* `.toFixed(0)` = número com apenas algumas casas decimais (entre parênteses é o número de casas que eu quero)
-* `.replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
-```js
-let number = 854.8456129846594
-console.log(number.toFixed(4).replace(".", ",")) //854,8456
-    //vai aparecer no formato de String, se transformar em Number dá erro por causa da vírgula
-```
-
-### Maiúsculas <=> minúsculas
-* `.toUpperCase` = tudo maiúsculo
-    ```js
-    let phrase = "Frase aleatória com sentido pik4"
-    console.log(phrase.toUpperCase()) //FRASE ALEATÓRIA COM SENTIDO PIK4
-    ```
-* `.toLowerCase` = tudo minúsculo
-    ```js
-    let phrase = "Frase Aleatória Com Sentido Pik4"
-    console.log(phrase.toLowerCase()) //frase aleatória com sentido pik4
-    ```
-
-### Procurar palavra no texto
-* `.includes()` = o que estiver entre parênteses ele vai procurar no texto
-```js
-let text = "I am hungry o_o"
-console.log(text.includes("very"))
-    //false
-console.log(text.includes("Hungry"))
-    //false
-console.log(text.includes("hungry"))
-    //true
-```
-
-### Array manipulations
-* `.push()` = adiciona um item no **final** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
-* `.unshift()` = adiciona um item no **começo** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
-* `.pop()` = remove o **último** item do Array, se colocar mais de um ele vai removendo sempre o último
-* `.shift()` = remove o **primeiro** item do Array, se colocar mais de um ele vai removendo sempre o primeiro
-* `.slice()` = seleciona alguns elementos do Array, nos parênteses coloca-se dois números:
-    * **1º número** = começando do zero, eu coloco a posição do primeiro elemento que eu quero
-    * **2º número** = começando do um, eu coloco a posição do último elemento que eu quero, aí ele monta uma "lista" dos elementos
-* `.splice()` = remove algum elemento do Array, nos parênteses coloca-se dois números:
-    * **1º número** = começando do zero, eu coloco a posição do primeiro elemento que eu quero retirar
-    * **2º número** = començando do um e contando a partir do primeiro elemento selecionado, eu escolho a quantidade de elementos que eu quero retirar
-* `.indexOf()` = para encontrar a posição de um elemento, entre parênteses coloca o elemento
-    ```js
-    let car = ['banco', 'volante', 'rádio']
-        //(3) ['banco', 'volante', 'rádio']
-    car.push('porta-luvas')
-        //(4) ['banco', 'volante', 'rádio', 'porta-luvas']
-    car.unshift('porta-malas')
-        //(5) ['porta-malas', 'banco', 'volante', 'rádio', 'porta-luvas']
-    car.pop()
-        //(4) ['porta-malas', 'banco', 'volante', 'rádio']
-    car.shift()
-        //(3) ['banco', 'volante', 'rádio']
-    console.log(car.slice(1, 3))
-        //(2) ['volante', 'rádio']
-    car.splice(2, 1)
-        //(2) ['banco', 'volante']
-    console.log(`A posição do volante é: ${car.indexOf('volante')}`)
-        //A posição do volante é: 1
-    ```
-
 ## Expressões e Operadores
 Qualquer linha de código que resolve algo.
 
@@ -653,15 +428,30 @@ Pode colocar ';' (ponto e vírgula) depois de qualquer expressão, afinal não m
 * único caso que é obrigatório: quando tem uma função auto-executável depois da expressão
 * Algumas expressões: `let | new`
     * `new` = cria um novo objeto de uma função
+As expressões são combinações de valores, variáveis, operadores e funções que produzem um resultado. Uma expressão pode ser tão simples quanto um número ou uma string, mas também pode ser mais complexa, envolvendo operações matemáticas, lógicas ou mesmo chamadas de funções. 
+* **Expressões literais:** são valores fixos, como números ou strings
+```js
+42; // literal numérico
+"Olá"; // literal de string
+true; // literal booleano
+```
+* **Expressões com variáveis:** usam variáveis para representar valores
+```js
+let x = 10;
+x + 5; // resultado: 15
+```
+* **Expressões com operadores:** incluem operações matemáticas, lógicas ou de comparação
+```js
+5 + 3; // resultado: 8 (expressão aritmética)
+10 > 5; // resultado: true (expressão de comparação)
+true && false; // resultado: false (expressão lógica)
+```
+* **Expressões com funções:** envolvem chamadas a funções ou métodos, que retornam um valor
+```js
+Math.max(3, 7); // resultado: 7
+```
 
 ### Operadores
-* **Binary** 
-    Preciso de dois valores para o operador ficar entre eles
-    ```js
-    let number = 6
-    console.log(number + 12)
-        //18
-    ```
 * **Unary**
     Preciso de somente um valor e uso o operador para "incrementar/decrementar" o valor
     * `typeof | delete | ...`
@@ -674,6 +464,13 @@ Pode colocar ';' (ponto e vírgula) depois de qualquer expressão, afinal não m
     let number = 6
     console.log(typeof number)
         //number
+    ```
+* **Binary** 
+    Preciso de dois valores para o operador ficar entre eles
+    ```js
+    let number = 6
+    console.log(number + 12)
+        //18
     ```
 * **Ternary**
     Recebe três expressões, esse exemplo é o único Ternary
@@ -701,14 +498,16 @@ console.log(calc)
 ```
 
 #### Operadores Aritméticos (binary)
-* `nº * nº` = multiplicação
-* `nº / nº` = divisão
 * `nº + nº` = soma
 * `nº - nº` = subtração
+* `nº * nº` = multiplicação
+* `nº / nº` = divisão
 * `nº % nº` = resto da divisão
 * `nº ** nº` = exponencial, isso elevado a isso
-* `nº++` ou `++nº` = incremento, o número soma +1 **(unary)**
-* `nº--` ou `--nº` = decremento, o número subtrai -1 **(unary)**
+* `++nº` = incremento, aumenta o valor de uma variável em 1 antes de ser usada em uma expressão ou operação **(unary)**
+* `nº++` = incremento, aumenta o valor de uma variável em 1, mas somente depois de usá-la em uma expressão ou operação **(unary)**
+* `--nº` = decremento, reduz o valor de uma variável em 1 antes de ser usada em uma expressão ou operação **(unary)**
+* `nº--` = decremento, reduz o valor de uma variável em 1, mas somente depois de usá-la em uma expressão ou operação **(unary)**
     * Postfix increment:
     ```js
     let x = 3;
@@ -911,6 +710,134 @@ De cima para baixo, do mais importante ao menos importante.
 * `?:` condicional
 * `= += -= *= %=` assignment (atribuição) 
 
+
+## Funções
+* `function` *name*`() {}` = function statement, declaração da função, essa parte vai ficar guardada na memória
+    * `{aqui}` = conjunto de comandos que a função precisa guardar em memória
+    * *name*`()` = assim para executar a função que estava guardada em memória
+    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
+    ```js
+    function meLembre() {
+        console.log("- organizar o quarto;")
+        console.log("- limpar o banheiro;")
+        console.log("- estudar para a prova;")
+        console.log("- fazer as atividades;")
+        console.log("- etc.")
+    } //guardando na memória para mostrar mais tarde
+    //resto do código bla bla bla
+    meLembre() //aqui estou "chamando" a minha função, só assim para que ela seja exibida
+    ```
+* **função autoexecutável**
+    ```js
+    (function() {
+        console.log('I love sushi')
+    })()
+    ```
+
+### Return
+* `return` = comando utilizado para retornar o que vier a seguir
+* ao colocar uma função dentro de um `console.log`, ela é executada normalmente, porém seu valor fica como `undefined`
+    * caso tenha um `console.log` dentro da função em questão, o `console.log` da função é executado antes do `console.log` do código
+* para mostrar o resultado de uma função o `return` é adicionado ao final da função e ao chamar a função no código, o que estiver depois do `return` que vai ser retornado
+* para retornar o resultado sem precisar chamar a função inteira no `console.log`, é só executar/chamar a função antes de pedir o valor à ser retornado
+    * mas isso não é muito bom, já que pode atribuir um valor à alguma variável já existentente antes da função, logo, chame a função inteira
+```js
+const randomName = function(num1, num2){
+    total = num1 + num2
+    return total
+}
+randomName(451, 215)
+console.log(total)
+// não é bom fazer assim
+const RandomName = function(num1, num2){
+    return num1 + num2
+}
+const total = RandomName(451, 215)
+console.log(total)
+//assim é melhor
+```
+
+### Function expression/anonymous
+* `const sum = function(){}` = mesmo que `function`, mas desse modo ela é declarada em formato de variável
+    * pode usar qualquer variável: `var | let | const`
+    * *sum* é somar
+    * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
+    ```js
+    const sum = function(num1, num2){
+        console.log(num1 + num2)
+    }
+    sum(18, 9) 
+        //18 fica na posição de 'num1'
+        //9 fica na posição de 'num2'
+    ```
+
+### Function scope
+--- bug --- 
+--- tem arquivo de teste sobre ---
+
+### Function hoisting
+```js
+aColor()
+function aColor() {
+    console.log('lightblue')
+}
+```
+* Não existe ainda, mas o js "pega" essa var e joga para cima, acontece o 'hoisting'
+* Se for um 'function anonymous' usando `const | var | let` dá erro
+    * `const | let` = não consegue acessar o valor da função antes dela ter sido chamada/rodada
+    * `var` = registra como 'undefined', dá erro já que não entende como função e depois dá erro de novo, resumindo: erro, erro e mais erro
+        ```js
+        aColor()
+        var aColor = function() {
+            console.log('lightblue')
+        }
+        //o que acontece é:
+        var aColor //undefined
+        aColor() //chega aqui e entende que "aColor não é uma função, é undefined"
+        aColor = function() { //aí dá erro aqui, tipo, não era undefinned??
+            console.log('lightblue')
+        }
+        ```
+
+### Arrow function
+Function anonymous compact. Usa essa seta: => (arrow); entre os () e os {}
+```js
+//no compact
+const aColor = function() {
+    console.log('lightblue')
+}
+//compact
+const aColor = () => {
+    console.log('lightblue')
+}
+```
+### Callback function
+Callback = chamar de volta.
+Uma *function* que passa *parameter* para outra *function*.
+```js
+function aColor(color) {
+    color()
+}
+aColor(
+    () => {
+        console.log('lightblue')
+    }
+)
+```
+
+### Function constructor
+--- não entendi muito bem ---
+Cria objetos dentro de uma função
+```js
+function ManyPeople(name) {
+    this.name = name
+}
+const jay = new ManyPeople('Jay')
+console.log(jay)
+const zane = new ManyPeople('Zane')
+console.log(zane)
+```
+
 ## Condicionais e controle de fluxo
 
 ### If and Else
@@ -1054,6 +981,163 @@ for(let property in character) {       //vai mostrar as propriedades do objeto
     //no final fica: name, Rainbow Dash, power, Agilidade, type, Pony (um em cada linha)
 }
 ```
+
+## Manipulações
+
+### Aleatórios
+* `.reverse()` = vai pegar o valor (tipo valores de *Array*/função) e inverter a ordem, precisa usar o `.slice()` antes
+* `.replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
+    * `.replace(/[]/g, "")` = dentro dos colchetes pode colocar vários caracteres e o **g** é de *global* (tipo remover tal coisa de uma frase **completa**)
+* `.slice()` = vai fatiar algo, uma palavra por exemplo (só depois do *slice* que dá para usar o *reverse*)
+* `.split("")` = js separa em elementos de *Array* de acordo com o que estiver entre aspas. Ex.: coloco "o", então onde tiver "o" ele vai sumir e criar um elemento
+* `.join("")` = js "emenda/junta/liga" os elementos de um *Array* usando o que estiver dentro das aspas 
+    ```js
+    let text = "The house is cute"
+    console.log(text.split(" ")) //["The", "house", "is", "cute"]
+    let textArray = ["The", "house", "is", "cute"]
+    console.log(textArray.join(" ")) //The house is cute
+    ```
+* `.push()` = adiciona um item no **final** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
+* `.unshift()` = adiciona um item no **começo** do *Array*, entre () é o item a ser adicionado, antes do . ponto é o nome do *Array*
+* `.pop()` = remove o **último** item do *Array*, se colocar mais de um ele vai removendo sempre o último
+* `.shift()` = remove o **primeiro** item do *Array*, se colocar mais de um ele vai removendo sempre o primeiro
+* `Math.max()` = detro dos parênteses vão um conjunto de números que vão ser comparados e o maior número entre eles que vai ser retornado
+* `.sort()` = vai ordenar elementos de um *Array* de acordo com a verificação de código Unicode, exemplo da [Documentação MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/sort):
+    ```js
+    var fruit = ['cherries', 'apples', 'bananas'];
+    fruit.sort(); 
+        // ['apples', 'bananas', 'cherries']
+    var scores = [1, 10, 2, 21];
+    scores.sort(); // [1, 10, 2, 21]
+        // 10 vem antes do 2 porque o 1 vem antes do 2
+        // porque '10' vem antes de '2' em ponto de código Unicode.
+    var things = ['word', 'Word', '1 Word', '2 Words'];
+    things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
+        // em Unicode, números vêem antes de letras maiúsculas,
+        // as quais vêem antes das minúsculas.
+    ```
+* `.reduce()` = maior valor e menor valor de um *Array* (eu acho, não entendi muito bem)
+    ```js
+    //maior valor
+    const maxValue = values.reduce(function(prev, current) { 
+	    return prev > current ? prev : current; 
+        });
+    //menor valor
+    const minValue = values.reduce(function(prev, current) { 
+	    return prev < current ? prev : current; 
+        });
+    ```
+
+### Number <=> String
+De ***String*** para ***Number***:
+* `Number(`variavel`)` = converte qualquer tipo de dado para valores numéricos
+* `parseInt(`variavel`)` = converte uma string em um número inteiro
+* `parseFloat(`variavel`)` = converte uma string em um número real
+```js
+let treco = "666" //string
+let coiso = "6.66" //string
+Number(treco) //agora 666 é Number
+parseInt(treco) //agora 666 é Number²
+parseFloat(coiso) //agora 6.66 é Number
+```
+De ***Number*** para ***String***:
+* `String(`variavel`)` = converte qualquere tipo de dado para String
+```js
+let coiso = 666 //string
+String(coiso) //agora 666 é String
+```
+
+#### Type conversion/typecasting | Type coersion
+Alteram um tipo de dado para outro dado. 
+* Type coersion 
+    ```js
+    console.log('9' + 5) //95
+        //sem a gente ver, js vai pegar o 5, tranformar em String e concatenar os dois
+    console.log('9' + '5') //é o mesmo que isso aqui
+    ```
+* Type conversion/typecasting = quando a gente faz a alteração de um dado para outro de modo explícito, às vezes o js usa ele implicitamente
+    ```js
+    console.log(Number('9') + 5) //14
+        //forço o js a tranformar a String em Number
+    console.log(9 + 5) //é o mesmo que isso aqui
+    ```
+
+
+### Contar caracteres e dígitos
+*Number* não recebe `length`, tem que transformar em *String*
+```js   
+let word = "Sushi"
+console.log(word.length) //5
+```
+
+### De . para , | Quantidade de casas decimais
+* `.toFixed(0)` = número com apenas algumas casas decimais (entre parênteses é o número de casas que eu quero)
+* `.replace("", "")` = o que estiver entre as primeiras aspas será trocado pelo o que está entre as segundas aspas
+```js
+let number = 854.8456129846594
+console.log(number.toFixed(4).replace(".", ",")) //854,8456
+    //vai aparecer no formato de String, se transformar em Number dá erro por causa da vírgula
+```
+
+### Maiúsculas <=> minúsculas
+* `.toUpperCase` = tudo maiúsculo
+    ```js
+    let phrase = "Frase aleatória com sentido pik4"
+    console.log(phrase.toUpperCase()) //FRASE ALEATÓRIA COM SENTIDO PIK4
+    ```
+* `.toLowerCase` = tudo minúsculo
+    ```js
+    let phrase = "Frase Aleatória Com Sentido Pik4"
+    console.log(phrase.toLowerCase()) //frase aleatória com sentido pik4
+    ```
+
+### Procurar palavra no texto
+* `.includes()` = o que estiver entre parênteses ele vai procurar no texto
+```js
+let text = "I am hungry o_o"
+console.log(text.includes("very"))
+    //false
+console.log(text.includes("Hungry"))
+    //false
+console.log(text.includes("hungry"))
+    //true
+```
+
+### Array manipulations
+* `.push()` = adiciona um item no **final** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
+* `.unshift()` = adiciona um item no **começo** do array, entre () é o item a ser adicionado, antes do . ponto é o nome do Array
+* `.pop()` = remove o **último** item do Array, se colocar mais de um ele vai removendo sempre o último
+* `.shift()` = remove o **primeiro** item do Array, se colocar mais de um ele vai removendo sempre o primeiro
+* `.slice()` = seleciona alguns elementos do Array, nos parênteses coloca-se dois números:
+    * **1º número** = começando do zero, eu coloco a posição do primeiro elemento que eu quero
+    * **2º número** = começando do um, eu coloco a posição do último elemento que eu quero, aí ele monta uma "lista" dos elementos
+* `.splice()` = remove algum elemento do Array, nos parênteses coloca-se dois números:
+    * **1º número** = começando do zero, eu coloco a posição do primeiro elemento que eu quero retirar
+    * **2º número** = començando do um e contando a partir do primeiro elemento selecionado, eu escolho a quantidade de elementos que eu quero retirar
+* `.indexOf()` = para encontrar a posição de um elemento, entre parênteses coloca o elemento
+    ```js
+    let car = ['banco', 'volante', 'rádio']
+        //(3) ['banco', 'volante', 'rádio']
+    car.push('porta-luvas')
+        //(4) ['banco', 'volante', 'rádio', 'porta-luvas']
+    car.unshift('porta-malas')
+        //(5) ['porta-malas', 'banco', 'volante', 'rádio', 'porta-luvas']
+    car.pop()
+        //(4) ['porta-malas', 'banco', 'volante', 'rádio']
+    car.shift()
+        //(3) ['banco', 'volante', 'rádio']
+    console.log(car.slice(1, 3))
+        //(2) ['volante', 'rádio']
+    car.splice(2, 1)
+        //(2) ['banco', 'volante']
+    console.log(`A posição do volante é: ${car.indexOf('volante')}`)
+        //A posição do volante é: 1
+    ```
+
+
+## Prototype
+--- não entendi muito bem ---
+Se colocar '.\_\_proto\_\_' antes de alguma coisa (String, Number, Boolean, etc.) o próprio .js mostra o protótipo, propriedades do valor escrito, mostra cor da fonte e vários etc.
 
 ## DOM = Document Object Model
 * HTML convertido para um Objeto JavaScript, 
