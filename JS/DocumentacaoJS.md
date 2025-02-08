@@ -505,10 +505,10 @@ console.log(calc)
 * `nº / nº` = divisão
 * `nº % nº` = resto da divisão
 * `nº ** nº` = exponencial, isso elevado a isso
-* `++nº` = incremento, aumenta o valor de uma variável em 1 antes de ser usada em uma expressão ou operação **(unary)**
-* `nº++` = incremento, aumenta o valor de uma variável em 1, mas somente depois de usá-la em uma expressão ou operação **(unary)**
-* `--nº` = decremento, reduz o valor de uma variável em 1 antes de ser usada em uma expressão ou operação **(unary)**
-* `nº--` = decremento, reduz o valor de uma variável em 1, mas somente depois de usá-la em uma expressão ou operação **(unary)**
+* `++nº` = pré-incremento, aumenta o valor de uma variável em 1 antes de ser usada em uma expressão ou operação **(unary)**
+* `nº++` = pós-incremento, aumenta o valor de uma variável em 1, mas somente depois de usá-la em uma expressão ou operação **(unary)**
+* `--nº` = pré-decremento, reduz o valor de uma variável em 1 antes de ser usada em uma expressão ou operação **(unary)**
+* `nº--` = pós-decremento, reduz o valor de uma variável em 1, mas somente depois de usá-la em uma expressão ou operação **(unary)**
     * Postfix increment:
     ```js
     let x = 3;
@@ -588,7 +588,7 @@ x **= 6  //x ** 6 = 64
 ```
 
 #### Operadores lógicos (binary)
-Dois valores do tipo Boolean que quando verificados vão dar uma resposta de tipo Boolean também
+Dois valores do tipo Boolean que quando verificados vão dar uma resposta de tipo Boolean também.
 * `__ && __` = AND, tenho \___ e \___?
 * `__ || __` = OR, tenho \___ ou \___?
 * `__ ! __` = NOT, \___ is *true*? now is *false* | \___ is *false*? now is *true*
@@ -654,11 +654,19 @@ console.log(niceBreakfast) //café da manhã pik4
 
 #### Operadores para String (binary)
 Concatenação. 
+* `+` = adiciona/concatena
+* `+=` = concatena e atribui ao mesmo tempo
 ```js
+//+
 let sun = 'Sun'
 sun + '.SA'
 console.log(sun + 666) //transforma os Number em String e junta tudo
     //Sun.SA666
+//+=
+let hi = 'Hi, '
+let darling = 'darling'
+hi += darling
+console.log(hi) //"Hi, darling"
 ```
 
 #### Falsy and Truthy
@@ -697,6 +705,48 @@ console.log(sun + 666) //transforma os Number em String e junta tudo
     console.log(Infinity ? 'verdadeiro' : 'falso')      //verdadeiro
     console.log(-Infinity ? 'verdadeiro' : 'falso')     //verdadeiro
     ```
+
+#### Operadores bit a bit
+"Os operadores de bit a bit trabalham com números de 32 bits. Qualquer operando numérico na operação é convertido em um número de 32 bits. O resultado é convertido novamente em um número JavaScript."
+* `__ & __` = AND, compara os bits correspondentes dos dois valores. O resultado é 1 se ambos os bits forem 1, e 0 caso contrário
+* `__ | __` = OR, retorna 1 se pelo menos um dos bits for 1
+* `__ ^ __` = XOR, retorna 1 se apenas um dos bits correspondentes for 1. Se ambos forem 0 ou ambos forem 1, retorna 0
+* `__ ~ __` = NOT, inverte todos os bits de um número (se um bit é 1, ele se torna 0)
+* `__ << __` = deslocamento para a esquerda, desloca todos os bits para a esquerda por uma quantidade especificada, preenchendo com zeros à direita. Isso é equivalente a multiplicar o número por 2 para cada posição deslocada
+* `__ >> __` = deslocamento para a direita com sinal, desloca todos os bits para a direita, mantendo o sinal (preenchendo com o bit de sinal). Isso é equivalente a dividir o número por 2 para cada posição deslocada
+* `__ >>> __` = deslocamento para a direita sem sinal, desloca bits para a direita, preenchendo com zeros, independentemente do sinal. Isso sempre produz um resultado positivo ou zero
+```js
+let x = 5; //0101 em código binário
+let y = 1; //0001 em código binário
+console.log(x & y); 
+    //0101 & 0001
+    //resultado: 0001
+    //decimal: 1
+console.log(x | y);
+    //0101 | 0001
+    //resultado: 0101
+    //decimal: 5
+console.log(x ^ y); 
+    //0101 ^ 0001
+    //resultado: 0100
+    //decimal: 4
+console.log(~x);
+    //~0101
+    //resultado: 1010
+    //decimal: 10
+console.log(x << 1); 
+    //0101 << 1
+    //resultado: 1010
+    //decimal: 10
+console.log(x >> 1); 
+    //0101 >> 1
+    //resultado: 0010
+    //decimal: 2
+console.log(x >>> 1);
+    //0101 >>> 1
+    //resultado: 0010
+    //decimal: 2
+```
 
 #### Precedência de operadores
 De cima para baixo, do mais importante ao menos importante.
