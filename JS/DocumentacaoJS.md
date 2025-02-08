@@ -893,6 +893,9 @@ console.log(zane)
 
 ### If and Else
 Se isso acontecer faz isso, se não, faz aquilo.
+* `if (`condição`) {`comandos`}` = if, caso (isso seja verdadeiro) execute {isso}
+* `if (`condição`) {`comandos`} else {`comandos`}` = if-else, caso (isso seja verdadeiro) execute {isso}, se não, execute {isso}
+* `if (`condição 1`) {`comandos`} else if (`condição 2`) {`comandos`} else {`comandos`}` = else if, caso (isso seja verdadeiro) execute {isso}, se não, verifique essa (outra condição) e execute {iss}, se não, execute {isso}
 ```js
 let temperature = 37.2
     if(temperature >= 37.5) {
@@ -922,19 +925,19 @@ let mediumTemperature = temperature < 37.5 && temperature >= 37
 ### Switch
 Lista de vários casos, como se fossem vários `if` e `else`.
 * `case '___'` = são os casos, coloco os códigos para executar caso minha expressão cumpra sua "condição", posso por o que eu quiser entre as aspas
-* `break` = delimita o `case`, se não tiver o *break* no final de um *case* ele segue para executar o próximo *case*
+* `break` = delimita o `case`, se não tiver o *break* no final de um *case* ele segue para executar o próximo *case*. O uso do break é crucial para evitar a execução contínua de blocos subsequentes, um fenômeno conhecido como **fall-through**. Se o break não for usado, o controle passa para o próximo case, independentemente do resultado da expressão. 
 * `default` = se a expressão não satisfazer nenhum dos casos, o *default* faz a função do *else*
 ```js
 switch() {
     case 'a':
-        //código
-        break
+        //código;
+        break;
     case 'b':
-        //código
-        break
+        //código;
+        break;
     default:
-        //código
-        break
+        //código;
+        break;
 }
 ```
 
