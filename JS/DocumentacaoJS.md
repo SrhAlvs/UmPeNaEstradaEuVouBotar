@@ -960,6 +960,36 @@ try {
 ```
 Não entendi muito bem, mas é tipo, deu o erro, mas a minha aplicação continua rodando, o erro não afeta no funcionamento do código.
 
+### Controle de fluxo
+* `break` = interrompe um laço de repetição ou um `switch`
+```js
+for (let i = 0; i < 5; i++) {
+    if (i === 3) {
+        break; //sai do loop quando i é 3
+    }
+    console.log(i);
+}
+```
+* `continue` = pula para a próxima iteração (repetir uma função por um determinado período de tempo até que uma condição seja alcançada), ignorando o código abaixo dele
+```js
+for (let i = 0; i < 5; i++) {
+    if (i === 2) {
+        continue; //pula a iteração quando i é 2
+    }
+    console.log(i); //imprime todos menos 2
+}
+```
+* `return` = sai da função, retornando um valor ou encerrando a execução
+```js
+function verificarMaioridade(idade) {
+    if (idade >= 18) {
+        return "Maior de idade"; //sai da função se idade >= 18
+    }
+    return "Menor de idade";
+}
+console.log(verificarMaioridade(20)); //"Maior de idade"
+```
+
 ## Estruturas de repetição
 
 ### For
