@@ -964,12 +964,16 @@ Não entendi muito bem, mas é tipo, deu o erro, mas a minha aplicação continu
 
 ### For
 * For = para, em inglês
-* `for(let a=6; a < 12; a++)` = estrutura de repetição
-    * `let a=6` = cria uma variável, **a** foi só um nome aleatório, essa variável tem que ter algum valor, escolhi o 6
-    * `a < 12` = a variável é menor que 12, então o código vai rodar até ele ser maior que 12
-    * `a++` = isso vai ficar somando mais 1 na variável, e é assim que em algum momento ela vai ficar com um valor maior que 12
-    * `break` = caso tenha um *if* dentro do *for*, ele vai parar a execução do loop
-    * `continue` = caso tenha um *if* dentro do *for*, ele vai pular a execução do momento e passar para a próxima
+* `for (inicialização; condição; incremento/decremento) {comandos}` = estrutura de repetição
+    * **Inicialização:** é executada apenas uma vez antes do início do loop. É usada para inicializar o contador ou variável de controle do loop.
+    * **Condição:** é avaliada antes de cada iteração do loop. Se for verdadeira, o bloco de código é executado. Se for falsa, o loop é encerrado.
+    * **Incremento/Decremento:** é executado após cada iteração do loop. É usado para alterar o valor da variável de controle do loop.
+    * Exemplo: `for(let a=6; a < 12; a++)`:
+        * `let a=6` = cria uma variável, **a** foi só um nome aleatório, essa variável tem que ter algum valor, escolhi o 6
+        * `a < 12` = a variável é menor que 12, então o código vai rodar até ele ser maior que 12
+        * `a++` = isso vai ficar somando mais 1 na variável, e é assim que em algum momento ela vai ficar com um valor maior que 12
+        * `break` = caso tenha um *if* dentro do *for*, ele vai parar a execução do loop
+        * `continue` = caso tenha um *if* dentro do *for*, ele vai pular a execução do momento e passar para a próxima
 ```js
 for(let a=6; a < 12; a++) {     //vai mostrar de 6 à 12
     console.log(a)
@@ -994,6 +998,7 @@ for(let d=0; d < 10; d++) {    //vai mostrar de 0 à 10, mas vai ignorar o núme
 ### While
 * While = enquanto, em inglês
 Faz mais sentido usar o *while* ao invés do *for* quando a gente não sabe a hora de parar.
+* `while (`condição`) {`comandos`}` = enquanto a (condição) for verdade, execute os {comandos} a seguir
 ```js
 let a = 0
 while(a < 6) {              //vai mostrar de 0 à 6
@@ -1005,6 +1010,16 @@ while(a > 6) {              //isso vai parar, por isso uso 'while'
     console.log(a)
     b /= 66;
 }
+```
+
+### Do... while
+* `do {`comandos`} while (`condição`)` = parecido com o `while`, porém aqui o bloco de código é executado ao menos uma vez, independente se a condição é verdadeira ou não. Usado principalmente por esse motivo, garantir que um determinado bloco de código seja executado ao menos uma vez.
+```js
+let counter = 6;
+do {
+    console.log("I am I.");
+    counter++;
+} while (counter < 12);
 ```
 
 ### For...of
