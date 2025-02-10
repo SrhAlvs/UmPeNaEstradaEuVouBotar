@@ -767,7 +767,7 @@ As declarações de funções têm *hoisting*.
 **OBS.:** a definição de uma função não a executa. Definir a função é simplesmente nomear a função e especificar o que fazer quando a função é chamada. Chamar a função executa realmente as ações especificadas com os parâmetros indicados. 
 * `function` nome`(`argumentos, separados, por, vírgulas`) {`comandos`}` = function statement, declaração da função, essa parte vai ficar guardada na memória
     * `{`aqui`}` = conjunto de comandos que a função precisa guardar em memória
-    * nome`()` = assim para executar a função que estava guardada em memória
+    * nome`()` = assim para executar a função que estava guardada em memória, sem espaço entre o nome e os parênteses
     * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
     ```js
     function meLembre() {
@@ -815,7 +815,8 @@ console.log(total)
 "A diferença fundamental entre uma expressão de função e uma declaração de função (**Function Declaration**) é o comportamento em relação ao *hoisting* e a flexibilidade de uso em contextos mais dinâmicos."
 "Se você tentar usar uma expressão de função antes de sua definição, receberá um erro."
 **Anotação:** não sei em qual momento devo usar, ainda. Mas a diferença principal é essa: **expression** não sofrem *hoisting* e **declaration** sofre *hoisting*.
-* `const sum = function(){}` = mesmo que `function`, mas desse modo ela é declarada em formato de variável
+
+* `const sum = function() {}` = mesmo que `function`, mas desse modo ela é declarada em formato de variável
     * pode usar qualquer variável: `var | let | const`
     * *sum* é somar
     * **as variáveis que estiverem entre chaves só funcionam dentro da função, parâmetros**
@@ -839,13 +840,28 @@ const divide = function(c, d) {
 };
 console.log(divide(18, 6)); //3
 ```
+*Hoisting* com **function expression**:
+* `const | let` = não consegue acessar o valor da função antes dela ter sido chamada/rodada
+* `var` = registra como 'undefined', dá erro já que não entende como função e depois dá erro de novo, resumindo: erro, erro e mais erro
+    ```js
+    aColor()
+    var aColor = function() {
+        console.log('lightblue')
+    }
+    //o que acontece é:
+    var aColor //undefined
+    aColor() //chega aqui e entende que "aColor não é uma função, é undefined"
+    aColor = function() { //aí dá erro aqui, tipo, não era undefinned??
+        console.log('lightblue')
+    }
+    ```
 
 ### Named function and anonymous function
 "As expressões de função podem ser nomeadas ou anônimas. Uma expressão de função anônima não tem um nome explícito, enquanto uma função nomeada tem um identificador que pode ser usado para referência interna."
 "A principal diferença entre essas duas abordagens é que uma expressão de função nomeada pode referenciar a si mesma dentro do próprio corpo da função, o que pode ser útil para a recursão."
 ```js
 //anonymous function
-const multiplicar = function (x, y) {
+const multiplicar = function(x, y) {
    return x * y;
 };
 console.log(multiplicar(2, 4)); //8
@@ -859,43 +875,48 @@ console.log(fatorial(3)); //6
 ### Function scope
 --- bug --- 
 --- tem arquivo de teste sobre ---
-
-### Function hoisting
-```js
-aColor()
-function aColor() {
-    console.log('lightblue')
-}
-```
-* Não existe ainda, mas o js "pega" essa var e joga para cima, acontece o 'hoisting'
-* Se for um 'function anonymous' usando `const | var | let` dá erro
-    * `const | let` = não consegue acessar o valor da função antes dela ter sido chamada/rodada
-    * `var` = registra como 'undefined', dá erro já que não entende como função e depois dá erro de novo, resumindo: erro, erro e mais erro
-        ```js
-        aColor()
-        var aColor = function() {
-            console.log('lightblue')
-        }
-        //o que acontece é:
-        var aColor //undefined
-        aColor() //chega aqui e entende que "aColor não é uma função, é undefined"
-        aColor = function() { //aí dá erro aqui, tipo, não era undefinned??
-            console.log('lightblue')
-        }
-        ```
+[Arquivo de teste, function scope](functions.js)
 
 ### Arrow function
 Function anonymous compact. Usa essa seta: => (arrow); entre os () e os {}
-```js
-//no compact
-const aColor = function() {
-    console.log('lightblue')
-}
-//compact
-const aColor = () => {
-    console.log('lightblue')
-}
-```
+* Sem parâmetros:
+    ```js
+    //no compact
+    const aColor = function() {
+        console.log('lightblue');
+    };
+    //compact
+    const aColor = () => {
+        console.log('lightblue');
+    };
+    ```
+* Com somente um parâmetro: 
+    ```js
+    //no compact
+    const hi = function(name) {
+        console.log("Olá, " + name + "!");
+    };
+    //compact
+    const hi = nome => console.log("Olá, " + nome + "!");
+    ```
+* Com múltiplos parâmetros:
+    ```js
+    //no compact
+    const sum = function(x, y) {
+        return x + y;
+    };
+    //compact
+    const subtrair = (p, q) => {
+        return p - q;
+    };
+    ```
+* Com corpo de expressão única (sem chaves e return):
+    * Desse modo, o retorno é implícito. Ou seja, não precisa adicionar o `return`
+    ```js
+    const multiplicar = (num1, num2) => num1 * num2;
+    cosole.log(multiplicar(8, 2)); //16
+    ```
+
 ### Callback function
 Callback = chamar de volta.
 Uma *function* que passa *parameter* para outra *function*.
