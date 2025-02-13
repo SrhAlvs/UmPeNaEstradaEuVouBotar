@@ -917,6 +917,39 @@ Function anonymous compact. Usa essa seta: => (arrow); entre os () e os {}
     cosole.log(multiplicar(8, 2)); //16
     ```
 
+#### `this` + arrow function
+"As arrow functions têm um comportamento diferente: elas não têm seu próprio this, mas usam o contexto léxico do local onde foram definidas."
+```js
+function Pessoa() {
+    this.idade = 0;
+    setInterval(() => {
+        this.idade++; // "this" refere-se ao contexto da função envolvente (Pessoa)
+        console.log(this.idade);
+    }, 1000);
+}
+
+const p = new Pessoa();
+```
+* "Neste exemplo, o `setInterval` usa uma arrow function para incrementar a idade. O contexto `this` refere-se à instância de `Pessoa` porque a arrow function herda o escopo léxico do ambiente em que foi definida. Se tivéssemos usado uma função tradicional, o comportamento seria diferente, exigindo técnicas como `bind`, `call`, ou `apply` para manter o contexto correto."
+
+#### Closures + arrow function
+"As arrow functions também podem criar closures, assim como outras funções em JavaScript.
+Um **closure** ocorre quando uma função "lembra" das variáveis e do contexto do escopo onde foi definida, mesmo quando é usada fora desse escopo."
+```js
+function criarContador() {
+  let cont = 0;
+  return () => {
+    cont++;
+    return cont;
+  };
+}
+
+const contador = criarContador();
+console.log(contador()); // Retorna 1
+console.log(contador()); // Retorna 2
+```
+* "No exemplo, a arrow function mantém o contexto léxico do escopo em que foi definida, lembrando-se da variável 'contador'. Esse comportamento é o mesmo para funções tradicionais, mas as arrow functions facilitam o uso de closures por causa de seu contexto `this` fixo."
+
 ### Callback function
 Callback = chamar de volta.
 Uma *function* que passa *parameter* para outra *function*.
