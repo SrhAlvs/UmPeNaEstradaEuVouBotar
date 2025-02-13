@@ -950,7 +950,9 @@ console.log(contador()); // Retorna 2
 ```
 * "No exemplo, a arrow function mantém o contexto léxico do escopo em que foi definida, lembrando-se da variável 'contador'. Esse comportamento é o mesmo para funções tradicionais, mas as arrow functions facilitam o uso de closures por causa de seu contexto `this` fixo."
 
-### Callback function
+### Chamar uma função
+
+#### Callback function
 Callback = chamar de volta.
 Uma *function* que passa *parameter* para outra *function*.
 ```js
