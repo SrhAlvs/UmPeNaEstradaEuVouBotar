@@ -951,20 +951,53 @@ console.log(contador()); // Retorna 2
 * "No exemplo, a arrow function mantém o contexto léxico do escopo em que foi definida, lembrando-se da variável 'contador'. Esse comportamento é o mesmo para funções tradicionais, mas as arrow functions facilitam o uso de closures por causa de seu contexto `this` fixo."
 
 ### Chamar uma função
-
-#### Callback function
-Callback = chamar de volta.
-Uma *function* que passa *parameter* para outra *function*.
-```js
-function aColor(color) {
-    color()
-}
-aColor(
-    () => {
-        console.log('lightblue')
+Não basta só declarar a função, tem que chamar ela, se não é meio inútil ter uma puta função no código e não usar para nada.
+* **Chamada direta:** a forma mais utilizada. Escreve o nome da função e com os argumentos (se houver) entre parênteses.
+    ```js
+    function hi(name) {
+        console.log("Hi, " + name + "! How are you?");
     }
-)
-```
+    hi("Robert"); //chamanado a função com o argumento "Robert"
+    ```
+* **Chamada como método:** se a função está dentro de um objeto, chamar ela dessa forma "invoca" todo o contexto do objeto (acho que é isso).
+    ```js
+    const pessoa = {
+        nome: "Carlos",
+        cumprimentar() {
+            console.log("Olá, eu sou " + this.nome);
+        }
+    };
+    pessoa.cumprimentar(); //'this` refere-se a `pessoa`
+    ```
+* **Chamada com operedor `new`:** chamando a função desse jeito, ela se comporta como um constructor, criando uma nova instância de um objeto.
+    ```js
+    function Carro(marca) {
+        this.marca = marca;
+    }
+    const meuCarro = new Carro("Toyota"); //cria uma nova instância de `Carro`
+    ```
+* **Callback function:** callback = chamar de volta. Uma *function* que passa *parameter* para outra *function*. "Usa uma função como argumento pra outra função." "Ao chamar uma função com um callback, o código pode ser assíncrono ou executar lógica adicional antes ou depois do callback."
+    ```js
+    function aColor(color) {
+        color()
+    }
+    aColor(
+        () => {
+            console.log('lightblue')
+        }
+    )
+    ```
+    ```js
+    function executarComCallback(callback) {
+        console.log("Antes do callback");
+        callback(); // Chama a função de retorno
+        console.log("Depois do callback");
+    }
+    executarComCallback(() => {
+        console.log("Callback executado");
+    });
+    //a anonymous function é passada como callback para ser chamada dentro da função 'executarComCallback'
+    ```
 
 ### Function constructor
 --- não entendi muito bem ---
