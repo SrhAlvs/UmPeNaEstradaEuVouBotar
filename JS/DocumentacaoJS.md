@@ -810,6 +810,28 @@ console.log(total)
 //assim é melhor
 ```
 
+### Parâmetros de uma função
+Atuam como variáveis dentro da função.
+```js
+function hi(name) {
+    console.log("Hi, " + name + "!");
+} 
+//'name' é um parâmetro da função 'hi'
+```
+A forma como os parâmentros são passados para uma função afetam na forma como eles serão manipulados dentro dela e isso impacta diretamente fora do escopo da função em questão.
+Existem algumas formas de passar parâmetros para uma função, são eles:
+* **Passagem por valor e por referência:** a passagem de parâmetros para funções é por **valor** para tipos primitivos (como números, strings e booleanos) e por **referência** para objetos e arrays. 
+
+
+
+
+
+
+
+
+
+
+
 ### Function declaration e function expression
 "Uma expressão de função em JavaScript (**Function Expression**) é uma maneira de definir uma função e atribuí-la a uma variável ou a uma propriedade de um objeto."
 "A diferença fundamental entre uma expressão de função e uma declaração de função (**Function Declaration**) é o comportamento em relação ao *hoisting* e a flexibilidade de uso em contextos mais dinâmicos."
@@ -969,7 +991,7 @@ Não basta só declarar a função, tem que chamar ela, se não é meio inútil 
     };
     pessoa.cumprimentar(); //'this` refere-se a `pessoa`
     ```
-* **Chamada com operedor `new`:** chamando a função desse jeito, ela se comporta como um constructor, criando uma nova instância de um objeto.
+* **Chamada com operador `new`:** chamando a função desse jeito, ela se comporta como um constructor, criando uma nova instância de um objeto.
     ```js
     function Carro(marca) {
         this.marca = marca;
