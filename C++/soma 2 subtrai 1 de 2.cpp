@@ -1,18 +1,21 @@
 #include <stdio.h>
-#include <locale.h> //inclusão de bibliotecas de comandos
-int main ()
-{
+#include <locale.h> //inclusÃ£o de bibliotecas de comandos
+int main () {
 	setlocale(LC_ALL, "portuguese"); //escolhendo linguagem
-		//final do cabeçalho
-	float Num1, Num2, Total1, Total2; //iniciando as variáveis
-	Num1, Num2, Total1, Total2 = 0; //garantindo valor inicial da variáveis
-	printf ("Este programa soma dois números e subtrai o primeiro número do segundo número."); //mostrar na tela
-	printf ("Insira o primeiro número:"); //mostrar na tela
-	scanf ("%f",&Num1); //receber do usuário
-	printf ("Insira o segundo número:"); //mostrar na tela
-	scanf ("%f",&Num2); //receber do usuário
-	Total1 = Num1+Num2; //cálculo de soma
-	Total2 = Num2-Num1; //cálculo de subtrção
-	printf ("O resultado da soma do primeiro número com o segundo é %f ",Total1); //mostrar na tela
-	printf ("O resultado da subtração do primeiro número no segundo é %f ",Total2); //mostrar na tela
+	//final do cabeÃ§alho
+
+	float Num1, Num2, Total1, Total2; //iniciando as variÃ¡veis
+	Num1, Num2, Total1, Total2 = 0; //garantindo valor inicial da variÃ¡veis
+
+	printf ("Este programa soma dois nÃºmeros e subtrai o primeiro nÃºmero do segundo nÃºmero."); //mostrar na tela
+	printf ("Insira o primeiro nÃºmero:"); //mostrar na tela
+	scanf ("%f",&Num1); //receber do usuÃ¡rio
+	
+	printf ("Insira o segundo nÃºmero:"); //mostrar na tela
+	scanf ("%f",&Num2); //receber do usuÃ¡rio
+	
+	Total1 = Num1+Num2; //cÃ¡lculo de soma
+	Total2 = Num2-Num1; //cÃ¡lculo de subtraÃ§Ã£o
+	printf ("O resultado da soma do primeiro nÃºmero com o segundo Ã© %f ",Total1); //mostrar na tela
+	printf ("O resultado da subtraÃ§Ã£o do primeiro nÃºmero no segundo Ã© %f ",Total2); //mostrar na tela
 } //fim
