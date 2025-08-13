@@ -1,24 +1,24 @@
 h1 {
-    color: lightcyan;
-    background-color: darkcyan;  
-    font-size: 90px;
-  }
-  .title{
-    background-color: darkcyan;
-    background-position: center; 
-          /*queria deixar o título centralizado*/
-    padding: 30px;
-    margin: 15px;
-  }
-  .text{
-    color: #2F4F4F;
-    background-color: lightblue;
-    padding: 20px;
-    margin: 15px; 
-  }
-  p{
-    background-color: lightblue;
-  }
-  *{
-    background-color: lightyellow;
-  }
+  color: lightcyan;
+  background-color: darkcyan;  
+  font-size: 90px;
+}
+.title{
+  background-color: darkcyan;
+  background-position: center; 
+    /*queria deixar o título centralizado*/
+  padding: 30px;
+  margin: 15px;
+}
+.text{
+  color: #2F4F4F;
+  background-color: lightblue;
+  padding: 20px;
+  margin: 15px; 
+}
+p {
+  background-color: lightblue;
+}
+* {
+  background-color: lightyellow;
+}
