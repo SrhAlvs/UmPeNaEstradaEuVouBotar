@@ -33,45 +33,57 @@ const booksCategory = [
             },
         ],  
     },
-]
-const totalCategories = booksCategory.length
-console.log(`Ao todo são ${totalCategories} categorias.`)
+];
+
+const totalCategories = booksCategory.length;
+
+console.log(`Ao todo são ${totalCategories} categorias.`);
+
 for(let totalBooks of booksCategory) {
-    console.log(`Na categoria ${totalBooks.category} tem-se ${totalBooks.books.length} livros.`)
+    console.log(`Na categoria ${totalBooks.category} tem-se ${totalBooks.books.length} livros.`);
 }
+
 function Authors() {
     let authors = [];
+    
     for(let totalAuthors of booksCategory) {
         for(let book of totalAuthors.books) {
             if(authors.indexOf(book.author) == -1) {
-                authors.push(book.author)
+                authors.push(book.author);
             }
         }
     }
-    console.log(`São ${authors.length} autores ao todo.`)
+    console.log(`São ${authors.length} autores ao todo.`);
 }
+
 Authors();
+
 function augustoBooks() {
     let books = [];
+
     for(let totalAuthors of booksCategory) {
         for(let book of totalAuthors.books) {
             if(book.author === 'Augusto Cury') {
-                books.push(book.title)
+                books.push(book.title);
             }
         }
     }
-    console.log(`Livros do Augusto Cury: ${books.join(", ")}`)
+    console.log(`Livros do Augusto Cury: ${books.join(", ")}`);
 }
+
 augustoBooks();
+
 function authorBooks(author) {
     let books = [];
+
     for(let totalAuthors of booksCategory) {
         for(let book of totalAuthors.books) {
             if(book.author === author) {
-                books.push(book.title)
+                books.push(book.title);
             }
         }
     }
-    console.log(`Livros do ${author}: ${books.join(", ")}`)
+    console.log(`Livros do ${author}: ${books.join(", ")}`);
 }
+
 authorBooks('Robert T. Kiyosaki e Sharon L. Lechter');
